@@ -29,6 +29,13 @@
          }
 
      }
+
+     h2 {
+         margin: 10px 0 10px 0;
+         text-align: center;
+         padding: 20px;
+         background-color: $black;
+     }
  }
 
  body {
@@ -117,7 +124,7 @@
          grid-template-columns: 10% auto 10%;
          height: min-content;
 
-         .containerIndex {
+         .mainContainer {
              grid-column: 2/3;
              background-color: $background;
              height: 100%;
@@ -153,29 +160,27 @@
                  background-image: url(../resources/index/parallax/parallax2.jpg);
                  filter: grayscale(100%)
              }
-             .containerAboutUs{
+
+             .containerTextAndImg {
                  display: flex;
-                 .textAboutUs{
-                     width: 60%;
+                 padding: 5px 0 5px 0;
+                 align-items: center;
+                 justify-content: center;
+
+                 .textTandI {
+                     width: auto;
                  }
-                 .ritualImg{
+
+                 .imgRitual {
                      height: auto;
                      width: 35%;
                  }
-                 padding: 5px 0 5px 0;
+
+                 .imgSeekers {
+                     height: 70%;
+                     width: auto;
+                 }
              }
-
-            //  .textAboutUs {
-            //      width: 60%;
-            //      height: auto;
-            //  }
-
-            //  .ritual {
-            //      img {
-            //          width: 40%;
-            //          height: auto;
-            //      }
-            //  }
 
              .parallax3 {
                  background-position: center;
@@ -218,6 +223,17 @@
      }
  }
 
+
+ // =================================================  CONTACT  ================================================== 
+
+ form {
+     margin: auto;
+     height: min-content;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     flex-direction: column;
+ }
 
  // =================================================  FOOTER  ================================================== 
 
