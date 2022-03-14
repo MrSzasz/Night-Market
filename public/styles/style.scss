@@ -1,0 +1,74 @@
+::selection {
+    background-color: red;
+    color: whitesmoke;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: #121212;
+    color: wheat;
+    height: 2000px;
+}
+
+header {
+    background-color: white;
+    height: 150px;
+    width: 100%;
+
+    .logo {
+        background-color: blue;
+        height: 50%;
+        width: 50%;
+        margin: auto;
+    }
+
+    nav {
+        background-color: red;
+        height: 50%;
+    }
+}
+
+main {
+    display: grid;
+    grid-template-columns: 10% auto 10%;
+    height: 100%;
+
+    .containerIndex {
+        grid-column: 2/3;
+        background-color: darkblue;
+        height: 100%;
+    }
+}
+
+
+// =================================================  SHOP  ================================================== 
+
+
+.containerShop {
+    display: grid;
+    grid-column: 2/3;
+    grid-template-columns: 20% auto;
+
+    .sidebar {
+        grid-column: 1/2;
+        background-color: green;
+        height: 100%;
+    }
+    .contentShop{
+        grid-column: 2/3;
+        background-color: darksalmon;
+    }
+}
+
+
+// =================================================  FOOTER  ================================================== 
+
+
+.mainFooter {
+    height: 120px;
+    width: 100%;
+    background-color: darkorchid;
+}
