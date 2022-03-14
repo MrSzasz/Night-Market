@@ -1,74 +1,237 @@
-::selection {
-    background-color: red;
-    color: whitesmoke;
-}
+ /**/
 
-html {
-    scroll-behavior: smooth;
-}
+ $background: #121212;
+ $white: #fbfbfd;
+ $black: #1E1E1E;
+ $purple: #6600cc;
 
-body {
-    background-color: #121212;
-    color: wheat;
-    height: 2000px;
-}
+ @font-face {
+     font-family: logoFont;
+     src: url(../resources/fonts/logo.otf);
+ }
 
-header {
-    background-color: white;
-    height: 150px;
-    width: 100%;
+ @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&display=swap');
 
-    .logo {
-        background-color: blue;
-        height: 50%;
-        width: 50%;
-        margin: auto;
-    }
+ ::selection {
+     background-color: $white;
+     color: $background;
+ }
 
-    nav {
-        background-color: red;
-        height: 50%;
-    }
-}
+ html {
+     scroll-behavior: smooth;
 
-main {
-    display: grid;
-    grid-template-columns: 10% auto 10%;
-    height: 100%;
+     a {
+         text-decoration: none;
+         color: $white;
 
-    .containerIndex {
-        grid-column: 2/3;
-        background-color: darkblue;
-        height: 100%;
-    }
-}
+         &:hover {
+             color: $white;
+         }
+
+     }
+ }
+
+ body {
+     background-color: $background;
+     color: $white;
+     display: grid;
+     grid-template-rows: min-content min-content min-content;
+     row-gap: 20px;
+     font-family: 'EB Garamond', serif;
+     font-size: 20px;
+
+     header {
+         background-color: $background;
+         height: min-content;
+         width: 100%;
+         grid-row: 1/2;
+
+         .containerLogo {
+             padding: 15px;
+             height: min-content;
+             width: 40%;
+             margin: auto;
+             display: flex;
+             align-items: center;
+             justify-content: center;
+
+             .logoText {
+                 font-family: logoFont;
+                 font-size: 40px;
+             }
+
+             .logo {
+                 img {
+                     height: 100px;
+                     width: auto;
+                 }
+             }
+         }
+
+         nav {
+             background-color: $black;
+             height: 50%;
+             width: 80%;
+             font-family: logoFont;
+             display: flex;
+             align-items: center;
+             margin: auto;
+
+             ul {
+                 padding: 10px 0 10px 0;
+                 width: 100%;
+                 list-style: none;
+                 display: flex;
+                 justify-content: space-around;
+                 margin: 0;
+
+                 li {
+
+                     flex-direction: row;
+
+                     a {
+                         text-decoration: none;
+                         color: $white;
+                         font-size: 18px;
+                         transition: ease all .25s;
+
+                         &:hover {
+                             color: $purple;
+                         }
+
+                     }
+
+                     img {
+                         height: 30px;
+                         width: 30px;
+                     }
+                 }
+             }
+
+         }
+     }
+
+     main {
+         grid-row: 2/3;
+         display: grid;
+         grid-template-columns: 10% auto 10%;
+         height: min-content;
+
+         .containerIndex {
+             grid-column: 2/3;
+             background-color: $background;
+             height: 100%;
+
+             .parallax1 {
+                 background-position: center;
+                 background-size: cover;
+                 background-attachment: fixed;
+                 width: 100%;
+                 height: 400px;
+                 background-image: url(../resources/index/parallax/parallax1.jpg);
+                 filter: grayscale(100%);
+
+                 h1 {
+                     height: 100%;
+                     margin: 0;
+                     display: flex;
+                     align-items: center;
+                     justify-content: center;
+                     font-family: logoFont;
+                     color: $black;
+                     text-shadow: 0px 0px 4px $white;
+                     font-size: 36.66px;
+                 }
+             }
+
+             .parallax2 {
+                 background-position: center;
+                 background-size: cover;
+                 background-attachment: fixed;
+                 width: 100%;
+                 height: 400px;
+                 background-image: url(../resources/index/parallax/parallax2.jpg);
+                 filter: grayscale(100%)
+             }
+             .containerAboutUs{
+                 display: flex;
+                 .textAboutUs{
+                     width: 60%;
+                 }
+                 .ritualImg{
+                     height: auto;
+                     width: 35%;
+                 }
+                 padding: 5px 0 5px 0;
+             }
+
+            //  .textAboutUs {
+            //      width: 60%;
+            //      height: auto;
+            //  }
+
+            //  .ritual {
+            //      img {
+            //          width: 40%;
+            //          height: auto;
+            //      }
+            //  }
+
+             .parallax3 {
+                 background-position: center;
+                 background-size: cover;
+                 background-attachment: fixed;
+                 width: 100%;
+                 height: 400px;
+                 background-image: url(../resources/index/parallax/parallax3.jpg);
+                 filter: grayscale(100%)
+             }
+
+             p {
+                 padding: 35.666px;
+                 text-align: justify;
+             }
+
+         }
+     }
+
+ }
 
 
-// =================================================  SHOP  ================================================== 
+ // =================================================  SHOP  ================================================== 
 
 
-.containerShop {
-    display: grid;
-    grid-column: 2/3;
-    grid-template-columns: 20% auto;
+ .containerShop {
+     display: grid;
+     grid-column: 2/3;
+     grid-template-columns: 20% auto;
 
-    .sidebar {
-        grid-column: 1/2;
-        background-color: green;
-        height: 100%;
-    }
-    .contentShop{
-        grid-column: 2/3;
-        background-color: darksalmon;
-    }
-}
+     .sidebar {
+         grid-column: 1/2;
+         background-color: green;
+         height: 100%;
+     }
 
-
-// =================================================  FOOTER  ================================================== 
+     .contentShop {
+         grid-column: 2/3;
+         background-color: $black;
+     }
+ }
 
 
-.mainFooter {
-    height: 120px;
-    width: 100%;
-    background-color: darkorchid;
-}
+ // =================================================  FOOTER  ================================================== 
+
+
+ footer {
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     grid-row: 3/4;
+     height: 120px;
+     width: 100%;
+     background-color: $black;
+
+     p {
+         margin: 0%;
+     }
+ }
