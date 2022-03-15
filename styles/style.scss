@@ -108,9 +108,15 @@
 
                      }
 
-                     img {
+                     .img {
                          height: 30px;
                          width: 30px;
+                         transition: ease all .25s;
+                         background-image: url(../resources/nav/pouch.svg);
+
+                         &:hover {
+                             background-image: url(../resources/nav/pouchHover.svg);
+                         }
                      }
                  }
              }
@@ -166,6 +172,7 @@
                  padding: 5px 0 5px 0;
                  align-items: center;
                  justify-content: center;
+                 line-height: 35px;
 
                  .textTandI {
                      width: auto;
@@ -206,33 +213,152 @@
  // =================================================  SHOP  ================================================== 
 
 
- .containerShop {
+ .contentShop {
+     height: 666px;
      display: grid;
      grid-column: 2/3;
      grid-template-columns: 20% auto;
 
-     .sidebar {
+     .sidebarShop {
          grid-column: 1/2;
          background-color: green;
          height: 100%;
      }
 
-     .contentShop {
+     .displayShop {
+         background-color: rebeccapurple;
          grid-column: 2/3;
-         background-color: $black;
      }
  }
 
 
  // =================================================  CONTACT  ================================================== 
 
- form {
-     margin: auto;
+
+ .mainCart {
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     background-color: $black;
+     height: 250px;
+     margin: 10px 0 10px 0;
+ }
+
+
+ // =================================================  CONTACT  ================================================== 
+
+ .form {
+     h1 {
+         font-size: 36.66px;
+     }
+
+     background-color: $black;
+     border-radius: 10px;
      height: min-content;
+     width: 60%;
+     margin: auto;
      display: flex;
      align-items: center;
      justify-content: center;
      flex-direction: column;
+
+
+     form {
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         flex-direction: column;
+         height: auto;
+         row-gap: 10px;
+         padding: 10px;
+
+         input,
+         select {
+             border: 2px solid $black;
+             border-radius: 10px;
+             text-align: center;
+             width: 150%;
+             height: 36.66px;
+             transition: ease all .25s;
+             background-color: $background;
+             color: $white;
+
+
+             &:focus-visible {
+                 outline: 2px solid $purple;
+             }
+
+             option {
+                 background-color: $background;
+                 color: $white;
+             }
+         }
+
+         textarea {
+             border: 2px solid $black;
+             border-radius: 10px;
+             text-align: center;
+             width: 150%;
+             background-color: $background;
+             color: $white;
+             transition: ease all .25s;
+
+
+             &:focus-visible {
+                 outline: 2px solid $purple;
+             }
+         }
+
+         span {
+             font-style: oblique;
+             color: $white;
+         }
+
+         button {
+             padding: 13px;
+             border: 2px solid $black;
+             border-radius: 10px;
+             text-align: center;
+             width: 70%;
+             transition: ease all .25s;
+             font-family: logoFont;
+             background-color: $background;
+             color: $white;
+
+             &:hover {
+                 background-color: $black;
+                 color: $white;
+                 border: 2px solid $purple;
+             }
+         }
+     }
+
+     .logoForm {
+         height: min-content;
+         width: min-content;
+         bottom: 0px;
+         padding-bottom: 10px;
+
+         img {
+             height: 66.6px;
+             width: auto;
+         }
+     }
+ }
+
+ input:-webkit-autofill,
+ input:-webkit-autofill:hover,
+ input:-webkit-autofill:focus,
+ textarea:-webkit-autofill,
+ textarea:-webkit-autofill:hover,
+ textarea:-webkit-autofill:focus,
+ select:-webkit-autofill,
+ select:-webkit-autofill:hover,
+ select:-webkit-autofill:focus {
+     border: $purple;
+     -webkit-text-fill-color: $white;
+     -webkit-box-shadow: 0 0 0px 1000px $background inset;
+     transition: background-color 5000s ease-in-out 0s;
  }
 
  // =================================================  FOOTER  ================================================== 
