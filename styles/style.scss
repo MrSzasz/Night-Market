@@ -214,7 +214,7 @@
 
 
  .contentShop {
-     height: 666px;
+     height: min-content;
      display: grid;
      grid-column: 2/3;
      grid-template-columns: 20% auto;
@@ -228,21 +228,52 @@
      .displayShop {
          background-color: rebeccapurple;
          grid-column: 2/3;
+         display: flex;
+         flex-wrap: wrap;
+     }
+
+     .card {
+         background-color: $black;
      }
  }
 
 
- // =================================================  CONTACT  ================================================== 
+ // =================================================  CART  ================================================== 
 
+ .containerCart {
+     grid-column: 2/3;
+     background-color: $background;
+     height: 100%;
 
- .mainCart {
-     display: flex;
-     align-items: center;
-     justify-content: center;
-     background-color: $black;
-     height: 250px;
-     margin: 10px 0 10px 0;
+     .mainCart {
+         height: min-content;
+         display: flex;
+         flex-direction: column;
+         align-items: center;
+         justify-content: center;
+         background-color: $black;
+         margin: 10px 0 10px 0;
+         row-gap: 15px;
+
+         table {
+             margin: 0;
+
+             img {
+                 height: 100px;
+                 width: auto;
+             }
+         }
+
+         .openPouch {
+             img {
+                 height: 100px;
+                 width: auto;
+             }
+         }
+     }
  }
+
+
 
 
  // =================================================  CONTACT  ================================================== 
@@ -314,7 +345,7 @@
              color: $white;
          }
 
-         button {
+         .button {
              padding: 13px;
              border: 2px solid $black;
              border-radius: 10px;
@@ -375,5 +406,23 @@
 
      p {
          margin: 0%;
+     }
+ }
+
+ .button {
+     padding: 13px;
+     border: 2px solid $black;
+     border-radius: 10px;
+     text-align: center;
+     width: 70%;
+     transition: ease all .25s;
+     font-family: logoFont;
+     background-color: $background;
+     color: $white;
+
+     &:hover {
+         background-color: $black;
+         color: $white;
+         border: 2px solid $purple;
      }
  }
