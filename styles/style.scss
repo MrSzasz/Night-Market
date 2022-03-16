@@ -4,6 +4,8 @@
  $white: #fbfbfd;
  $black: #1E1E1E;
  $purple: #6600cc;
+ $blessing: #68BCD0;
+ $curse: #880000;
 
  @font-face {
      font-family: logoFont;
@@ -230,10 +232,29 @@
          grid-column: 2/3;
          display: flex;
          flex-wrap: wrap;
+         justify-content: space-around;
+         row-gap: 10px;
+         padding: 10px;
      }
 
      .card {
          background-color: $black;
+         width: 32%;
+         height: min-content;
+
+
+     }
+
+     .blessing {
+         border: 2px solid $blessing;
+     }
+
+     .curse {
+         border: 2px solid $curse;
+     }
+
+     .card-text {
+         padding: 10px;
      }
  }
 
@@ -333,7 +354,11 @@
              background-color: $background;
              color: $white;
              transition: ease all .25s;
+             text-align: start;
 
+             &::placeholder {
+                 text-align: center;
+             }
 
              &:focus-visible {
                  outline: 2px solid $purple;
@@ -396,16 +421,48 @@
 
 
  footer {
-     display: flex;
+     display: grid;
      align-items: center;
      justify-content: center;
      grid-row: 3/4;
-     height: 120px;
+     height: 250px;
      width: 100%;
      background-color: $black;
+     position: relative;
+     grid-template-rows: 90% auto;
+
+     .eye {
+         img {
+             height: 150px;
+             width: auto;
+         }
+
+         position: absolute;
+         //  width: 250px;
+         //  height: 80px;
+         //  background-color: white;
+         //  border-radius: 50% / 50%;
+         left: 50%;
+         transform: translateX(-50%);
+         overflow: hidden;
+         grid-row: 1/2;
+         //  border: 10px solid blue;
+
+         .pupil {
+             position: relative;
+             width: 24px;
+             height: 50px;
+             background-color: $purple;
+             left: 27%;
+             top: 50%;
+             //  transform: translate(-50%, -50%);
+             //  border-radius: 50%;
+         }
+     }
 
      p {
          margin: 0%;
+         grid-row: 2/3;
      }
  }
 
