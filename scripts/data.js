@@ -4,6 +4,7 @@ const productList = [{
         description: 'Old axe',
         curse: true,
         blessing: false,
+        conditionDesc: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Hic, veritatis!',
         price: 1000,
         stock: true,
     },
@@ -13,6 +14,7 @@ const productList = [{
         description: 'Old mask',
         curse: false,
         blessing: true,
+        conditionDesc: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Hic, veritatis!',
         price: 1000,
         stock: true,
     },
@@ -22,6 +24,7 @@ const productList = [{
         description: 'Old Mirror',
         curse: true,
         blessing: false,
+        conditionDesc: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Hic, veritatis!',
         price: 1000,
         stock: true,
     },
@@ -31,6 +34,7 @@ const productList = [{
         description: 'Old pickaxe',
         curse: false,
         blessing: true,
+        conditionDesc: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Hic, veritatis!',
         price: 1000,
         stock: true,
     },
@@ -40,6 +44,7 @@ const productList = [{
         description: 'Old ring',
         curse: true,
         blessing: false,
+        conditionDesc: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Hic, veritatis!',
         price: 1000,
         stock: true,
     },
@@ -49,6 +54,7 @@ const productList = [{
         description: 'Old wood',
         curse: false,
         blessing: true,
+        conditionDesc: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Hic, veritatis!',
         price: 1000,
         stock: true,
     }
@@ -63,7 +69,3 @@ class ProdToCart {
 }
 
 const cart = [];
-
-function addThisElementToCart(cardImg, cardName, cardPrice) {
-    cart.push(new ProdToCart(cardImg, cardName, cardPrice));
-}

@@ -49,6 +49,14 @@
      font-family: 'EB Garamond', serif;
      font-size: 20px;
 
+     .blessing {
+         border: 2px solid $blessing;
+     }
+
+     .curse {
+         border: 2px solid $curse;
+     }
+
      header {
          background-color: $background;
          height: min-content;
@@ -245,13 +253,13 @@
 
      }
 
-     .blessing {
-         border: 2px solid $blessing;
-     }
+     //  .blessing {
+     //      border: 2px solid $blessing;
+     //  }
 
-     .curse {
-         border: 2px solid $curse;
-     }
+     //  .curse {
+     //      border: 2px solid $curse;
+     //  }
 
      .card-text {
          padding: 10px;
@@ -280,7 +288,7 @@
              margin: 0;
              background-color: $black;
              color: $white;
-             
+
              tr {
                  .headProd {
                      width: 70%;
@@ -306,29 +314,48 @@
                          width: 10%;
                          height: 100px;
                      }
-                     .productCartInTable{width: 90%;}
 
-                    }
-                }
-                .table-active {
-                    color: $white;
-                }
+                     .productCartInTable {
+                         width: 90%;
+                     }
+
+                 }
+             }
+
+             .table-active {
+                 color: $white;
+             }
 
 
 
-              img {
-                  height: 130px;
-                  width: 130px;
-                  border: 2px solid $curse;
-              }
-         }
-
-         .openPouch {
              img {
-                 height: 100px;
-                 width: auto;
+                 height: 130px;
+                 width: 130px;
              }
          }
+         .hide{
+             position: absolute;
+             z-index: -10;
+         }
+
+         .noItemsCart {
+             display: flex;
+             flex-direction: column;
+             justify-content: center;
+             align-items: center;
+             gap: 20px;
+             width: 100%;
+             height: 90vh;
+
+             .openPouch {
+
+                 img {
+                     height: 100px;
+                     width: auto;
+                 }
+             }
+         }
+
      }
  }
 
