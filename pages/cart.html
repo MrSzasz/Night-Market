@@ -44,44 +44,26 @@
                     <!-- <div class="openPouch"><img src="../resources/cart/openPouch.svg" alt="no-items"></div>Todavia no
                     hay nada que mostrar, deberias darte una vuelta por la tienda... -->
 
-                    <table class="table table-dark table-hover">
+                    <table class="table table-hover">
                         <thead>
                             <tr>
-                                <th scope="col"></th>
-                                <th scope="col">PRODUCTO</th>
-                                <th scope="col">CANTIDAD</th>
-                                <th scope="col">PRECIO</th>
+                                <th scope="col" class="text-center headProd" colspan="2">PRODUCTO</th>
+                                <th scope="col" class="headPrice text-center">PRECIO</th>
+                                <th scope="col" class="headCondition text-center">ELIMINAR</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td><img src="../resources/shop/axe.jpg" alt=""></td>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>
-                            </tr>
-                            <tr>
-                                <td><img src="../resources/shop/mask.webp" alt=""></td>
-                                <td>Jacob</td>
-                                <td>Thornton</td>
-                                <td>@fat</td>
-                            </tr>
-                            <tr>
-                                <td><img src="../resources/shop/mirror.jpg" alt=""></td>
-                                <td> </td>
-                                <td>Larry the Bird</td>
-                                <td>@twitter</td>
-                            </tr>
-                            <tr>
-                                <td><img src="../resources/shop/pickaxe.jpg" alt=""></td>
-                                <td> </td>
-                                <td>Larry the Bird</td>
-                                <td>@twitter</td>
+                                <td class="imgCartInTable text-center align-middle w-25 ps-0"><img src="../resources/shop/axe.png" alt=""></td>
+                                <td class="productCartInTable align-middle">Mark</td>
+                                <td class="priceCartInTable text-center align-middle">Otto</td>
+                                <td class="conditionCartInTable text-center align-middle"><button class="btn btn-danger">X</button></td>
                             </tr>
                         </tbody>
                         <tfoot>
-                            <td colspan=3"></td>
-                            <td>TOTAL</td>
+                            <td colspan="2"></td>
+                            <td class="table-active text-center">TOTAL</td>
+                            <td class="table-active"></td>
                         </tfoot>
                     </table>
                 </div>

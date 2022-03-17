@@ -278,11 +278,49 @@
 
          table {
              margin: 0;
+             background-color: $black;
+             color: $white;
+             
+             tr {
+                 .headProd {
+                     width: 70%;
+                 }
 
-             img {
-                 height: 100px;
-                 width: auto;
+                 .headPrice,
+                 .headCondition {
+                     width: 15%;
+                 }
+
+                 &:hover {
+                     background-color: $background;
+
+                     td {
+                         color: $white;
+                     }
+                 }
              }
+
+             tbody {
+                 td {
+                     .imgCartInTable {
+                         width: 10%;
+                         height: 100px;
+                     }
+                     .productCartInTable{width: 90%;}
+
+                    }
+                }
+                .table-active {
+                    color: $white;
+                }
+
+
+
+              img {
+                  height: 130px;
+                  width: 130px;
+                  border: 2px solid $curse;
+              }
          }
 
          .openPouch {
