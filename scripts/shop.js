@@ -1,3 +1,7 @@
+// =====  ALERT  =====
+
+let alertDiv = document.querySelector('.alert');
+
 // =====  CREATING SHOP =====
 
 let containerCards = document.querySelector('.displayShop');
@@ -27,15 +31,24 @@ let btnCart = document.querySelectorAll('.btn');
 btnCart.forEach(button => {
     button.addEventListener('click', (e) => {
         btnCart = e.target;
+
         let objBuyContainer = btnCart.closest('.card');
+        
         let objImg = objBuyContainer.querySelector('.cardObjImg').src;
         let objName = objBuyContainer.querySelector('.cardObjName').textContent;
         let objCurse = objBuyContainer.querySelector('.cardObjName').getAttribute('data-curse');
         let objBlessing = objBuyContainer.querySelector('.cardObjName').getAttribute('data-blessing');
         let objCondDesc = objBuyContainer.querySelector('.cardObjName').getAttribute('data-condition-desc');
         let objPrice = Number(objBuyContainer.querySelector('.cardObjPrice').textContent.replace('$', ''));
+
         addThisElementToCart(objImg, objName, objCurse, objBlessing, objCondDesc, objPrice);
-        saveCart();
-        console.log(localStorage)
+        saveObjectsToCart();
+        setTimeout(() => {
+            alertDiv.classList.add('hide')
+        }, 3000);
+        alertDiv.classList.remove('hide')
+
     });
 });
+
+// setTimeout(() => {alert("hola")}, 5000);

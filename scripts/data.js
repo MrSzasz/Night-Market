@@ -71,4 +71,9 @@ class ProdToCart {
     }
 }
 
-const cart = [];
+let objectsToCart = [];
+
+let cartForTab = {};
+
+
+// let cartForTableInCartTab = JSON.parse(localStorage.getItem('cart'));

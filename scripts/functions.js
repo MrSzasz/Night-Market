@@ -1,19 +1,67 @@
-function getDataFromCard(elmnt) {
-    elmnt
-}
+// =====  ADD OBJECT TO CART  =====
 
 function addThisElementToCart(cardImg, cardName, cardCurse, cardBlessing, cardCondDesc, cardPrice) {
-    cart.push(new ProdToCart(cardImg, cardName, cardCurse, cardBlessing, cardCondDesc, cardPrice));
-    console.table(cart);
+    objectsToCart.push(new ProdToCart(cardImg, cardName, cardCurse, cardBlessing, cardCondDesc, cardPrice));
 }
 
-function addToCart() {
+// =====  SAVE CART LOCALSTORAGE  =====
 
+function saveObjectsToCart() {
+    let cartSavedOnLocalstorage = localStorage.setItem('cart', JSON.stringify(objectsToCart));
 }
+
+
+// =====  LOCAL STORAGE CART FOR CART TAB =====
+
+// let cartForTab = [];
+// let objectsOnLocalStorage= JSON.parse(localStorage.getItem('cart'));
+// cartForTab.push(objectsOnLocalStorage);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // // =====  CREATE CART LIST  =====
 
-// function createTableForCart() {
+
 //     let cartListContainer = document.querySelector('.mainCart');
 //     cartListTable = document.createElement('table');
 //     cartListTable.classList.add('table', 'table-hover');
@@ -27,7 +75,7 @@ function addToCart() {
 // `;
 //     cartListTable.appendChild(cartListThead);
 //     let cartListTbody = document.createElement('tbody');
-//     cart.forEach(productOnCart => {
+//     cartForTab.forEach(productOnCart => {
 //         let cartListTr = document.createElement('tr');
 //         cartListTr.innerHTML = `
 //                     <td class="imgCartInTable text-center align-middle w-25 ps-0"><img class="curse" src="${productOnCart.img}" alt="${productOnCart.name}"></td>
@@ -39,18 +87,3 @@ function addToCart() {
 //     });
 //     cartListTable.prepend(cartListTbody);
 //     cartListContainer.appendChild(cartListTable);
-// }
-
-// =====  LOCAL STORAGE CART  =====
-
-function saveCart() {
-    localStorage.setItem('savedCart', JSON.stringify('cart'));
-}
-
-window.onload = () => {
-    let savedStorage = JSON.parse(localStorage.getItem('savedDataCart'));
-    if (savedStorage) {
-        cart = savedDataCart;
-        createTableForCart();
-    }
-}

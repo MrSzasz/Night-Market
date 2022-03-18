@@ -145,6 +145,14 @@
              background-color: $background;
              height: 100%;
 
+             .hide {
+                 display: none;
+             }
+
+             .alert {
+                 z-index: 10;
+             }
+
              .parallax1 {
                  background-position: center;
                  background-size: cover;
@@ -231,12 +239,12 @@
 
      .sidebarShop {
          grid-column: 1/2;
-         background-color: green;
+         background-color: $black;
          height: 100%;
      }
 
      .displayShop {
-         background-color: rebeccapurple;
+         background-color: $black;
          grid-column: 2/3;
          display: flex;
          flex-wrap: wrap;
@@ -333,7 +341,8 @@
                  width: 130px;
              }
          }
-         .hide{
+
+         .hide {
              position: absolute;
              top: -100vh;
              z-index: -10;
@@ -548,4 +557,8 @@
          color: $white;
          border: 2px solid $purple;
      }
+ }
+
+ .disabled {
+     background-color: $background;
  }
