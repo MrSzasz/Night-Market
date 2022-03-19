@@ -8,6 +8,7 @@ let containerCards = document.querySelector('.displayShop');
 productList.forEach(obj => {
     let createCard = document.createElement('div');
     createCard.classList.add('card', 'text-center');
+    createCard.setAttribute('data-inCart', false);
     if (obj.blessing) {
         createCard.classList.add('blessing');
     } else if (obj.curse) {
@@ -23,7 +24,9 @@ productList.forEach(obj => {
                      </div>
  `;
     containerCards.appendChild(createCard);
-});
+
+
+})
 
 // =====  GET DATA FROM SHOP  =====
 
@@ -33,7 +36,7 @@ btnCart.forEach(button => {
         btnCart = e.target;
 
         let objBuyContainer = btnCart.closest('.card');
-        
+
         let objImg = objBuyContainer.querySelector('.cardObjImg').src;
         let objName = objBuyContainer.querySelector('.cardObjName').textContent;
         let objCurse = objBuyContainer.querySelector('.cardObjName').getAttribute('data-curse');
@@ -47,8 +50,5 @@ btnCart.forEach(button => {
             alertDiv.classList.add('hide')
         }, 3000);
         alertDiv.classList.remove('hide')
-
     });
 });
-
-// setTimeout(() => {alert("hola")}, 5000);
