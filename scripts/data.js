@@ -1,3 +1,7 @@
+ /* */
+
+ // ==========  PRODUCTS ==========
+
  const productList = [{
          img: '../resources/shop/axe.png',
          name: 'AXE',
@@ -60,6 +64,7 @@
      }
  ];
 
+ // ==========  CLASS FOR PRODUCTS ==========
  class ProdToCart {
      constructor(getObjImg, getObjName, getObjCurse, getObjBlessing, getObjCondDesc, getObjPrice) {
          this.img = getObjImg;

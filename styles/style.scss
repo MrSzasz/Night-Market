@@ -1,4 +1,6 @@
- /**/
+ /* */
+
+ // =============================================  VARIABLES  ============================================= //
 
  $background: #121212;
  $white: #fbfbfd;
@@ -7,6 +9,9 @@
  $blessing: #68BCD0;
  $curse: #880000;
 
+
+ // =============================================  FONTS  ============================================= //
+
  @font-face {
      font-family: logoFont;
      src: url(../resources/fonts/logo.otf);
@@ -14,10 +19,16 @@
 
  @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&display=swap');
 
+
+ // =============================================  GENERAL CONTENT  ============================================= //
+
  ::selection {
      background-color: $white;
      color: $background;
  }
+
+
+ // =============================================  DOCUMENT  ============================================= //
 
  html {
      scroll-behavior: smooth;
@@ -38,347 +49,257 @@
          padding: 20px;
          background-color: $black;
      }
- }
 
- body {
-     background-color: $background;
-     color: $white;
-     display: grid;
-     grid-template-rows: min-content min-content min-content;
-     row-gap: 20px;
-     font-family: 'EB Garamond', serif;
-     font-size: 20px;
-
-     .blessing {
-         border: 2px solid $blessing;
-     }
-
-     .curse {
-         border: 2px solid $curse;
-     }
-
-     header {
+     body {
          background-color: $background;
-         height: min-content;
-         width: 100%;
-         grid-row: 1/2;
-
-         .containerLogo {
-             padding: 15px;
-             height: min-content;
-             width: 40%;
-             margin: auto;
-             display: flex;
-             align-items: center;
-             justify-content: center;
-
-             .logoText {
-                 font-family: logoFont;
-                 font-size: 40px;
-             }
-
-             .logo {
-                 img {
-                     height: 100px;
-                     width: auto;
-                 }
-             }
-         }
-
-         nav {
-             background-color: $black;
-             height: 50%;
-             width: 80%;
-             font-family: logoFont;
-             display: flex;
-             align-items: center;
-             margin: auto;
-
-             ul {
-                 padding: 10px 0 10px 0;
-                 width: 100%;
-                 list-style: none;
-                 display: flex;
-                 justify-content: space-around;
-                 margin: 0;
-
-                 li {
-
-                     flex-direction: row;
-
-                     a {
-                         text-decoration: none;
-                         color: $white;
-                         font-size: 18px;
-                         transition: ease all .25s;
-
-                         &:hover {
-                             color: $purple;
-                         }
-
-                     }
-
-                     .img {
-                         height: 30px;
-                         width: 30px;
-                         transition: ease all .25s;
-                         background-image: url(../resources/nav/pouch.svg);
-
-                         &:hover {
-                             background-image: url(../resources/nav/pouchHover.svg);
-                         }
-                     }
-                 }
-             }
-
-         }
-     }
-
-     main {
-         grid-row: 2/3;
+         color: $white;
          display: grid;
-         grid-template-columns: 10% auto 10%;
-         height: min-content;
+         grid-template-rows: min-content min-content min-content;
+         row-gap: 20px;
+         font-family: 'EB Garamond', serif;
+         font-size: 20px;
 
-         .mainContainer {
-             grid-column: 2/3;
+         .blessing {
+             border: 2px solid $blessing;
+         }
+
+         .curse {
+             border: 2px solid $curse;
+         }
+
+         .hide {
+             display: none;
+         }
+
+         .button {
+             padding: 13px;
+             border: 2px solid $black;
+             border-radius: 10px;
+             text-align: center;
+             width: 70%;
+             transition: ease all .25s;
+             font-family: logoFont;
              background-color: $background;
-             height: 100%;
+             color: $white;
 
-             .hide {
-                 display: none;
+             &:hover {
+                 background-color: $black;
+                 color: $white;
+                 border: 2px solid $purple;
              }
+         }
 
-             .alert {
-                 z-index: 10;
-             }
+         .disabled {
+             background-color: $background;
+         }
 
-             .parallax1 {
-                 background-position: center;
-                 background-size: cover;
-                 background-attachment: fixed;
-                 width: 100%;
-                 height: 400px;
-                 background-image: url(../resources/index/parallax/parallax1.jpg);
-                 filter: grayscale(100%);
+         header {
+             background-color: $background;
+             height: min-content;
+             width: 100%;
+             grid-row: 1/2;
 
-                 h1 {
-                     height: 100%;
-                     margin: 0;
-                     display: flex;
-                     align-items: center;
-                     justify-content: center;
-                     font-family: logoFont;
-                     color: $black;
-                     text-shadow: 0px 0px 4px $white;
-                     font-size: 36.66px;
-                 }
-             }
-
-             .parallax2 {
-                 background-position: center;
-                 background-size: cover;
-                 background-attachment: fixed;
-                 width: 100%;
-                 height: 400px;
-                 background-image: url(../resources/index/parallax/parallax2.jpg);
-                 filter: grayscale(100%)
-             }
-
-             .containerTextAndImg {
+             .containerLogo {
+                 padding: 15px;
+                 height: min-content;
+                 width: 40%;
+                 margin: auto;
                  display: flex;
-                 padding: 5px 0 5px 0;
                  align-items: center;
                  justify-content: center;
-                 line-height: 35px;
 
-                 .textTandI {
-                     width: auto;
+                 .logo {
+                     img {
+                         height: 100px;
+                         width: auto;
+                     }
                  }
 
-                 .imgRitual {
-                     height: auto;
-                     width: 35%;
+                 .logoText {
+                     font-family: logoFont;
+                     font-size: 40px;
                  }
 
-                 .imgSeekers {
-                     height: 70%;
-                     width: auto;
+             }
+
+             nav {
+                 background-color: $black;
+                 height: 50%;
+                 width: 80%;
+                 font-family: logoFont;
+                 display: flex;
+                 align-items: center;
+                 margin: auto;
+
+                 ul {
+                     padding: 10px 0 10px 0;
+                     width: 100%;
+                     list-style: none;
+                     display: flex;
+                     justify-content: space-around;
+                     margin: 0;
+
+                     li {
+
+                         flex-direction: row;
+
+                         a {
+                             text-decoration: none;
+                             color: $white;
+                             font-size: 18px;
+                             transition: ease all .25s;
+
+                             &:hover {
+                                 color: $purple;
+                             }
+
+                         }
+
+                         .img {
+                             height: 30px;
+                             width: 30px;
+                             transition: ease all .25s;
+                             background-image: url(../resources/nav/pouch.svg);
+
+                             &:hover {
+                                 background-image: url(../resources/nav/pouchHover.svg);
+                             }
+                         }
+                     }
                  }
              }
+         }
 
-             .parallax3 {
-                 background-position: center;
-                 background-size: cover;
-                 background-attachment: fixed;
-                 width: 100%;
-                 height: 400px;
-                 background-image: url(../resources/index/parallax/parallax3.jpg);
-                 filter: grayscale(100%)
+         main {
+             grid-row: 2/3;
+             display: grid;
+             grid-template-columns: 10% auto 10%;
+             height: min-content;
+
+             .mainContainer {
+                 grid-column: 2/3;
+                 background-color: $background;
+                 height: 100%;
+
+                 .parallax1 {
+                     background-position: center;
+                     background-size: cover;
+                     background-attachment: fixed;
+                     width: 100%;
+                     height: 400px;
+                     background-image: url(../resources/index/parallax/parallax1.jpg);
+                     filter: grayscale(100%);
+
+                     h1 {
+                         height: 100%;
+                         margin: 0;
+                         display: flex;
+                         align-items: center;
+                         justify-content: center;
+                         font-family: logoFont;
+                         color: $black;
+                         text-shadow: 0px 0px 4px $white;
+                         font-size: 36.66px;
+                     }
+                 }
+
+                 .parallax2 {
+                     background-position: center;
+                     background-size: cover;
+                     background-attachment: fixed;
+                     width: 100%;
+                     height: 400px;
+                     background-image: url(../resources/index/parallax/parallax2.jpg);
+                     filter: grayscale(100%)
+                 }
+
+                 .containerTextAndImg {
+                     display: flex;
+                     padding: 5px 0 5px 0;
+                     align-items: center;
+                     justify-content: center;
+                     line-height: 35px;
+
+                     .textTandI {
+                         width: auto;
+                     }
+
+                     .imgRitual {
+                         height: auto;
+                         width: 35%;
+                     }
+
+                     .imgSeekers {
+                         height: 70%;
+                         width: auto;
+                     }
+                 }
+
+                 .parallax3 {
+                     background-position: center;
+                     background-size: cover;
+                     background-attachment: fixed;
+                     width: 100%;
+                     height: 400px;
+                     background-image: url(../resources/index/parallax/parallax3.jpg);
+                     filter: grayscale(100%)
+                 }
+
+                 p {
+                     padding: 35.666px;
+                     text-align: justify;
+                 }
              }
-
-             p {
-                 padding: 35.666px;
-                 text-align: justify;
-             }
-
          }
      }
-
  }
 
 
  // =================================================  SHOP  ================================================== 
 
-
- .contentShop {
-     height: min-content;
-     display: grid;
-     grid-column: 2/3;
-     grid-template-columns: 20% auto;
-
-     .sidebarShop {
-         grid-column: 1/2;
-         background-color: $black;
-         height: 100%;
+ .mainContainer {
+     .alert {
+         z-index: 10;
      }
 
-     .displayShop {
-         background-color: $black;
+     .contentShop {
+         height: min-content;
+         display: grid;
          grid-column: 2/3;
-         display: flex;
-         flex-wrap: wrap;
-         justify-content: space-around;
-         row-gap: 10px;
-         padding: 10px;
-     }
+         grid-template-columns: 20% auto;
 
-     .card {
-         background-color: $black;
-         width: 32%;
-         height: min-content;
-
-
-     }
-
-     //  .blessing {
-     //      border: 2px solid $blessing;
-     //  }
-
-     //  .curse {
-     //      border: 2px solid $curse;
-     //  }
-
-     .card-text {
-         padding: 10px;
-     }
- }
-
-
- // =================================================  CART  ================================================== 
-
- .containerCart {
-     grid-column: 2/3;
-     background-color: $background;
-     height: 100%;
-
-     .mainCart {
-         height: min-content;
-         display: flex;
-         flex-direction: column;
-         align-items: center;
-         justify-content: center;
-         background-color: $black;
-         margin: 10px 0 10px 0;
-         row-gap: 15px;
-
-         table {
-             margin: 0;
+         .sidebarShop {
+             grid-column: 1/2;
              background-color: $black;
-             color: $white;
-
-             tr {
-                 .headProd {
-                     width: 70%;
-                 }
-
-                 .headPrice,
-                 .headCondition {
-                     width: 15%;
-                 }
-
-                 &:hover {
-                     background-color: $background;
-
-                     td {
-                         color: $white;
-                     }
-                 }
-             }
-
-             tbody {
-                 td {
-                     .imgCartInTable {
-                         width: 10%;
-                         height: 100px;
-                     }
-
-                     .productCartInTable {
-                         width: 90%;
-                     }
-
-                 }
-             }
-
-             .table-active {
-                 color: $white;
-             }
-
-
-
-             img {
-                 height: 130px;
-                 width: 130px;
-             }
+             height: 100%;
          }
 
-         .hide {
-             position: absolute;
-             top: -100vh;
-             z-index: -10;
-         }
-
-         .noItemsCart {
+         .displayShop {
+             background-color: $black;
+             grid-column: 2/3;
              display: flex;
-             flex-direction: column;
-             justify-content: center;
-             align-items: center;
-             gap: 20px;
-             width: 100%;
-             height: 90vh;
+             flex-wrap: wrap;
+             justify-content: space-around;
+             row-gap: 10px;
+             padding: 10px;
 
-             .openPouch {
+             .card {
+                 background-color: $black;
+                 width: 32%;
+                 height: min-content;
+             }
 
-                 img {
-                     height: 100px;
-                     width: auto;
-                 }
+             .card-text {
+                 padding: 10px;
              }
          }
-
      }
  }
-
-
 
 
  // =================================================  CONTACT  ================================================== 
 
  .form {
-     h1 {
-         font-size: 36.66px;
-     }
-
      background-color: $black;
      border-radius: 10px;
      height: min-content;
@@ -389,6 +310,9 @@
      justify-content: center;
      flex-direction: column;
 
+     h1 {
+         font-size: 36.66px;
+     }
 
      form {
          display: flex;
@@ -492,6 +416,101 @@
      transition: background-color 5000s ease-in-out 0s;
  }
 
+
+ // =================================================  CART  ================================================== 
+
+ .containerCart {
+     grid-column: 2/3;
+     background-color: $background;
+     height: 100%;
+
+     .mainCart {
+         height: min-content;
+         display: flex;
+         flex-direction: column;
+         align-items: center;
+         justify-content: center;
+         background-color: $black;
+         margin: 10px 0 10px 0;
+         row-gap: 15px;
+
+         table {
+             margin: 0;
+             background-color: $black;
+             color: $white;
+
+             tr {
+                 .headProd {
+                     width: 70%;
+                 }
+
+                 .headPrice,
+                 .headCondition {
+                     width: 15%;
+                 }
+
+                 &:hover {
+                     background-color: $background;
+
+                     td {
+                         color: $white;
+                     }
+                 }
+             }
+
+             tbody {
+                 td {
+                     .imgCartInTable {
+                         width: 10%;
+                         height: 100px;
+                     }
+
+                     .productCartInTable {
+                         width: 90%;
+                     }
+
+                 }
+             }
+
+             .table-active {
+                 color: $white;
+             }
+
+
+
+             img {
+                 height: 130px;
+                 width: 130px;
+             }
+         }
+
+         .hide {
+             position: absolute;
+             top: -100vh;
+             z-index: -10;
+         }
+
+         .noItemsCart {
+             display: flex;
+             flex-direction: column;
+             justify-content: center;
+             align-items: center;
+             gap: 20px;
+             width: 100%;
+             height: 90vh;
+
+             .openPouch {
+
+                 img {
+                     height: 100px;
+                     width: auto;
+                 }
+             }
+         }
+     }
+ }
+
+
  // =================================================  FOOTER  ================================================== 
 
 
@@ -539,26 +558,4 @@
          margin: 0%;
          grid-row: 2/3;
      }
- }
-
- .button {
-     padding: 13px;
-     border: 2px solid $black;
-     border-radius: 10px;
-     text-align: center;
-     width: 70%;
-     transition: ease all .25s;
-     font-family: logoFont;
-     background-color: $background;
-     color: $white;
-
-     &:hover {
-         background-color: $black;
-         color: $white;
-         border: 2px solid $purple;
-     }
- }
-
- .disabled {
-     background-color: $background;
  }

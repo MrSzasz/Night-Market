@@ -1,11 +1,16 @@
- // =====  ALERT  =====
+ /* */
+
+ // ==========  ALERT  ==========
 
  let alertDiv = document.querySelector('.alert');
 
- // =====  CREATING SHOP =====
+
+ // ==========  CREATING SHOP ==========
 
  let containerCards = document.querySelector('.displayShop');
+
  productList.forEach(obj => {
+
      let createCard = document.createElement('div');
      createCard.classList.add('card', 'text-center');
      createCard.setAttribute('data-inCart', false);
@@ -23,16 +28,18 @@
                          <a class="btn button btn-primary">AGREGAR AL CARRITO</a>
                      </div>
  `;
+
      containerCards.appendChild(createCard);
-
-
  })
+
 
  // =====  GET DATA FROM SHOP  =====
 
  let btnCart = document.querySelectorAll('.btn');
  btnCart.forEach(button => {
+
      button.addEventListener('click', (e) => {
+
          btnCart = e.target;
 
          let objBuyContainer = btnCart.closest('.card');
@@ -45,7 +52,13 @@
          let objPrice = Number(objBuyContainer.querySelector('.cardObjPrice').textContent.replace('$', ''));
 
          addThisElementToCart(objImg, objName, objCurse, objBlessing, objCondDesc, objPrice);
+
+         // ==========  SAVE ON LOCAL STORAGE ==========
+
          saveObjectsToCart();
+
+         // ==========  ALERT FOR CART ==========
+
          setTimeout(() => {
              alertDiv.classList.add('hide')
          }, 3000);

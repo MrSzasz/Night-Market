@@ -1,17 +1,18 @@
-// let pupil = document.querySelector('.pupil');
-// let eye = document.querySelector('.eye');
+ /* */
 
-// document.onmousemove = (e) => {
-//     let x = e.clientX * 100 / window.innerWidth + '%';
-//     let y = e.clientY * 100 / window.innerHeight + '%';
+ // ==========  EYE ON FOOTER ==========
 
-//     pupil.style.left = x;
-//     pupil.style.top = y;
-// }
+ // let pupil = document.querySelector('.pupil');
+ // let eye = document.querySelector('.eye');
 
-// function reset(element){
-// element.innerHTML = '';
-// }
+ // document.onmousemove = (e) => {
+ //     let x = e.clientX * 100 / window.innerWidth + '%';
+ //     let y = e.clientY * 100 / window.innerHeight + '%';
 
+ //     pupil.style.left = x;
+ //     pupil.style.top = y;
+ // }
 
-
+ // function reset(element){
+ // element.innerHTML = '';
+ // }
