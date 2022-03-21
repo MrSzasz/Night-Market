@@ -59,9 +59,7 @@
 
          // ==========  ALERT FOR CART ==========
 
-         setTimeout(() => {
-             alertDiv.classList.add('hide')
-         }, 3000);
-         alertDiv.classList.remove('hide')
+         notifier.success(`= ${objName} =`, {durations: {success: 3000}})
      });
  });
+

@@ -53,4 +53,4 @@
 
  // Operador superior &&
 
- cartForTab.length > 0 && emptyCart.classList.add('hide');
+ cartForTab?.length > 0 && emptyCart.classList.add('hide');
