@@ -17,11 +17,12 @@
                          <tr>
                              <th scope="col" class="text-center headProd" colspan="2">PRODUCTO</th>
                              <th scope="col" class="headPrice text-center">PRECIO</th>
+                             <th scope="col" class="headQuantity text-center">CANTIDAD</th>
                              <th scope="col" class="headCondition text-center">ELIMINAR</th>
                          </tr>
 `;
 
- cartListTable.appendChild(cartListThead);
+ cartListTable.prepend(cartListThead);
 
  let cartListTbody = document.createElement('tbody');
 
@@ -35,14 +36,15 @@
                     <td class="imgCartInTable text-center align-middle w-25 ps-0"><img class="containerImgForCurse ${blessingForContainer ? 'blessing' : 'curse'}" src="${productOnCart.img}" src="${productOnCart.img}" alt="${productOnCart.name}"></td>
                     <td class="productCartInTable align-middle"><p>${productOnCart.name}</p><p>${productOnCart.conditionDesc}</p></td>
                     <td class="priceCartInTable text-center align-middle">$${productOnCart.price}</td>
+                    <td class="quantityCartInTable text-center align-middle w-auto"><input type="number" min="1" value="1" class="w-25"></td>
                     <td class="conditionCartInTable text-center align-middle"><button class="btn btn-danger">X</button></td>
    `;
 
-     cartListTbody.appendChild(cartListTr);
+     cartListTbody.append(cartListTr);
 
  })
 
- cartListTable.prepend(cartListTbody);
+ cartListTable.append(cartListTbody);
 
  cartListContainer.appendChild(cartListTable);
 

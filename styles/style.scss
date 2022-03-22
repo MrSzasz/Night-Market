@@ -275,7 +275,7 @@
          height: min-content;
          display: grid;
          grid-column: 2/3;
-         
+
 
          .filterShop {
              grid-row: 1/2;
@@ -451,12 +451,16 @@
 
              tr {
                  .headProd {
-                     width: 70%;
+                     width: 60%;
                  }
 
                  .headPrice,
-                 .headCondition {
-                     width: 15%;
+                 .headCondition,
+                  {
+                     width: 10%;
+                 }
+                 .headQuantity{
+                     width: 20%;
                  }
 
                  &:hover {
@@ -516,6 +520,20 @@
                      width: auto;
                  }
              }
+         }
+     }
+
+     .total {
+         width: 100%;
+         height: min-content;
+         padding: 10px;
+         background-color: $black;
+         display: flex;
+         align-items: center;
+         justify-content: space-around;
+
+         .space {
+             width: 60%;
          }
      }
  }
