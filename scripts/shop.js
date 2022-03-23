@@ -1,5 +1,9 @@
  /* */
 
+ // ==========  GET CART FROM STORAGE  ==========
+
+ cartFromStorage()
+
  // ==========  ALERT  ==========
 
  let alertDiv = document.querySelector('.alert');
@@ -22,10 +26,10 @@
      createCard.innerHTML = `
                      <img src="${obj.img}" class="card-img-top cardObjImg" alt="${obj.name}">
                      <div class="card-body">
-                         <h5 class="card-title text-center cardObjName" data-curse="${obj.curse}" data-blessing="${obj.blessing}" data-condition-desc="${obj.conditionDesc}">${obj.name}</h5>
-                         <p class="card-text text-center" >${obj.description}</p>
+                         <h2 class="card-title text-center cardObjName" data-curse="${obj.curse}" data-blessing="${obj.blessing}" data-condition-desc="${obj.conditionDesc}">${obj.name}</h2>
+                         <p class="card-text text-center cardObjDesc"></p>
                          <p class="card-text text-center cardObjPrice">$${obj.price}.</p>
-                         <a class="btn button btn-primary">AGREGAR AL CARRITO</a>
+                         <a class="btn button cardObjButton btn-primary">AGREGAR AL CARRITO</a>
                      </div>
  `;
 
@@ -51,7 +55,17 @@
          let objCondDesc = objBuyContainer.querySelector('.cardObjName').getAttribute('data-condition-desc');
          let objPrice = Number(objBuyContainer.querySelector('.cardObjPrice').textContent.replace('$', ''));
 
-         addThisElementToCart(objImg, objName, objCurse, objBlessing, objCondDesc, objPrice);
+         let objectCart = {
+             img: objImg,
+             name: objName,
+             curse: objCurse,
+             blessing: objBlessing,
+             conditionDesc: objCondDesc,
+             price: objPrice,
+             quantity: 1,
+         }
+
+         addThisElementToCart(objectCart);
 
          // ==========  SAVE ON LOCAL STORAGE ==========
 
@@ -59,7 +73,10 @@
 
          // ==========  ALERT FOR CART ==========
 
-         notifier.success(`= ${objName} =`, {durations: {success: 3000}})
+         notifier.success(`= ${objName} =`, {
+             durations: {
+                 success: 3000
+             }
+         })
      });
  });
-

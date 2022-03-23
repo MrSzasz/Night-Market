@@ -296,7 +296,24 @@
              .card {
                  background-color: $black;
                  width: 23%;
-                 height: min-content;
+                 height: 510px;
+
+                 .cardObjName {
+                     font-family: logoFont;
+                     padding: 0%;
+                     font-size: 18px;
+                 }
+
+                 .cardObjPrice {
+                     font-size: 25px;
+                 }
+
+                 .cardObjButton {
+                     position: absolute;
+                     bottom: 3%;
+                     left: 50%;
+                     transform: translateX(-50%);
+                 }
              }
 
              .card-text {
@@ -456,10 +473,11 @@
 
                  .headPrice,
                  .headCondition,
-                  {
+                     {
                      width: 10%;
                  }
-                 .headQuantity{
+
+                 .headQuantity {
                      width: 20%;
                  }
 

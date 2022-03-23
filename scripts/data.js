@@ -137,7 +137,7 @@
          img2: "../resources/shop/mask/jap2.png",
          img3: "../resources/shop/mask/jap3.png",
          type: 'MASK',
-         name: 'Yūrei no kami',
+         name: 'Yurei no kami',
          description: 'Mascara que protege a su dueño de malos espiritus y malas vibras a cambio de una ofrenda de alcohol diaria',
          curse: false,
          blessing: true,
@@ -224,6 +224,10 @@
      }
  }
 
+
+
  let objectsToCart = [];
 
  let cartForTab = {};
+
+ let cartFromShop = []
