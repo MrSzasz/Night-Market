@@ -27,12 +27,3 @@
  function saveObjectsToCart() {
      let cartSavedOnLocalstorage = localStorage.setItem('savedCart', JSON.stringify(cartFromShop));
  }
-
-
- // ==========  TOTAL CART  ==========
-
- function totalPriceOfCart() {
-     let totalPrice;
-     let calcTotal = cartFromShop.reduce((acum, elem) => acum + elem.price*elem.quantity, 0)
-     return calcTotal;
- }
