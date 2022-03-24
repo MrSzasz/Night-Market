@@ -614,13 +614,19 @@
 
      &:focus-visible {
          outline: 2px solid $purple;
-        }
-    }
-    
-    .quantityCartInTableInput {
-        text-align: center;
-        color: $white;
-        background-color: $background;
-        border: 2px solid $white;
-        border-radius: 6px;
-    }
+     }
+ }
+
+ .quantityCartInTableInput {
+     text-align: center;
+     color: $white;
+     background-color: $background;
+     border: 2px solid $white;
+     border-radius: 6px;
+ }
+
+ input::-webkit-outer-spin-button,
+ input::-webkit-inner-spin-button {
+     -webkit-appearance: none;
+     margin: 0;
+ }
