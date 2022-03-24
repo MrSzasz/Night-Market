@@ -170,31 +170,19 @@ objQuantityOnCartTab.forEach(input => {
 // ==========  BUY BUTTON  ==========
 
 let buyButton = document.querySelector('.buyButton')
-buyButton.addEventListener('click', holi)
+buyButton.addEventListener('click', confirmationModal)
 
-function holi() {
-    // new AWN().modal(
-    //     '<div class="containerBuy"><h1>Gracias por confiar en nosotros</h1><h2>Ingrese su mail a continuacion y se le contactara a la brevedad</h2><input type="email"><a class="button w-25">Continuar</a></div>',
-    //     'popUpModal'
-    //   )
+function confirmationModal() {
+    new AWN().modal('<form class="containerBuy was-validated"><h1 class="text-center">Gracias por confiar en nosotros</h1><p class="h5 text-center">Ingrese su mail a continuacion y se le contactara a la brevedad</p><input type="email" class="inputModal mt-3" required><button type="submit" class="button w-100 mt-3" id="doneButton">FINALIZAR</button><p class="text-center">Haga click fuera de la ventana para cancelar</p></form>')
 
-    let notifier = new AWN();
-    let onOk = () => {
-        cartFromShop = []
-        saveObjectsToCart();
-        window.location.reload();
-    };
-    let onCancel = () => {};
-    notifier.confirm(
-        '<form><div class="containerBuy"><p class="h5 text-center">Ingrese su mail a continuacion y se le contactara a la brevedad</p><input type="email" class="inputModal"></form>',
-        onOk,
-        onCancel, {
-            labels: {
-                confirm: '<h1 class="text-center">Gracias por confiar en nosotros</h1>'
-            }
+    let done = document.querySelector('#doneButton').addEventListener('click', checkValid)
+
+    function checkValid() {
+        let inputForValidation = document.querySelector('.inputModal');
+        if (inputForValidation.validity.valid) {
+            cartFromShop = []
+            saveObjectsToCart();
+            window.location.reload();
         }
-    )
-
-
-
+    }
 }
