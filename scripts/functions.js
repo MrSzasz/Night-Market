@@ -19,7 +19,6 @@
 
      // let cartSavedOnLocalstorage =JSON.parse(localStorage.getItem('savedCart')) || [];
      cartFromShop = getCartSavedOnLocalstorage || []
-     console.log(cartFromShop)
  }
 
  // ==========  SAVE CART LOCALSTORAGE  ==========

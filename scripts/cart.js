@@ -65,7 +65,7 @@ function createListInCart() {
                     <td class="productCartInTable align-middle"><p class="nameOfThisProd">${productOnCart.name}</p><p>${productOnCart.conditionDesc}</p></td>
                     <td class="priceCartInTable text-center align-middle">$${productOnCart.price}</td>
                     <td class="quantityCartInTable text-center align-middle w-auto">
-                        <input type="number" min="1" value="${productOnCart.quantity}" class="w-25 quantityCartInTable">
+                        <input type="number" min="1" value="${productOnCart.quantity}" class="w-25 quantityCartInTableInput" id="quantityCartInTable">
                     </td>
                     <td class="conditionCartInTable text-center align-middle"><button class="btn deleteItem btn-danger">X</button></td>
                     
@@ -102,9 +102,9 @@ function showTotal() {
     mainCartContainer.append(totalCart);
 }
 
-function changeTotalWithDelete(){
+function changeTotalWithDelete() {
     let numerototal = document.querySelector('#cart-total')
-     numerototal.innerHTML = `$${calculateTotalOfCart}`
+    numerototal.innerHTML = `$${calculateTotalOfCart}`
 }
 // function changeTotalWithQuantity(){
 //     let numerototal = document.querySelector('#cart-total')
@@ -130,7 +130,6 @@ buttonWithRedX.forEach(button => {
         for (let i = 0; i < cartFromShop.length; i++) {
             if (cartFromShop[i].name.trim() === nameOfTheItem.trim()) {
                 cartFromShop.splice(i, 1);
-                console.log(cartFromShop)
                 selectedItem.remove()
                 saveObjectsToCart()
 
@@ -150,4 +149,23 @@ buttonWithRedX.forEach(button => {
     });
 });
 
-let objQuantityOnCartTab = document.querySelector('.quantityCartInTable')
+let objQuantityOnCartTab = document.querySelectorAll('.quantityCartInTableInput')
+objQuantityOnCartTab.forEach(input => {
+    input.addEventListener('change', (e) => {
+        let targetInput = e.target
+        let selectedObjWithInput = targetInput.closest(".itemForBuy")
+        let nameOfObjInput = selectedObjWithInput.querySelector('.nameOfThisProd').textContent;
+        cartFromShop.forEach(obj => {
+            if (obj.name.trim() === nameOfObjInput.trim()) {
+                targetInput.value < 1 ? targetInput.value = 1 : targetInput.value;
+                obj.quantity = targetInput.value;
+                totalPriceOfCart()
+                changeTotalWithDelete()
+                saveObjectsToCart();
+            }
+        })
+    })
+})
+
+// AGREGAR EL MODAL AL BOTON DE COMPRAR
+AWN.modal(message[,className,options])

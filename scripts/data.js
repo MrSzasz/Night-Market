@@ -212,19 +212,6 @@
      }
  ];
 
- // ==========  CLASS FOR PRODUCTS ==========
- class ProdToCart {
-     constructor(getObjImg, getObjName, getObjCurse, getObjBlessing, getObjCondDesc, getObjPrice) {
-         this.img = getObjImg;
-         this.name = getObjName;
-         this.curse = getObjCurse;
-         this.blessing = getObjBlessing;
-         this.conditionDesc = getObjCondDesc;
-         this.price = getObjPrice;
-     }
- }
-
-
 
  let objectsToCart = [];
 
