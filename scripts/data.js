@@ -12,7 +12,7 @@
          curse: true,
          blessing: false,
          conditionDesc: 'Cansancio fisico',
-         price: 50,
+         price: 3100,
          stock: true,
      },
      {
@@ -25,7 +25,7 @@
          curse: false,
          blessing: true,
          conditionDesc: 'Sabiduria',
-         price: 1200,
+         price: 22000,
          stock: true,
      },
      {
@@ -38,7 +38,7 @@
          curse: true,
          blessing: false,
          conditionDesc: 'Zombificacion, Control mental',
-         price: 700,
+         price: 6700,
          stock: true,
      },
      {
@@ -51,7 +51,7 @@
          curse: false,
          blessing: true,
          conditionDesc: 'Calma, Viaje astral',
-         price: 2000,
+         price: 12000,
          stock: true,
      },
      {
@@ -64,7 +64,7 @@
          curse: false,
          blessing: true,
          conditionDesc: 'Autocontrol',
-         price: 3500,
+         price: 33500,
          stock: true,
      },
      {
@@ -77,7 +77,7 @@
          curse: true,
          blessing: false,
          conditionDesc: 'Demencia, Ateracion',
-         price: 12000,
+         price: 37000,
          stock: true,
      },
      {
@@ -90,7 +90,7 @@
          curse: false,
          blessing: true,
          conditionDesc: 'Familiar, Invocacion',
-         price: 16750,
+         price: 26750,
          stock: true,
      },
      {
@@ -103,7 +103,7 @@
          curse: false,
          blessing: true,
          conditionDesc: 'Transportacion, Manifestacion',
-         price: 7000,
+         price: 37000,
          stock: true,
      },
      {
@@ -116,7 +116,7 @@
          curse: false,
          blessing: true,
          conditionDesc: 'Deseo, Mortalidad',
-         price: 25000,
+         price: 66000,
          stock: true,
      },
      {
@@ -129,7 +129,7 @@
          curse: true,
          blessing: false,
          conditionDesc: 'Conocimiento, Muerte',
-         price: 2800,
+         price: 28000,
          stock: true,
      },
      {
@@ -142,7 +142,7 @@
          curse: false,
          blessing: true,
          conditionDesc: 'Proteccion, Ofrenda',
-         price: 7200,
+         price: 17200,
          stock: true,
      },
      {
@@ -155,7 +155,7 @@
          curse: true,
          blessing: false,
          conditionDesc: 'Maldicion, Demencia',
-         price: 9000,
+         price: 24000,
          stock: true,
      },
      {
@@ -194,7 +194,7 @@
          curse: true,
          blessing: false,
          conditionDesc: 'Trance, Posesion',
-         price: 15400,
+         price: 25400,
          stock: true,
      },
      {
@@ -207,14 +207,9 @@
          curse: false,
          blessing: true,
          conditionDesc: 'Invisibilidad, Peligro',
-         price: 6800,
+         price: 69800,
          stock: true,
      }
  ];
-
-
- let objectsToCart = [];
-
- let cartForTab = {};
 
  let cartFromShop = []
