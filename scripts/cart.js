@@ -97,7 +97,7 @@ function showTotal() {
                         <h2 class="p-1">Total</h2>
                         <h2 id="cart-total" class="p-1">$${calculateTotalOfCart}</h2>
                     </div>
-                    <div class="total"><button class="button w-50">COMPRAR</button></div>`
+                    <div class="total"><button class="button buyButton w-50">COMPRAR</button></div>`
 
     mainCartContainer.append(totalCart);
 }
@@ -167,5 +167,34 @@ objQuantityOnCartTab.forEach(input => {
     })
 })
 
-// AGREGAR EL MODAL AL BOTON DE COMPRAR
-AWN.modal(message[,className,options])
+// ==========  BUY BUTTON  ==========
+
+let buyButton = document.querySelector('.buyButton')
+buyButton.addEventListener('click', holi)
+
+function holi() {
+    // new AWN().modal(
+    //     '<div class="containerBuy"><h1>Gracias por confiar en nosotros</h1><h2>Ingrese su mail a continuacion y se le contactara a la brevedad</h2><input type="email"><a class="button w-25">Continuar</a></div>',
+    //     'popUpModal'
+    //   )
+
+    let notifier = new AWN();
+    let onOk = () => {
+        cartFromShop = []
+        saveObjectsToCart();
+        window.location.reload();
+    };
+    let onCancel = () => {};
+    notifier.confirm(
+        '<form><div class="containerBuy"><p class="h5 text-center">Ingrese su mail a continuacion y se le contactara a la brevedad</p><input type="email" class="inputModal"></form>',
+        onOk,
+        onCancel, {
+            labels: {
+                confirm: '<h1 class="text-center">Gracias por confiar en nosotros</h1>'
+            }
+        }
+    )
+
+
+
+}
