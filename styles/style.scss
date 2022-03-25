@@ -8,6 +8,7 @@
  $purple: #6600cc;
  $blessing: #68BCD0;
  $curse: #880000;
+ $gray: #858585;
 
 
  // =============================================  FONTS  ============================================= //
@@ -302,10 +303,12 @@
                      font-family: logoFont;
                      padding: 0%;
                      font-size: 18px;
+                     height: 66px;
                  }
 
                  .cardObjPrice {
                      font-size: 25px;
+                     margin: 0%;
                  }
 
                  .cardObjButton {
@@ -313,6 +316,7 @@
                      bottom: 3%;
                      left: 50%;
                      transform: translateX(-50%);
+                     z-index: 100;
                  }
              }
 
@@ -634,3 +638,130 @@
  .h1Modal {
      font-family: logoFont;
  }
+
+
+ .infoOfObject {
+     display: grid;
+     grid-template-columns: 30% 70%;
+     grid-template-rows: 80% 20%;
+     gap: 2%;
+
+     .containerImg {
+         grid-row: 1/2;
+         grid-column: 1/2;
+         height: 300px;
+         width: 300px;
+         margin: auto;
+
+         img {
+             height: 100%;
+             width: 100%;
+         }
+     }
+
+     .containerText {
+         grid-column: 2/3;
+         grid-row: 1/2;
+
+         .textAndInfo {
+             position: relative;
+             justify-content: center;
+             top: 50%;
+             transform: translateY(-50%);
+             gap: 20px;
+         }
+
+         .objModalName {
+             font-family: logoFont;
+
+         }
+
+         .objModalType {
+             font-size: 16px;
+         }
+
+         .objModalDesc {
+             font-size: 22px;
+             line-height: 37px;
+         }
+
+         .objModalPrice {
+             font-size: 32px;
+         }
+     }
+
+     .containerButton {
+         grid-column: 1/3;
+         grid-row: 2/3;
+
+         .button {
+             width: 60%;
+         }
+     }
+ }
+
+ .cardObjImg {
+     cursor: pointer;
+     transition: ease all .25s;
+
+     &:hover {
+         border: 2px solid $white;
+         filter: brightness(1.15) blur(2px);
+     }
+ }
+
+ .infoText {
+     color: $gray;
+ }
+
+ .objModalImg {
+     cursor: pointer;
+     transition: ease all .25s;
+     height: 100%;
+
+     &:hover {
+         border: 2px solid $purple;
+     }
+ }
+
+ .carouselImgForZoom {
+     cursor: pointer;
+     transition: ease all .25s;
+     height: 100%;
+
+     &:hover {
+         border: 2px solid $purple;
+     }
+ }
+
+ //  .objModalImg {
+ //      cursor: pointer;
+ //      transition: ease all .25s;
+
+ //      &:hover {
+ //          border: 2px solid $purple;
+ //      }
+ //  }
+
+ .carousel {
+     overflow: hidden;
+
+     .imgCarousel {
+         height: 80vh;
+         width: auto;
+     }
+ }
+
+ .carousel-inner {
+     max-width: fit-content;
+ }
+
+ #carouselSlidesOnly {
+     height: 100%;
+     width: 100%;
+     overflow: visible;
+ }
+
+
+
+ 
