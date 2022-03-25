@@ -177,14 +177,7 @@
              grid-template-columns: 10% auto 10%;
              height: min-content;
 
-             .preloader {
-                 height: 100vh;
-                 width: 100vw;
-                 position: absolute;
-                 background-color: $background;
-                 z-index: 100;
-                 grid-column: 1/4;
-             }
+
 
              .mainContainer {
                  grid-column: 2/3;
@@ -762,6 +755,27 @@
      overflow: visible;
  }
 
+ .preloader {
+     position: fixed;
+     height: 100vh;
+     width: 100%;
+     background-color: $background;
+     z-index: 10000;
+     // display: none;
 
+     .preloaderLeft {
+         position: absolute;
+         height: 100%;
+         width: 50%;
+         left: 0%;
+         background-color: red;
+     }
 
- 
+     .preloaderRight {
+         position: absolute;
+         height: 100%;
+         width: 50%;
+         right: 0%;
+         background-color: blue;
+     }
+ }
