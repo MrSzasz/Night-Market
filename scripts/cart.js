@@ -1,31 +1,5 @@
 /* */
 
-// window.onload = () => {
-//     let topFromOtherPage = localStorage.getItem('top')
-//     let leftFromOtherPage = localStorage.getItem('left')
-//     fadeInTransition(topFromOtherPage, leftFromOtherPage)
-
-//     function fadeInTransition(lastTop = '50%', lastLeft = '50%') {
-//         let screenWidth = ($(window).width() * 2)
-//         let e = document.createElement('div');
-//         e.setAttribute('class', 'animOut'), document.body.appendChild(e), e.style.top = lastTop, e.style.left = lastLeft, console.log(e);
-//         $(".animOut").css({
-//             "width": 0,
-//             "height": 0
-//         });
-//         anime({
-//             targets: '.animOut',
-//             width: screenWidth,
-//             height: screenWidth,
-//             easing: 'easeInCubic',
-//             duration: 1500,
-//         });
-//         setTimeout(() => {
-//             e.classList.add('hide')
-//         }, 1500);
-//     }
-// }
-
 // ==========  GET CART FROM STORAGE  ==========
 
 cartFromStorage()
@@ -40,10 +14,6 @@ function isTheCartEmpty() {
     //  cartFromShop?.length > 0 && emptyCart.classList.add('hide');
 }
 
-
-// ==========  LOCAL STORAGE CART FOR CART TAB ==========
-
-// code
 
 // ==========  TOTAL CART  ==========
 
@@ -80,7 +50,6 @@ function createListInCart() {
 
     cartFromShop.forEach(productOnCart => {
 
-        // Operador ternario
         let blessingForContainer = productOnCart.blessing == 'true' ? true : false;
 
         let cartListTr = document.createElement('tr');
@@ -106,7 +75,6 @@ function createListInCart() {
 
     // ==========  TOTAL CART  ==========
 
-    //  totalPriceOfCart()
     cartFromShop.length > 0 && showTotal()
 
 }
@@ -132,16 +100,8 @@ function changeTotalWithDelete() {
     let numerototal = document.querySelector('#cart-total')
     numerototal.innerHTML = `$${calculateTotalOfCart}`
 }
-// function changeTotalWithQuantity(){
-//     let numerototal = document.querySelector('#cart-total')
-//      numerototal.innerHTML = `$${calculateTotalOfCart}`
-// }
-
 
 cartFromShop.length > 0 && createListInCart();
-
-
-//createListInCart()
 
 
 // ==========  DELETE ITEM ON CART  ==========
@@ -192,6 +152,7 @@ objQuantityOnCartTab.forEach(input => {
         })
     })
 })
+
 
 // ==========  BUY BUTTON  ==========
 

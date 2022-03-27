@@ -3,7 +3,6 @@
  window.onload = () => {
      let path = window.location.pathname;
      let page = path.split("/").pop();
-     console.log(page);
      if (page == 'index.html') {
          let screen = $(window).width()
          let preloaderContainer = document.querySelector('.preloader');
@@ -53,7 +52,7 @@
          function fadeInTransition(lastTop = '50%', lastLeft = '50%') {
              let screenWidth = ($(window).width() * 2)
              let e = document.createElement('div');
-             e.setAttribute('class', 'animOut'), document.body.appendChild(e), e.style.top = lastTop, e.style.left = lastLeft, console.log(e);
+             e.setAttribute('class', 'animOut'), document.body.appendChild(e), e.style.top = lastTop, e.style.left = lastLeft;
              $(".animOut").css({
                  "width": 0,
                  "height": 0
@@ -76,13 +75,6 @@
 
  let notifier = new AWN()
 
- //  function clickLocation(event) {
- //      console.log("clientX: " + event.clientX + " - clientY: " + event.clientY);
- //  }
-
- //  document.addEventListener("click", clickLocation);
-
-
  let pageLink = document.querySelectorAll('.pageLink');
 
  function goToPageWithAnimation() {
@@ -99,44 +91,10 @@
  }
  goToPageWithAnimation()
 
-
-
- //  window.onload = () => {
- //      anime({
- //          targets: '.fadeOutCircle',
- //          width: '0px',
- //          height: '0px',
- //          easing: 'easeInOutQuad',
- //          duration: 5000,
- //      });
- //  }
-
- //  let container = document.querySelector('.fadeOutAnim')
- //  container.addEventListener('click', dondeHiceClick)
- //  let heightContainer = document.querySelector('.fadeOutAnim').scrollHeight
- //  let widthContainer = document.querySelector('.fadeOutAnim').scrollWidth
- //  console.log(heightContainer)
- //  console.log(widthContainer)
-
- //  let cuadrado = document.createElement('div')
-
- //  function dondeHiceClick(event) {
- //      console.log("clientX: " + event.clientX + " - clientY: " + event.clientY);
- //      let x = event.clientX;
- //      let y = event.clientY;
- //      cuadrado.style.left = x + "px";
- //      cuadrado.style.top = y + "px";
- //  }
-
-
-
-
-
-
  let fadeOutTransition = () => {
      let screenWidth = ($(window).width() * 2)
      let e = document.createElement('div');
-     e.setAttribute('class', 'animOut'), document.body.appendChild(e), e.style.top = event.pageY + 'px', e.style.left = event.pageX + 'px', console.log(e);
+     e.setAttribute('class', 'animOut'), document.body.appendChild(e), e.style.top = event.pageY + 'px', e.style.left = event.pageX + 'px';
      localStorage.setItem('top', e.style.top)
      localStorage.setItem('left', e.style.left)
      $(".animOut").css({
@@ -151,11 +109,6 @@
          duration: 1500,
      });
  }
-
-
-
- //  document.addEventListener('click', fadeOutTransition)
- //  let preloaderContainer = document.querySelector('.preloader');
 
  let linksForAnimation = document.querySelectorAll('.detectPageRedirect')
  linksForAnimation.forEach(button => {

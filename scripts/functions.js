@@ -12,12 +12,11 @@
      cartFromShop.push(itemToCart)
  }
 
- //  let cartSavedOnLocalstorage = localStorage.setItem('savedCart', JSON.stringify(cartFromShop))
+ // ==========  GET CART LOCALSTORAGE  ==========
 
  function cartFromStorage() {
      let getCartSavedOnLocalstorage = JSON.parse(localStorage.getItem('savedCart'))
 
-     // let cartSavedOnLocalstorage =JSON.parse(localStorage.getItem('savedCart')) || [];
      cartFromShop = getCartSavedOnLocalstorage || []
  }
 

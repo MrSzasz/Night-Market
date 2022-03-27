@@ -1,39 +1,8 @@
  /* */
 
-//  window.onload = () => {
-//     let topFromOtherPage = localStorage.getItem('top')
-//     let leftFromOtherPage = localStorage.getItem('left')
-//     fadeInTransition(topFromOtherPage, leftFromOtherPage)
-
-//     function fadeInTransition(lastTop = '50%', lastLeft = '50%') {
-//         let screenWidth = ($(window).width() * 2)
-//         let e = document.createElement('div');
-//         e.setAttribute('class', 'animOut'), document.body.appendChild(e), e.style.top = lastTop, e.style.left = lastLeft, console.log(e);
-//         $(".animOut").css({
-//             "width": 0,
-//             "height": 0
-//         });
-//         anime({
-//             targets: '.animOut',
-//             width: screenWidth,
-//             height: screenWidth,
-//             easing: 'easeInCubic',
-//             duration: 1500,
-//         });
-//         setTimeout(() => {
-//             e.classList.add('hide')
-//         }, 1500);
-//     }
-// }
-
  // ==========  GET CART FROM STORAGE  ==========
 
  cartFromStorage()
-
- // ==========  ALERT  ==========
-
- let alertDiv = document.querySelector('.alert');
-
 
  // ==========  CREATING SHOP ==========
 
@@ -44,8 +13,6 @@
      let createCard = document.createElement('div');
      createCard.classList.add('card', 'text-center', 'd-flex');
      createCard.setAttribute('data-inCart', false);
-
-     // operador ternario
 
      obj.blessing ? createCard.classList.add('blessing') : createCard.classList.add('curse');
 
@@ -137,6 +104,7 @@
          <div class="containerButton text-center m-3"><button class="button buttonForBuyInModal text-center">Agregar al carrito</button><p class="text-center p-2 infoText">Haga click fuera de la ventana para cerrar</p></div>
      </div>`)
 
+
          // ==========  BUY IN MODAL ==========
 
          let buttonForBuyInModal = document.querySelector('.buttonForBuyInModal')
@@ -164,9 +132,11 @@
 
              addThisElementToCart(objectCart);
 
+
              // ==========  SAVE ON LOCAL STORAGE ==========
 
              saveObjectsToCart();
+
 
              // ==========  ALERT FOR CART ==========
 

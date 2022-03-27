@@ -52,12 +52,61 @@
      }
 
      body {
+         .blackBeforeLoading {
+             position: fixed;
+             background-color: $background;
+             height: 100vh;
+             width: 100vw;
+             z-index: 10000;
+             overflow: hidden;
+         }
+
+         .preloader {
+             position: fixed;
+             height: 100vh;
+             width: 100%;
+             z-index: 10000;
+
+             .preloaderLeft {
+                 position: absolute;
+                 height: 100%;
+                 width: 50%;
+                 left: 0%;
+                 background-color: $background;
+             }
+
+             .preloaderRight {
+                 position: absolute;
+                 height: 100%;
+                 width: 50%;
+                 right: 0%;
+                 background-color: $background;
+             }
+
+             .preloaderSvg {
+                 opacity: 1;
+             }
+
+             .fade {
+                 opacity: 0;
+             }
+         }
+
+         .borderLeft {
+             border-left: 2px solid $white;
+         }
+
+         .borderRight {
+             border-right: 2px solid $white;
+         }
+
          background-color: $background;
          color: $white;
          display: grid;
          grid-template-rows: min-content min-content min-content;
          row-gap: 20px;
-         font-family: 'EB Garamond', serif;
+         font-family: 'EB Garamond',
+         serif;
          font-size: 20px;
 
          .blessing {
@@ -311,6 +360,16 @@
                      transform: translateX(-50%);
                      z-index: 100;
                  }
+
+                 .cardObjImg {
+                     cursor: pointer;
+                     transition: ease all .25s;
+
+                     &:hover {
+                         border: 2px solid $white;
+                         filter: brightness(1.15) blur(2px);
+                     }
+                 }
              }
 
              .card-text {
@@ -469,8 +528,7 @@
                  }
 
                  .headPrice,
-                 .headCondition,
-                     {
+                 .headCondition {
                      width: 10%;
                  }
 
@@ -489,6 +547,14 @@
 
              tbody {
                  td {
+                     .quantityCartInTableInput {
+                         text-align: center;
+                         color: $white;
+                         background-color: $background;
+                         border: 2px solid $white;
+                         border-radius: 6px;
+                     }
+
                      .imgCartInTable {
                          width: 10%;
                          height: 100px;
@@ -498,6 +564,11 @@
                          width: 90%;
                      }
 
+                     input::-webkit-outer-spin-button,
+                     input::-webkit-inner-spin-button {
+                         -webkit-appearance: none;
+                         margin: 0;
+                     }
                  }
              }
 
@@ -565,38 +636,14 @@
      width: 100%;
      background-color: $black;
 
-     //  .eye {
-     //      grid-row: 1/2;
-     //      position: absolute;
-     //      width: 150px;
-     //      height: 75px;
-     //      background-color: white;
-     //      border-radius: 50%;
-     //      // left: 25%;
-     //      // top: 25%;
-     //      left: 50%;
-     //      bottom: 0%;
-     //      transform: translate(-50%, -50%);
-     //      overflow: hidden;
-
-     //      .pupil {
-     //          position: relative;
-     //          width: 20px;
-     //          height: 50px;
-     //          background-color: $purple;
-     //          left: 50%;
-     //          bottom: 50%;
-     //          transform: translate(-50%, -50%);
-     //          border-radius: 50%;
-     //      }
-     //  }
-
      p {
          margin: 0%;
          padding: 50px;
      }
  }
 
+
+ // =================================================  GENERATED  ================================================== 
 
  .inputModal {
      border: 2px solid $black;
@@ -612,20 +659,6 @@
      &:focus-visible {
          outline: 2px solid $purple;
      }
- }
-
- .quantityCartInTableInput {
-     text-align: center;
-     color: $white;
-     background-color: $background;
-     border: 2px solid $white;
-     border-radius: 6px;
- }
-
- input::-webkit-outer-spin-button,
- input::-webkit-inner-spin-button {
-     -webkit-appearance: none;
-     margin: 0;
  }
 
  .h1Modal {
@@ -693,16 +726,6 @@
      }
  }
 
- .cardObjImg {
-     cursor: pointer;
-     transition: ease all .25s;
-
-     &:hover {
-         border: 2px solid $white;
-         filter: brightness(1.15) blur(2px);
-     }
- }
-
  .infoText {
      color: $gray;
  }
@@ -716,25 +739,6 @@
          border: 2px solid $purple;
      }
  }
-
- .carouselImgForZoom {
-     cursor: pointer;
-     transition: ease all .25s;
-     height: 100%;
-
-     &:hover {
-         border: 2px solid $purple;
-     }
- }
-
- //  .objModalImg {
- //      cursor: pointer;
- //      transition: ease all .25s;
-
- //      &:hover {
- //          border: 2px solid $purple;
- //      }
- //  }
 
  .carousel {
      overflow: hidden;
@@ -755,67 +759,6 @@
      overflow: visible;
  }
 
- .preloader {
-     position: fixed;
-     height: 100vh;
-     width: 100%;
-     z-index: 10000;
-
-     .preloaderLeft {
-         position: absolute;
-         height: 100%;
-         width: 50%;
-         left: 0%;
-         background-color: $background;
-     }
-
-     .preloaderRight {
-         position: absolute;
-         height: 100%;
-         width: 50%;
-         right: 0%;
-         background-color: $background;
-     }
-
-     .preloaderSvg {
-         opacity: 1;
-     }
-
-     .fade {
-         opacity: 0;
-     }
- }
-
- .borderLeft {
-     border-left: 2px solid $white;
- }
-
- .borderRight {
-     border-right: 2px solid $white;
- }
-
- .fadeOutAnim {
-     height: 300px;
-     width: 300px;
-     background-color: red;
-     position: relative;
-
-     .fadeOutCircle {
-         height: 100px;
-         width: 100px;
-         background-color: blue;
-         border-radius: 50%;
-     }
- }
-
- .tamaño {
-     height: 100%;
-     width: 100%;
-     background-color: green;
-     position: absolute;
-     z-index: 9999999;
- }
-
  .animOut {
      position: fixed;
      transform: translate(-50%, -50%);
@@ -834,13 +777,4 @@
      box-shadow: 0 0 0 99999px $background;
      border: 2px solid $white;
      z-index: 10001;
- }
-
- .blackBeforeLoading{
-     position: fixed;
-     background-color: $background;
-     height: 100vh;
-     width: 100vw;
-     z-index: 10000;
-     overflow: hidden;
  }
