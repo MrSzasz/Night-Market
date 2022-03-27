@@ -52,6 +52,34 @@
      }
 
      body {
+         .toTop {
+             position: fixed;
+             right: 3%;
+             bottom: 25px;
+             height: 50px;
+             width: 50px;
+             border-radius: 50%;
+             background-color: $background;
+             border: 2px solid $white;
+             cursor: pointer;
+             transition: ease all .25s;
+
+             &:hover {
+                 background-color: $black;
+                 border: 2px solid $purple;
+             }
+
+             &:active {
+                 background-color: $white;
+                 color: $background;
+             }
+
+             .upArrow {
+                 line-height: 0;
+                 font-size: 45px;
+             }
+         }
+
          .blackBeforeLoading {
              position: fixed;
              background-color: $background;

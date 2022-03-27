@@ -39,7 +39,10 @@
 
          setTimeout(() => {
              preloaderContainer.classList.add('hide')
-         }, 3000);
+         }, 3000)
+         up({
+             src: './scripts/libraries/upButton/chevron-up-solid.svg',
+         });
      } else {
          let topFromOtherPage = localStorage.getItem('top')
          let leftFromOtherPage = localStorage.getItem('left')
@@ -68,10 +71,13 @@
                  e.classList.add('hide')
              }, 1500);
          }
+         up({
+             src: '../scripts/libraries/upButton/chevron-up-solid.svg',
+             whenShow: 300
+         })
      }
 
  }
-
 
  let notifier = new AWN()
 
