@@ -808,19 +808,39 @@
      }
  }
 
- .tamaño{
-     height: 20px;
-     width: 20px;
+ .tamaño {
+     height: 100%;
+     width: 100%;
      background-color: green;
      position: absolute;
      z-index: 9999999;
  }
 
- .circle{
-     position: absolute;
-     transform: translate(-50%,-50%);
+ .animOut {
+     position: fixed;
+     transform: translate(-50%, -50%);
      border-radius: 50%;
-     width: 10px;
-     height: 10px;
-     box-shadow: 0 0 0 99999px rgba(0, 0, 0, 1);
+     overflow: hidden;
+     box-shadow: 0 0 0 99999px $background;
+     border: 2px solid $white;
+     z-index: 10001;
+ }
+
+ .animIn {
+     position: fixed;
+     transform: translate(-50%, -50%);
+     border-radius: 50%;
+     overflow: hidden;
+     box-shadow: 0 0 0 99999px $background;
+     border: 2px solid $white;
+     z-index: 10001;
+ }
+
+ .blackBeforeLoading{
+     position: fixed;
+     background-color: $background;
+     height: 100vh;
+     width: 100vw;
+     z-index: 10000;
+     overflow: hidden;
  }

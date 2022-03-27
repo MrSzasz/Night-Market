@@ -1,21 +1,77 @@
  /* */
 
- // ==========  EYE ON FOOTER ==========
+ window.onload = () => {
+     let path = window.location.pathname;
+     let page = path.split("/").pop();
+     console.log(page);
+     if (page == 'index.html') {
+         let screen = $(window).width()
+         let preloaderContainer = document.querySelector('.preloader');
 
- //  let pupil = document.querySelector('.pupil');
- //  let eye = document.querySelector('.eye');
+         anime({
+             targets: '.preloaderRight',
+             translateX: (screen + 100),
+             easing: 'easeOutSine',
+             delay: 666,
+             duration: 6000,
+         })
+         anime({
+             targets: '.preloaderLeft',
+             translateX: -(screen + 100),
+             easing: 'easeOutSine',
+             delay: 666,
+             duration: 6000,
+         })
 
- //  document.onmousemove = (e) => {
- //      let x = e.clientX * 100 / window.innerWidth + '%';
- //      let y = e.clientY * 100 / window.innerHeight + '%';
+         let loadingSvg = document.querySelector('.preloaderSvg');
+         setTimeout(() => {
+             loadingSvg.classList.toggle('fade')
+         }, 400);
 
- //      pupil.style.left = x;
- //      pupil.style.top = y;
- //  }
+         let panelRight = document.querySelector('.preloaderRight');
+         setTimeout(() => {
+             panelRight.classList.toggle('borderLeft')
+         }, 666);
 
- //  function reset(element) {
- //      element.innerHTML = '';
- //  }
+         let panelLeft = document.querySelector('.preloaderLeft');
+         setTimeout(() => {
+             panelLeft.classList.toggle('borderRight')
+         }, 666);
+
+         setTimeout(() => {
+             preloaderContainer.classList.add('hide')
+         }, 3000);
+     } else {
+         let topFromOtherPage = localStorage.getItem('top')
+         let leftFromOtherPage = localStorage.getItem('left')
+         fadeInTransition(topFromOtherPage, leftFromOtherPage)
+         let preloadForAnim = document.querySelector('.blackBeforeLoading')
+         setTimeout(() => {
+             preloadForAnim.classList.add('hide')
+         }, 50);
+
+         function fadeInTransition(lastTop = '50%', lastLeft = '50%') {
+             let screenWidth = ($(window).width() * 2)
+             let e = document.createElement('div');
+             e.setAttribute('class', 'animOut'), document.body.appendChild(e), e.style.top = lastTop, e.style.left = lastLeft, console.log(e);
+             $(".animOut").css({
+                 "width": 0,
+                 "height": 0
+             });
+             anime({
+                 targets: '.animOut',
+                 width: screenWidth,
+                 height: screenWidth,
+                 easing: 'easeInCubic',
+                 duration: 1500,
+             });
+             setTimeout(() => {
+                 e.classList.add('hide')
+             }, 1500);
+         }
+     }
+
+ }
 
 
  let notifier = new AWN()
@@ -34,11 +90,9 @@
          let href = button.getAttribute('data-href')
          button.addEventListener('click', (e) => {
              e.preventDefault();
-             console.log("url clicked...")
              setTimeout(() => {
                  window.location.href = href;
-                 console.log("timeout executed...")
-             }, 0);
+             }, 1666);
          });
      })
 
@@ -47,15 +101,15 @@
 
 
 
-//  window.onload = () => {
-//      anime({
-//          targets: '.fadeOutCircle',
-//          width: '0px',
-//          height: '0px',
-//          easing: 'easeInOutQuad',
-//          duration: 5000,
-//      });
-//  }
+ //  window.onload = () => {
+ //      anime({
+ //          targets: '.fadeOutCircle',
+ //          width: '0px',
+ //          height: '0px',
+ //          easing: 'easeInOutQuad',
+ //          duration: 5000,
+ //      });
+ //  }
 
  //  let container = document.querySelector('.fadeOutAnim')
  //  container.addEventListener('click', dondeHiceClick)
@@ -79,22 +133,31 @@
 
 
 
-//  let pulse = function () {
-//      let screenw = $(window).width()
-//      let screenh = $(window).height()
-//      let e = document.createElement('div');
-//      e.setAttribute('class', 'circle'), document.body.appendChild(e), e.style.top = event.pageY + 'px', e.style.left = event.pageX + 'px', console.log(e);
-//      let circulo = document.querySelector('.circle')
-//      circulo.style.width = screenw;
-//      circulo.style.height = screenh;
-//     // console.log(circulo)
-//      anime({
-//          targets: '.circle',
-//          width: '0px',
-//          height: '0px',
-//          easing: 'easeInOutQuad',
-//          duration: 2000,
-//      });
-//  }
-//  document.addEventListener('click', pulse)
- //     let preloaderContainer = document.querySelector('.preloader');
+ let fadeOutTransition = () => {
+     let screenWidth = ($(window).width() * 2)
+     let e = document.createElement('div');
+     e.setAttribute('class', 'animOut'), document.body.appendChild(e), e.style.top = event.pageY + 'px', e.style.left = event.pageX + 'px', console.log(e);
+     localStorage.setItem('top', e.style.top)
+     localStorage.setItem('left', e.style.left)
+     $(".animOut").css({
+         "width": screenWidth,
+         "height": screenWidth
+     })
+     anime({
+         targets: '.animOut',
+         width: '0px',
+         height: '0px',
+         easing: 'easeOutCubic',
+         duration: 1500,
+     });
+ }
+
+
+
+ //  document.addEventListener('click', fadeOutTransition)
+ //  let preloaderContainer = document.querySelector('.preloader');
+
+ let linksForAnimation = document.querySelectorAll('.detectPageRedirect')
+ linksForAnimation.forEach(button => {
+     button.addEventListener('click', fadeOutTransition)
+ })

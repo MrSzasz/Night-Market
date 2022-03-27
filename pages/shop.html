@@ -23,6 +23,7 @@
     <!-- ===================================  AWESOME NOTIFICATIONS  =================================== -->
 
     <link rel="stylesheet" href="../scripts/libraries/awesomeNotifications/style.css">
+    <script src="../scripts/libraries/animejs/anime.min.js"></script>
     <script src="../scripts/libraries/awesomeNotifications/index.var.js"></script>
 
 
@@ -35,19 +36,21 @@
 
 <body>
 
+    <div class="blackBeforeLoading"></div>
+
     <!-- ==================================================  HEADER  ================================================== -->
 
     <header>
         <div class="containerLogo">
             <div class="logo"><a href="../index.html"><img src="../resources/logo.svg" alt="logo"></a></div>
-            <div class="logoText"><a class="pageLink" data-href="../index.html" href="#">shaxs pouch</a></div>
+            <div class="logoText"><a class="pageLink detectPageRedirect" data-href="../index.html" href="#">shaxs pouch</a></div>
         </div>
         <nav>
             <ul>
-                <li><a class="pageLink" data-href="../index.html" href="#">INICIO</a></li>
+                <li><a class="pageLink detectPageRedirect" data-href="../index.html" href="#">INICIO</a></li>
                 <li><a href="#">TIENDA</a></li>
-                <li><a class="pageLink" data-href="./contact.html" href="#">CONTACTO</a></li>
-                <li><a class="pageLink" data-href="./cart.html" href="#">
+                <li><a class="pageLink detectPageRedirect" data-href="./contact.html" href="#">CONTACTO</a></li>
+                <li><a class="pageLink detectPageRedirect" data-href="./cart.html" href="#">
                         <div class="img" alt="CART"></div>
                     </a></li>
             </ul>
