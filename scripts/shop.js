@@ -114,7 +114,6 @@
          // ==========  BUY IN MODAL ==========
 
          let buttonForBuyInModal = document.querySelector('.buttonForBuyInModal')
-         console.log(buttonForBuyInModal)
          buttonForBuyInModal.addEventListener('click', (e) => {
 
 
@@ -186,6 +185,5 @@
              </button>
            </div>`)
          }
-         //  console.log(imgForZoom)
      })
  })

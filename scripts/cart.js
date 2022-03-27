@@ -174,11 +174,11 @@ buyButton.addEventListener('click', confirmationModal)
 
 function confirmationModal() {
     new AWN().modal(`
-    <form class="containerBuy was-validated">
+    <form class="containerBuy text-center">
         <h1 class="text-center h4 h1Modal p-4">= Gracias por confiar en nosotros =</h1>
         <p class="h5 text-center">Ingrese su mail a continuacion y se le contactara a la brevedad</p>
         <input type="email" class="inputModal mt-3" placeholder="ejemplo@mail.com" required>
-        <button type="submit" class="button mt-3" id="doneButton">FINALIZAR</button>
+        <button type="submit" class="button mt-3 text-center" id="doneButton">FINALIZAR</button>
         <p class="text-center p-2 infoText">Haga click fuera de la ventana para cancelar</p>
     </form>`)
 

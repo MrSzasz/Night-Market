@@ -785,3 +785,42 @@
          opacity: 0;
      }
  }
+
+ .borderLeft {
+     border-left: 2px solid $white;
+ }
+
+ .borderRight {
+     border-right: 2px solid $white;
+ }
+
+ .fadeOutAnim {
+     height: 300px;
+     width: 300px;
+     background-color: red;
+     position: relative;
+
+     .fadeOutCircle {
+         height: 100px;
+         width: 100px;
+         background-color: blue;
+         border-radius: 50%;
+     }
+ }
+
+ .tamaño{
+     height: 20px;
+     width: 20px;
+     background-color: green;
+     position: absolute;
+     z-index: 9999999;
+ }
+
+ .circle{
+     position: absolute;
+     transform: translate(-50%,-50%);
+     border-radius: 50%;
+     width: 10px;
+     height: 10px;
+     box-shadow: 0 0 0 99999px rgba(0, 0, 0, 1);
+ }
