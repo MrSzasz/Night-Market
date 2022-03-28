@@ -21,11 +21,18 @@
                      <div class="card-body">
                          <h2 class="card-title text-center cardObjName flex-fill" data-curse="${obj.curse}" data-curse-anim="${obj.animCurse}" data-blessing="${obj.blessing}" data-condition-desc="${obj.conditionDesc}" data-condition-text="${obj.description}">${obj.name}</h2>
                          <p class="card-text text-center cardObjPrice align-items-center flex-fill">$${obj.price}.</p>
-                         <a class="btn button cardObjButton btn-primary flex-fill">AGREGAR AL CARRITO</a>
+                         <a class="btn button cardObjButton btn-primary flex-fill" data-name="error">AGREGAR AL CARRITO</a>
                      </div>
  `;
 
+
+     //  obj.name.trim()=='ERROROBJECTNOTFOUND' & buttonForError.classList.add('disabled')
+
      containerCards.appendChild(createCard);
+
+     let buttonForError = document.querySelector('.cardObjButton')
+     let error = buttonForError.getAttribute('error')
+     console.log(error)
  })
 
 
@@ -344,9 +351,9 @@
                              setTimeout(() => {
                                  dragonText.classList.toggle('hide')
                                  $(".eye").css({
-                                    'height': 0,
-                                    'border': 'none'
-                                });
+                                     'height': 0,
+                                     'border': 'none'
+                                 });
                              }, 3000);
                              setTimeout(() => {
                                  curseAnim.classList.toggle('hide')
