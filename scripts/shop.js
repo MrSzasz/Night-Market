@@ -19,7 +19,7 @@
      createCard.innerHTML = `
                      <img src="${obj.img}" data-img-url-2="${obj.img2}" data-img-url-3="${obj.img3}" class="card-img-top cardObjImg" alt="${obj.name}">
                      <div class="card-body">
-                         <h2 class="card-title text-center cardObjName flex-fill" data-curse="${obj.curse}" data-blessing="${obj.blessing}" data-condition-desc="${obj.conditionDesc}" data-condition-text="${obj.description}">${obj.name}</h2>
+                         <h2 class="card-title text-center cardObjName flex-fill" data-curse="${obj.curse}" data-curse-anim="${obj.animCurse}" data-blessing="${obj.blessing}" data-condition-desc="${obj.conditionDesc}" data-condition-text="${obj.description}">${obj.name}</h2>
                          <p class="card-text text-center cardObjPrice align-items-center flex-fill">$${obj.price}.</p>
                          <a class="btn button cardObjButton btn-primary flex-fill">AGREGAR AL CARRITO</a>
                      </div>
@@ -46,6 +46,7 @@
          let objCurse = objBuyContainer.querySelector('.cardObjName').getAttribute('data-curse');
          let objBlessing = objBuyContainer.querySelector('.cardObjName').getAttribute('data-blessing');
          let objCondDesc = objBuyContainer.querySelector('.cardObjName').getAttribute('data-condition-desc');
+         let objAnimCurse = objBuyContainer.querySelector('.cardObjName').getAttribute('data-curse-anim');
          let objPrice = Number(objBuyContainer.querySelector('.cardObjPrice').textContent.replace('$', ''));
 
          let objectCart = {
@@ -90,10 +91,13 @@
          let objBlessing = clickedImgContainer.querySelector('.cardObjName').getAttribute('data-blessing');
          let objCondDesc = clickedImgContainer.querySelector('.cardObjName').getAttribute('data-condition-desc');
          let objCondText = clickedImgContainer.querySelector('.cardObjName').getAttribute('data-condition-text');
+         let objAnimCurse = clickedImgContainer.querySelector('.cardObjName').getAttribute('data-curse-anim');
+
+
          let objPrice = Number(clickedImgContainer.querySelector('.cardObjPrice').textContent.replace('$', ''));
 
          new AWN().modal(`<div class="infoOfObject">
-         <div class="containerImg d-flex align-items-center flex-column"><img class="text-center objModalImg" data-curse="${objCurse}" data-blessing="${objBlessing}" data-condition-desc="${objCondDesc}" data-img-url-2="${objImg2}" data-img-url-3="${objImg3}" src="${objImg}" alt="${objName}"><p class="text-center p-2 infoText">Haga click en la imagen para agrandar</p></div>
+         <div class="containerImg d-flex align-items-center flex-column"><img class="text-center objModalImg" data-curse="${objCurse}" data-blessing="${objBlessing}" data-condition-desc="${objCondDesc}" data-curse-anim="${objAnimCurse}" data-img-url-2="${objImg2}" data-img-url-3="${objImg3}" src="${objImg}" alt="${objName}"><p class="text-center p-2 infoText">Haga click en la imagen para agrandar</p></div>
          <div class="containerText">
              <h1 class="text-center objModalName h3 mt-3">${objName}</h1>
              <div class="textAndInfo d-flex flex-column">
@@ -109,42 +113,314 @@
 
          let buttonForBuyInModal = document.querySelector('.buttonForBuyInModal')
          buttonForBuyInModal.addEventListener('click', (e) => {
-
-
              let modalContainer = buttonForBuyInModal.closest('.infoOfObject');
 
              let modalObjForBuyImg = modalContainer.querySelector('.objModalImg').src;
              let modalObjForBuyCurse = modalContainer.querySelector('.objModalImg').getAttribute('data-curse');
              let modalObjForBuyBlessing = modalContainer.querySelector('.objModalImg').getAttribute('data-blessing');
              let modalObjForBuyCondDesc = modalContainer.querySelector('.objModalImg').getAttribute('data-condition-desc');
+             let modalObjForCurseAnim = modalContainer.querySelector('.objModalImg').getAttribute('data-curse-anim');
              let modalObjForBuyName = modalContainer.querySelector('.objModalName').textContent;
              let modalObjForBuyPrice = Number(modalContainer.querySelector('.objModalPrice').textContent.replace('$', ''));
 
-             let objectCart = {
-                 img: modalObjForBuyImg,
-                 name: modalObjForBuyName,
-                 curse: modalObjForBuyCurse,
-                 blessing: modalObjForBuyBlessing,
-                 conditionDesc: modalObjForBuyCondDesc,
-                 price: modalObjForBuyPrice,
-                 quantity: 1,
+             if (modalObjForCurseAnim == 'true') {
+                 switch (modalObjForBuyName.trim()) {
+
+                     case 'Anillo Estelar':
+
+                         let starsOnStorage = sessionStorage.getItem(modalObjForBuyName)
+                         if (starsOnStorage == 'true') {
+                             let objectCart = {
+                                 img: modalObjForBuyImg,
+                                 name: modalObjForBuyName,
+                                 curse: modalObjForBuyCurse,
+                                 blessing: modalObjForBuyBlessing,
+                                 conditionDesc: modalObjForBuyCondDesc,
+                                 price: modalObjForBuyPrice,
+                                 quantity: 1,
+                             }
+
+                             addThisElementToCart(objectCart);
+
+                             saveObjectsToCart();
+
+                             notifier.success(`= ${objName} =`, {
+                                 durations: {
+                                     success: 3000
+                                 }
+                             })
+                         } else {
+
+                             let curseAnim = document.querySelector('.curseAnim')
+                             curseAnim.classList.toggle('hide')
+                             $(".curseAnim").css({
+                                 'background-image': 'url(../resources/shop/curses/space1.gif)',
+                                 'background-position': 'center',
+                                 'background-size': 'cover',
+                                 'background-repeat': 'no-repeat',
+                             });
+                             setTimeout(() => {
+                                 curseAnim.classList.toggle('hide')
+                                 let objectCart = {
+                                     img: modalObjForBuyImg,
+                                     name: modalObjForBuyName,
+                                     curse: modalObjForBuyCurse,
+                                     blessing: modalObjForBuyBlessing,
+                                     conditionDesc: modalObjForBuyCondDesc,
+                                     price: modalObjForBuyPrice,
+                                     quantity: 1,
+                                 }
+
+                                 addThisElementToCart(objectCart);
+
+                                 saveObjectsToCart();
+
+                                 notifier.success(`= ${objName} =`, {
+                                     durations: {
+                                         success: 3000
+                                     }
+                                 })
+                                 sessionStorage.setItem(modalObjForBuyName, true)
+                             }, 5000);
+                         }
+                         break;
+
+                     case 'Anillo de la demecia':
+
+                         let madOnStorage = sessionStorage.getItem(modalObjForBuyName)
+                         if (madOnStorage == 'true') {
+                             let objectCart = {
+                                 img: modalObjForBuyImg,
+                                 name: modalObjForBuyName,
+                                 curse: modalObjForBuyCurse,
+                                 blessing: modalObjForBuyBlessing,
+                                 conditionDesc: modalObjForBuyCondDesc,
+                                 price: modalObjForBuyPrice,
+                                 quantity: 1,
+                             }
+
+                             addThisElementToCart(objectCart);
+
+                             saveObjectsToCart();
+
+                             notifier.success(`= ${objName} =`, {
+                                 durations: {
+                                     success: 3000
+                                 }
+                             })
+                         } else {
+
+                             let curseAnim = document.querySelector('.curseAnim')
+                             curseAnim.classList.toggle('hide');
+                             let sound = new Howl({
+                                 src: ['../resources/shop/curses/madSound.mp3'],
+                                 volume: 0.1,
+                                 html5: true
+                             });
+                             sound.play();
+                             curseAnim.classList.toggle('hide')
+                             let objectCart = {
+                                 img: modalObjForBuyImg,
+                                 name: modalObjForBuyName,
+                                 curse: modalObjForBuyCurse,
+                                 blessing: modalObjForBuyBlessing,
+                                 conditionDesc: modalObjForBuyCondDesc,
+                                 price: modalObjForBuyPrice,
+                                 quantity: 1,
+                             }
+
+                             addThisElementToCart(objectCart);
+
+                             saveObjectsToCart();
+
+                             notifier.success(`= ${objName} =`, {
+                                 durations: {
+                                     success: 3000
+                                 }
+                             })
+                             sessionStorage.setItem(modalObjForBuyName, true)
+                         }
+                         break;
+
+                     case 'Collar del terreno angelical':
+
+                         let angelOnStorage = sessionStorage.getItem(modalObjForBuyName)
+                         if (angelOnStorage == 'true') {
+                             let objectCart = {
+                                 img: modalObjForBuyImg,
+                                 name: modalObjForBuyName,
+                                 curse: modalObjForBuyCurse,
+                                 blessing: modalObjForBuyBlessing,
+                                 conditionDesc: modalObjForBuyCondDesc,
+                                 price: modalObjForBuyPrice,
+                                 quantity: 1,
+                             }
+
+                             addThisElementToCart(objectCart);
+
+                             saveObjectsToCart();
+
+                             notifier.success(`= ${objName} =`, {
+                                 durations: {
+                                     success: 3000
+                                 }
+                             })
+                         } else {
+
+                             let curseAnim = document.querySelector('.curseAnim')
+                             curseAnim.classList.toggle('hide')
+                             let angelsVideo = document.querySelector('#angelsAnim')
+                             angelsVideo.classList.toggle('hide')
+                             let angelsText = document.querySelector('.textAngel')
+                             angelsText.classList.toggle('hide')
+                             let video = videojs('angelsAnim', {});
+                             setTimeout(() => {
+                                 curseAnim.classList.toggle('hide')
+                                 angelsVideo.classList.toggle('hide')
+                                 angelsText.classList.toggle('hide')
+                                 let objectCart = {
+                                     img: modalObjForBuyImg,
+                                     name: modalObjForBuyName,
+                                     curse: modalObjForBuyCurse,
+                                     blessing: modalObjForBuyBlessing,
+                                     conditionDesc: modalObjForBuyCondDesc,
+                                     price: modalObjForBuyPrice,
+                                     quantity: 1,
+                                 }
+
+                                 addThisElementToCart(objectCart);
+
+                                 saveObjectsToCart();
+
+                                 notifier.success(`= ${objName} =`, {
+                                     durations: {
+                                         success: 3000
+                                     }
+                                 })
+                                 sessionStorage.setItem(modalObjForBuyName, true)
+                             }, 15000);
+                         }
+                         break;
+
+                     case 'Ojo de Hermaeus Mora':
+
+                         let eyeOnStorage = sessionStorage.getItem(modalObjForBuyName)
+                         if (eyeOnStorage == 'true') {
+                             let objectCart = {
+                                 img: modalObjForBuyImg,
+                                 name: modalObjForBuyName,
+                                 curse: modalObjForBuyCurse,
+                                 blessing: modalObjForBuyBlessing,
+                                 conditionDesc: modalObjForBuyCondDesc,
+                                 price: modalObjForBuyPrice,
+                                 quantity: 1,
+                             }
+
+                             addThisElementToCart(objectCart);
+
+                             saveObjectsToCart();
+
+                             notifier.success(`= ${objName} =`, {
+                                 durations: {
+                                     success: 3000
+                                 }
+                             })
+                         } else {
+
+                             let curseAnim = document.querySelector('.curseAnim')
+                             curseAnim.classList.toggle('hide')
+                             let eyeContainer = document.querySelector('.eyeAnim')
+                             eyeContainer.classList.toggle('hide')
+                             let dragonText = document.querySelector('.dragonText')
+                             let pupil = document.querySelector('.pupil');
+                             let eye = document.querySelector('.eye');
+                             document.onmousemove = (e) => {
+                                 let x = e.clientX * 100 / window.innerWidth + '%';
+                                 let y = e.clientY * 100 / window.innerHeight + '%';
+
+                                 pupil.style.left = x;
+                                 pupil.style.top = y;
+                             }
+                             setTimeout(() => {
+                                 dragonText.classList.toggle('hide')
+                                 $(".eye").css({
+                                    'height': 0,
+                                    'border': 'none'
+                                });
+                             }, 3000);
+                             setTimeout(() => {
+                                 curseAnim.classList.toggle('hide')
+                                 eyeContainer.classList.toggle('hide')
+                                 let objectCart = {
+                                     img: modalObjForBuyImg,
+                                     name: modalObjForBuyName,
+                                     curse: modalObjForBuyCurse,
+                                     blessing: modalObjForBuyBlessing,
+                                     conditionDesc: modalObjForBuyCondDesc,
+                                     price: modalObjForBuyPrice,
+                                     quantity: 1,
+                                 }
+
+                                 addThisElementToCart(objectCart);
+
+                                 saveObjectsToCart();
+
+                                 notifier.success(`= ${objName} =`, {
+                                     durations: {
+                                         success: 3000
+                                     }
+                                 })
+                                 sessionStorage.setItem(modalObjForBuyName, true)
+                             }, 5000);
+                         }
+                         break;
+
+                     case 'ERROROBJECTNOTFOUND':
+                         let starCurse = document.querySelector('.curseAnim')
+                         starCurse.classList.toggle('hide')
+                         $(".curseAnim").css({
+                             'background-image': 'url(../resources/shop/curses/error.gif)',
+                             'background-position': 'center',
+                             'background-size': 'cover',
+                             'background-repeat': 'no-repeat',
+                         });
+                         let sound = new Howl({
+                             src: ['../resources/shop/curses/errorSound2.mp3'],
+                             html5: true
+                         });
+                         sound.play();
+                         setTimeout(() => {
+                             starCurse.classList.toggle('hide')
+                         }, 4000);
+                         break;
+                 }
              }
 
-             addThisElementToCart(objectCart);
+             //  let objectCart = {
+             //      img: modalObjForBuyImg,
+             //      name: modalObjForBuyName,
+             //      curse: modalObjForBuyCurse,
+             //      blessing: modalObjForBuyBlessing,
+             //      conditionDesc: modalObjForBuyCondDesc,
+             //      price: modalObjForBuyPrice,
+             //      quantity: 1,
+             //  }
+
+             //  addThisElementToCart(objectCart);
 
 
-             // ==========  SAVE ON LOCAL STORAGE ==========
+             //  // ==========  SAVE ON LOCAL STORAGE ==========
 
-             saveObjectsToCart();
+             //  saveObjectsToCart();
 
 
-             // ==========  ALERT FOR CART ==========
+             //  // ==========  ALERT FOR CART ==========
 
-             notifier.success(`= ${objName} =`, {
-                 durations: {
-                     success: 3000
-                 }
-             })
+             //  notifier.success(`= ${objName} =`, {
+             //      durations: {
+             //          success: 3000
+             //      }
+             //  })
          })
 
 
@@ -183,13 +459,3 @@
          }
      })
  })
-
- let pupil = document.querySelector('.pupil');
- let eye = document.querySelector('.eye');
- document.onmousemove = (e) => {
-     let x = e.clientX * 100 / window.innerWidth + '%';
-     let y = e.clientY * 100 / window.innerHeight + '%';
-
-     pupil.style.left = x;
-     pupil.style.top = y;
- }

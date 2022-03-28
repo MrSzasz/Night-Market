@@ -14,6 +14,7 @@
          conditionDesc: 'Cansancio fisico',
          price: 3100,
          stock: true,
+         animCurse: false
      },
      {
          img: '../resources/shop/ring/egypt1.png',
@@ -27,6 +28,7 @@
          conditionDesc: 'Sabiduria',
          price: 22000,
          stock: true,
+         animCurse: false
      },
      {
          img: '../resources/shop/ring/moth1.png',
@@ -40,6 +42,7 @@
          conditionDesc: 'Zombificacion, Control mental',
          price: 6700,
          stock: true,
+         animCurse: false
      },
      {
          img: '../resources/shop/ring/nebula1.png',
@@ -53,6 +56,7 @@
          conditionDesc: 'Calma, Viaje astral',
          price: 12000,
          stock: true,
+         animCurse: true
      },
      {
          img: '../resources/shop/ring/piramid1.png',
@@ -66,6 +70,7 @@
          conditionDesc: 'Autocontrol',
          price: 33500,
          stock: true,
+         animCurse: false
      },
      {
          img: '../resources/shop/ring/symbol1.png',
@@ -79,6 +84,7 @@
          conditionDesc: 'Demencia, Ateracion',
          price: 37000,
          stock: true,
+         animCurse: true
      },
      {
          img: '../resources/shop/ring/tooth1.png',
@@ -92,6 +98,7 @@
          conditionDesc: 'Familiar, Invocacion',
          price: 26750,
          stock: true,
+         animCurse: false
      },
      {
          img: '../resources/shop/necklace/angel1.png',
@@ -105,6 +112,7 @@
          conditionDesc: 'Transportacion, Manifestacion',
          price: 37000,
          stock: true,
+         animCurse: true
      },
      {
          img: '../resources/shop/necklace/baph1.png',
@@ -118,6 +126,7 @@
          conditionDesc: 'Deseo, Mortalidad',
          price: 66000,
          stock: true,
+         animCurse: false
      },
      {
          img: '../resources/shop/necklace/eye1.png',
@@ -131,6 +140,7 @@
          conditionDesc: 'Conocimiento, Muerte',
          price: 28000,
          stock: true,
+         animCurse: true
      },
      {
          img: "../resources/shop/mask/jap1.png",
@@ -144,6 +154,7 @@
          conditionDesc: 'Proteccion, Ofrenda',
          price: 17200,
          stock: true,
+         animCurse: false
      },
      {
          img: "../resources/shop/mask/jester1.png",
@@ -157,6 +168,7 @@
          conditionDesc: 'Maldicion, Demencia',
          price: 24000,
          stock: true,
+         animCurse: false
      },
      {
          img: "../resources/shop/black1.png",
@@ -170,6 +182,7 @@
          conditionDesc: 'ERROR',
          price: 0000,
          stock: true,
+         animCurse: true
      },
      {
          img: "../resources/shop/mask/oni1.png",
@@ -183,6 +196,7 @@
          conditionDesc: 'Control mental, Maldicion',
          price: 44994,
          stock: true,
+         animCurse: false
      },
      {
          img: "../resources/shop/mask/tibet1.png",
@@ -196,6 +210,7 @@
          conditionDesc: 'Trance, Posesion',
          price: 25400,
          stock: true,
+         animCurse: false
      },
      {
          img: "../resources/shop/mask/white1.png",
@@ -209,6 +224,7 @@
          conditionDesc: 'Invisibilidad, Peligro',
          price: 69800,
          stock: true,
+         animCurse: false
      }
  ];
 
