@@ -1,5 +1,8 @@
  /* */
 
+ videojs.options.autoplay = false;
+ videojs.options.volume = 0;
+
  // ==========  GET CART FROM STORAGE  ==========
 
  cartFromStorage()
@@ -277,7 +280,8 @@
                                  }
                              })
                          } else {
-
+                            videojs.options.autoplay = true;
+                            videojs.options.volume = 100;
                              let curseAnim = document.querySelector('.curseAnim')
                              curseAnim.classList.toggle('hide')
                              let angelsVideo = document.querySelector('#angelsAnim')
@@ -315,6 +319,8 @@
                                  $(".video-js").css({
                                      'display': 'none'
                                  });
+                                 videojs.options.autoplay = false;
+                                 videojs.options.volume = 0;
                              }, 15000);
                          }
                          break;
