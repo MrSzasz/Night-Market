@@ -21,7 +21,7 @@
                      <div class="card-body">
                          <h2 class="card-title text-center cardObjName flex-fill" data-curse="${obj.curse}" data-curse-anim="${obj.animCurse}" data-blessing="${obj.blessing}" data-condition-desc="${obj.conditionDesc}" data-condition-text="${obj.description}">${obj.name}</h2>
                          <p class="card-text text-center cardObjPrice align-items-center flex-fill">$${obj.price}.</p>
-                         <a class="btn button cardObjButton btn-primary flex-fill" data-name="error">AGREGAR AL CARRITO</a>
+                         <a class="btn button cardObjButton btn-primary flex-fill" data-type="${obj.type}">AGREGAR AL CARRITO</a>
                      </div>
  `;
 
@@ -29,10 +29,6 @@
      //  obj.name.trim()=='ERROROBJECTNOTFOUND' & buttonForError.classList.add('disabled')
 
      containerCards.appendChild(createCard);
-
-     let buttonForError = document.querySelector('.cardObjButton')
-     let error = buttonForError.getAttribute('error')
-     console.log(error)
  })
 
 
@@ -115,7 +111,6 @@
          <div class="containerButton text-center m-3"><button class="button buttonForBuyInModal text-center">Agregar al carrito</button><p class="text-center p-2 infoText">Haga click fuera de la ventana para cerrar</p></div>
      </div>`)
 
-
          // ==========  BUY IN MODAL ==========
 
          let buttonForBuyInModal = document.querySelector('.buttonForBuyInModal')
@@ -166,6 +161,12 @@
                                  'background-size': 'cover',
                                  'background-repeat': 'no-repeat',
                              });
+                             anime({
+                                 targets: '.curseAnim',
+                                 backgroundSize: ['100%', '110%'],
+                                 easing: 'linear',
+                                 duration: 5000
+                             });
                              setTimeout(() => {
                                  curseAnim.classList.toggle('hide')
                                  let objectCart = {
@@ -187,6 +188,9 @@
                                          success: 3000
                                      }
                                  })
+                                 $(".curseAnim").css({
+                                     'background-image': 'none',
+                                 });
                                  sessionStorage.setItem(modalObjForBuyName, true)
                              }, 5000);
                          }
@@ -305,6 +309,12 @@
                                      }
                                  })
                                  sessionStorage.setItem(modalObjForBuyName, true)
+                                 $(".curseAnim").css({
+                                     'background-image': 'none',
+                                 });
+                                 $(".video-js").css({
+                                     'display': 'none'
+                                 });
                              }, 15000);
                          }
                          break;
@@ -348,6 +358,9 @@
                                  pupil.style.left = x;
                                  pupil.style.top = y;
                              }
+                             $(".curseAnim").css({
+                                 'background-color': 'black',
+                             });
                              setTimeout(() => {
                                  dragonText.classList.toggle('hide')
                                  $(".eye").css({
@@ -368,6 +381,9 @@
                                      quantity: 1,
                                  }
 
+                                 $(".curseAnim").css({
+                                     'background-image': 'none',
+                                 });
                                  addThisElementToCart(objectCart);
 
                                  saveObjectsToCart();
@@ -391,43 +407,60 @@
                              'background-size': 'cover',
                              'background-repeat': 'no-repeat',
                          });
-                         let sound = new Howl({
-                             src: ['../resources/shop/curses/errorSound2.mp3'],
+                         let sound1 = new Howl({
+                             src: ['../resources/shop/curses/errorSound.mp3'],
+                             volume: 0.2,
                              html5: true
                          });
-                         sound.play();
+                         let sound2 = new Howl({
+                             src: ['../resources/shop/curses/errorSoundVoices.mp3'],
+                             volume: 1,
+                             html5: true
+                         });
+                         sound1.play();
+                         sound2.play();
                          setTimeout(() => {
                              starCurse.classList.toggle('hide')
-                         }, 4000);
+                             notifier.alert(`= ${objName} =`, {
+                                 durations: {
+                                     alert: 3000
+                                 }
+                             })
+                             $(".curseAnim").css({
+                                 'background-image': 'none',
+                             });
+                         }, 5400);
                          break;
                  }
+             } else {
+                 let objectCart = {
+                     img: modalObjForBuyImg,
+                     name: modalObjForBuyName,
+                     curse: modalObjForBuyCurse,
+                     blessing: modalObjForBuyBlessing,
+                     conditionDesc: modalObjForBuyCondDesc,
+                     price: modalObjForBuyPrice,
+                     quantity: 1,
+                 }
+
+                 addThisElementToCart(objectCart);
+
+
+                 // ==========  SAVE ON LOCAL STORAGE ==========
+
+                 saveObjectsToCart();
+
+
+                 // ==========  ALERT FOR CART ==========
+
+                 notifier.success(`= ${objName} =`, {
+                     durations: {
+                         success: 3000
+                     }
+                 })
              }
 
-             //  let objectCart = {
-             //      img: modalObjForBuyImg,
-             //      name: modalObjForBuyName,
-             //      curse: modalObjForBuyCurse,
-             //      blessing: modalObjForBuyBlessing,
-             //      conditionDesc: modalObjForBuyCondDesc,
-             //      price: modalObjForBuyPrice,
-             //      quantity: 1,
-             //  }
 
-             //  addThisElementToCart(objectCart);
-
-
-             //  // ==========  SAVE ON LOCAL STORAGE ==========
-
-             //  saveObjectsToCart();
-
-
-             //  // ==========  ALERT FOR CART ==========
-
-             //  notifier.success(`= ${objName} =`, {
-             //      durations: {
-             //          success: 3000
-             //      }
-             //  })
          })
 
 
@@ -465,4 +498,17 @@
            </div>`)
          }
      })
+ })
+
+ let errorButton = document.querySelectorAll('.cardObjButton')
+ errorButton.forEach(button => {
+     let type = button.getAttribute('data-type')
+     if (type == 'ERROR') {
+         button.classList.add('disabled')
+         $(".disabled").css({
+             'background-color': 'black',
+             'border': 'none',
+             'opacity': 0.25
+         });
+     }
  })

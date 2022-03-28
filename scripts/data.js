@@ -218,7 +218,7 @@
          img3: "../resources/shop/mask/white3.png",
          type: 'MASK',
          name: 'Mascara del vacio absoluto',
-         description: 'Esta mascara dota a su portador la posibilidad de moverse entre planos de la realidad, siendo "invisible" al ojo humano, pero alertando a cualquiera que pueda percibir diferentes planos',
+         description: 'Esta mascara dota a su portador la posibilidad de moverse entre planos de la realidad, siendo invisible al ojo humano, pero alertando a cualquiera que pueda percibir diferentes planos',
          curse: false,
          blessing: true,
          conditionDesc: 'Invisibilidad, Peligro',
