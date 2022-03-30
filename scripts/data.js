@@ -77,7 +77,7 @@
          img2: '../resources/shop/ring/symbol2.png',
          img3: '../resources/shop/ring/symbol3.png',
          type: 'RING',
-         name: 'Anillo de la demecia',
+         name: 'Anillo de la demencia',
          description: 'Anillo dotado de un poder incontrolable, el mismo genera un sonido constante a una baja frecuencia, siendo este el causante de diferentes molestias hasta llegar a la completa demencia',
          curse: true,
          blessing: false,

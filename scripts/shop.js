@@ -52,29 +52,7 @@
          let objAnimCurse = objBuyContainer.querySelector('.cardObjName').getAttribute('data-curse-anim');
          let objPrice = Number(objBuyContainer.querySelector('.cardObjPrice').textContent.replace('$', ''));
 
-         let objectCart = {
-             img: objImg,
-             name: objName,
-             curse: objCurse,
-             blessing: objBlessing,
-             conditionDesc: objCondDesc,
-             price: objPrice,
-             quantity: 1,
-         }
-
-         addThisElementToCart(objectCart);
-
-         // ==========  SAVE ON LOCAL STORAGE ==========
-
-         saveObjectsToCart();
-
-         // ==========  ALERT FOR CART ==========
-
-         notifier.success(`= ${objName} =`, {
-             durations: {
-                 success: 3000
-             }
-         })
+         buyObject(objImg, objName, objCurse, objBlessing, objCondDesc, objPrice)
      });
  });
 
@@ -125,6 +103,9 @@
              let modalObjForBuyName = modalContainer.querySelector('.objModalName').textContent;
              let modalObjForBuyPrice = Number(modalContainer.querySelector('.objModalPrice').textContent.replace('$', ''));
 
+
+             // ==========  CONDITIONAL FOR ANIMATIONS ==========
+
              if (modalObjForCurseAnim == 'true') {
                  switch (modalObjForBuyName.trim()) {
 
@@ -132,25 +113,8 @@
 
                          let starsOnStorage = sessionStorage.getItem(modalObjForBuyName)
                          if (starsOnStorage == 'true') {
-                             let objectCart = {
-                                 img: modalObjForBuyImg,
-                                 name: modalObjForBuyName,
-                                 curse: modalObjForBuyCurse,
-                                 blessing: modalObjForBuyBlessing,
-                                 conditionDesc: modalObjForBuyCondDesc,
-                                 price: modalObjForBuyPrice,
-                                 quantity: 1,
-                             }
+                             buyObject(modalObjForBuyImg, modalObjForBuyName, modalObjForBuyCurse, modalObjForBuyBlessing, modalObjForBuyCondDesc, modalObjForBuyPrice)
 
-                             addThisElementToCart(objectCart);
-
-                             saveObjectsToCart();
-
-                             notifier.success(`= ${objName} =`, {
-                                 durations: {
-                                     success: 3000
-                                 }
-                             })
                          } else {
 
                              let curseAnim = document.querySelector('.curseAnim')
@@ -169,25 +133,7 @@
                              });
                              setTimeout(() => {
                                  curseAnim.classList.toggle('hide')
-                                 let objectCart = {
-                                     img: modalObjForBuyImg,
-                                     name: modalObjForBuyName,
-                                     curse: modalObjForBuyCurse,
-                                     blessing: modalObjForBuyBlessing,
-                                     conditionDesc: modalObjForBuyCondDesc,
-                                     price: modalObjForBuyPrice,
-                                     quantity: 1,
-                                 }
-
-                                 addThisElementToCart(objectCart);
-
-                                 saveObjectsToCart();
-
-                                 notifier.success(`= ${objName} =`, {
-                                     durations: {
-                                         success: 3000
-                                     }
-                                 })
+                                 buyObject(modalObjForBuyImg, modalObjForBuyName, modalObjForBuyCurse, modalObjForBuyBlessing, modalObjForBuyCondDesc, modalObjForBuyPrice)
                                  $(".curseAnim").css({
                                      'background-image': 'none',
                                  });
@@ -196,31 +142,12 @@
                          }
                          break;
 
-                     case 'Anillo de la demecia':
+                     case 'Anillo de la demencia':
 
                          let madOnStorage = sessionStorage.getItem(modalObjForBuyName)
                          if (madOnStorage == 'true') {
-                             let objectCart = {
-                                 img: modalObjForBuyImg,
-                                 name: modalObjForBuyName,
-                                 curse: modalObjForBuyCurse,
-                                 blessing: modalObjForBuyBlessing,
-                                 conditionDesc: modalObjForBuyCondDesc,
-                                 price: modalObjForBuyPrice,
-                                 quantity: 1,
-                             }
-
-                             addThisElementToCart(objectCart);
-
-                             saveObjectsToCart();
-
-                             notifier.success(`= ${objName} =`, {
-                                 durations: {
-                                     success: 3000
-                                 }
-                             })
+                             buyObject(modalObjForBuyImg, modalObjForBuyName, modalObjForBuyCurse, modalObjForBuyBlessing, modalObjForBuyCondDesc, modalObjForBuyPrice)
                          } else {
-
                              let curseAnim = document.querySelector('.curseAnim')
                              curseAnim.classList.toggle('hide');
                              let sound = new Howl({
@@ -230,25 +157,7 @@
                              });
                              sound.play();
                              curseAnim.classList.toggle('hide')
-                             let objectCart = {
-                                 img: modalObjForBuyImg,
-                                 name: modalObjForBuyName,
-                                 curse: modalObjForBuyCurse,
-                                 blessing: modalObjForBuyBlessing,
-                                 conditionDesc: modalObjForBuyCondDesc,
-                                 price: modalObjForBuyPrice,
-                                 quantity: 1,
-                             }
-
-                             addThisElementToCart(objectCart);
-
-                             saveObjectsToCart();
-
-                             notifier.success(`= ${objName} =`, {
-                                 durations: {
-                                     success: 3000
-                                 }
-                             })
+                             buyObject(modalObjForBuyImg, modalObjForBuyName, modalObjForBuyCurse, modalObjForBuyBlessing, modalObjForBuyCondDesc, modalObjForBuyPrice)
                              sessionStorage.setItem(modalObjForBuyName, true)
                          }
                          break;
@@ -257,28 +166,10 @@
 
                          let angelOnStorage = sessionStorage.getItem(modalObjForBuyName)
                          if (angelOnStorage == 'true') {
-                             let objectCart = {
-                                 img: modalObjForBuyImg,
-                                 name: modalObjForBuyName,
-                                 curse: modalObjForBuyCurse,
-                                 blessing: modalObjForBuyBlessing,
-                                 conditionDesc: modalObjForBuyCondDesc,
-                                 price: modalObjForBuyPrice,
-                                 quantity: 1,
-                             }
-
-                             addThisElementToCart(objectCart);
-
-                             saveObjectsToCart();
-
-                             notifier.success(`= ${objName} =`, {
-                                 durations: {
-                                     success: 3000
-                                 }
-                             })
+                             buyObject(modalObjForBuyImg, modalObjForBuyName, modalObjForBuyCurse, modalObjForBuyBlessing, modalObjForBuyCondDesc, modalObjForBuyPrice)
                          } else {
-                            videojs.options.autoplay = true;
-                            videojs.options.volume = 100;
+                             videojs.options.autoplay = true;
+                             videojs.options.volume = 100;
                              let curseAnim = document.querySelector('.curseAnim')
                              curseAnim.classList.toggle('hide')
                              let angelsVideo = document.querySelector('#angelsAnim')
@@ -290,25 +181,7 @@
                                  curseAnim.classList.toggle('hide')
                                  angelsVideo.classList.toggle('hide')
                                  angelsText.classList.toggle('hide')
-                                 let objectCart = {
-                                     img: modalObjForBuyImg,
-                                     name: modalObjForBuyName,
-                                     curse: modalObjForBuyCurse,
-                                     blessing: modalObjForBuyBlessing,
-                                     conditionDesc: modalObjForBuyCondDesc,
-                                     price: modalObjForBuyPrice,
-                                     quantity: 1,
-                                 }
-
-                                 addThisElementToCart(objectCart);
-
-                                 saveObjectsToCart();
-
-                                 notifier.success(`= ${objName} =`, {
-                                     durations: {
-                                         success: 3000
-                                     }
-                                 })
+                                 buyObject(modalObjForBuyImg, modalObjForBuyName, modalObjForBuyCurse, modalObjForBuyBlessing, modalObjForBuyCondDesc, modalObjForBuyPrice)
                                  sessionStorage.setItem(modalObjForBuyName, true)
                                  $(".curseAnim").css({
                                      'background-image': 'none',
@@ -326,25 +199,7 @@
 
                          let eyeOnStorage = sessionStorage.getItem(modalObjForBuyName)
                          if (eyeOnStorage == 'true') {
-                             let objectCart = {
-                                 img: modalObjForBuyImg,
-                                 name: modalObjForBuyName,
-                                 curse: modalObjForBuyCurse,
-                                 blessing: modalObjForBuyBlessing,
-                                 conditionDesc: modalObjForBuyCondDesc,
-                                 price: modalObjForBuyPrice,
-                                 quantity: 1,
-                             }
-
-                             addThisElementToCart(objectCart);
-
-                             saveObjectsToCart();
-
-                             notifier.success(`= ${objName} =`, {
-                                 durations: {
-                                     success: 3000
-                                 }
-                             })
+                             buyObject(modalObjForBuyImg, modalObjForBuyName, modalObjForBuyCurse, modalObjForBuyBlessing, modalObjForBuyCondDesc, modalObjForBuyPrice)
                          } else {
 
                              let curseAnim = document.querySelector('.curseAnim')
@@ -374,28 +229,7 @@
                              setTimeout(() => {
                                  curseAnim.classList.toggle('hide')
                                  eyeContainer.classList.toggle('hide')
-                                 let objectCart = {
-                                     img: modalObjForBuyImg,
-                                     name: modalObjForBuyName,
-                                     curse: modalObjForBuyCurse,
-                                     blessing: modalObjForBuyBlessing,
-                                     conditionDesc: modalObjForBuyCondDesc,
-                                     price: modalObjForBuyPrice,
-                                     quantity: 1,
-                                 }
-
-                                 $(".curseAnim").css({
-                                     'background-image': 'none',
-                                 });
-                                 addThisElementToCart(objectCart);
-
-                                 saveObjectsToCart();
-
-                                 notifier.success(`= ${objName} =`, {
-                                     durations: {
-                                         success: 3000
-                                     }
-                                 })
+                                 buyObject(modalObjForBuyImg, modalObjForBuyName, modalObjForBuyCurse, modalObjForBuyBlessing, modalObjForBuyCondDesc, modalObjForBuyPrice)
                                  sessionStorage.setItem(modalObjForBuyName, true)
                              }, 5000);
                          }
@@ -436,34 +270,8 @@
                          break;
                  }
              } else {
-                 let objectCart = {
-                     img: modalObjForBuyImg,
-                     name: modalObjForBuyName,
-                     curse: modalObjForBuyCurse,
-                     blessing: modalObjForBuyBlessing,
-                     conditionDesc: modalObjForBuyCondDesc,
-                     price: modalObjForBuyPrice,
-                     quantity: 1,
-                 }
-
-                 addThisElementToCart(objectCart);
-
-
-                 // ==========  SAVE ON LOCAL STORAGE ==========
-
-                 saveObjectsToCart();
-
-
-                 // ==========  ALERT FOR CART ==========
-
-                 notifier.success(`= ${objName} =`, {
-                     durations: {
-                         success: 3000
-                     }
-                 })
+                 buyObject(modalObjForBuyImg, modalObjForBuyName, modalObjForBuyCurse, modalObjForBuyBlessing, modalObjForBuyCondDesc, modalObjForBuyPrice)
              }
-
-
          })
 
 
@@ -502,6 +310,9 @@
          }
      })
  })
+
+
+ // ==========  DISABLE BUTTON FOR ERROR  ==========
 
  let errorButton = document.querySelectorAll('.cardObjButton')
  errorButton.forEach(button => {

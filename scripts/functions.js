@@ -114,11 +114,8 @@
  }
 
 
+ // ==========  SHOW TOTAL  ==========
 
-
-
-
- ///////////////////
  function showTotal() {
      let mainCartContainer = document.querySelector('.containerCart');
 
@@ -137,35 +134,14 @@
  }
 
 
+ // ==========  CHANGE TOTAL WITH DELETE  ==========
 
-
-
-
-
- ///////////////////////////
  function changeTotalWithDelete() {
      let numerototal = document.querySelector('#cart-total')
      numerototal.innerHTML = `$${totalPriceOfCart(0)}`
  }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- ///////////////////////
  // ==========  DELETE ITEM ON CART  ==========
 
  function deleteItemOnCart() {
@@ -199,12 +175,8 @@
  }
 
 
+ // ==========  CHANGE QUANTITY  ==========
 
-
-
-
-
- ///////////////////////
  function changeQuantity() {
      let objQuantityOnCartTab = document.querySelectorAll('.quantityCartInTableInput')
      objQuantityOnCartTab.forEach(input => {
@@ -226,25 +198,8 @@
  }
 
 
+ // ==========  CONFIRMATION MODAL ON BUY  ==========
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- ///////////////////////////////////
  function confirmationModal() {
      new AWN().modal(`
     <form class="containerBuy text-center">
@@ -268,5 +223,30 @@
  }
 
 
+ // ==========  OBJECT TO BUY CART  ==========
 
- 
+ function buyObject(objImgParam, objNameParam, objCurseParam, objBlessingParam, objCondDescParam, objPriceParam) {
+     let objectCart = {
+         img: objImgParam,
+         name: objNameParam,
+         curse: objCurseParam,
+         blessing: objBlessingParam,
+         conditionDesc: objCondDescParam,
+         price: objPriceParam,
+         quantity: 1,
+     }
+
+     addThisElementToCart(objectCart);
+
+     // ==========  SAVE ON LOCAL STORAGE ==========
+
+     saveObjectsToCart();
+
+     // ==========  ALERT FOR CART ==========
+
+     notifier.success(`= ${objNameParam} =`, {
+         durations: {
+             success: 3000
+         }
+     })
+ }
