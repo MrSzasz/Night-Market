@@ -18,6 +18,11 @@
              console.log('Mail status: success');
          }, function (error) {
              btn.value = 'ENVIAR';
-             console.log('FAILED...', error);
+             notifier.alert(`El mail no pudo ser enviado, intente de nuevo mas tarde`, {
+                 durations: {
+                     alert: 3000
+                 }
+             })
+             console.log('Mail status: failed', error);
          });
  });

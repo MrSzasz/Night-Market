@@ -228,4 +228,4 @@
      }
  ];
 
- let cartFromShop = []
+ let cart = []

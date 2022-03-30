@@ -1,8 +1,14 @@
  /* */
 
  window.onload = () => {
+
+     // ==========  GET LINK  ==========
+
      let path = window.location.pathname;
      let page = path.split("/").pop();
+
+     // ==========  ONLOAD ANIMATION  ==========
+
      if (page == 'index.html') {
          let screen = $(window).width()
          let preloaderContainer = document.querySelector('.preloader');
@@ -81,21 +87,13 @@
 
  let notifier = new AWN()
 
- let pageLink = document.querySelectorAll('.pageLink');
+ 
+ // ==========  LINK TO OTHER PAGES  ==========
 
- function goToPageWithAnimation() {
-     pageLink.forEach(button => {
-         let href = button.getAttribute('data-href')
-         button.addEventListener('click', (e) => {
-             e.preventDefault();
-             setTimeout(() => {
-                 window.location.href = href;
-             }, 1666);
-         });
-     })
-
- }
  goToPageWithAnimation()
+
+
+ // ==========  LOADING ANIMATION FADE OUT  ==========
 
  let fadeOutTransition = () => {
      let screenWidth = ($(window).width() * 2)

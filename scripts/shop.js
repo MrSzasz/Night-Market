@@ -28,9 +28,6 @@
                      </div>
  `;
 
-
-     //  obj.name.trim()=='ERROROBJECTNOTFOUND' & buttonForError.classList.add('disabled')
-
      containerCards.appendChild(createCard);
  })
 
