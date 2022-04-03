@@ -9,15 +9,15 @@
              return null;
          }
      }
-     cart.push(itemToCart)
+     cart.push(itemToCart);
  }
 
  // ==========  GET CART LOCALSTORAGE  ==========
 
  function cartFromStorage() {
-     let getCartSavedOnLocalstorage = JSON.parse(localStorage.getItem('savedCart'))
+     let getCartSavedOnLocalstorage = JSON.parse(localStorage.getItem('savedCart'));
 
-     cart = getCartSavedOnLocalstorage || []
+     cart = getCartSavedOnLocalstorage || [];
  }
 
  // ==========  SAVE CART LOCALSTORAGE  ==========
@@ -32,30 +32,30 @@
  function goToPageWithAnimation() {
      let pageLink = document.querySelectorAll('.pageLink');
      pageLink.forEach(button => {
-         let href = button.getAttribute('data-href')
+         let href = button.getAttribute('data-href');
          button.addEventListener('click', (e) => {
              e.preventDefault();
              setTimeout(() => {
                  window.location.href = href;
              }, 1666);
          });
-     })
+     });
  }
 
 
  // ==========  IF THE CART IS EMPTY  ==========
 
  function isTheCartEmpty(emptyCart) {
-     cart.length > 0 && emptyCart.classList.add('hide');
-     //  cart?.length > 0 && emptyCart.classList.add('hide');
+     //  cart.length > 0 && emptyCart.classList.add('hide');
+     cart?.length > 0 && emptyCart.classList.add('hide');
  }
 
  // ==========  TOTAL CART  ==========
 
  function totalPriceOfCart(basePrice = 0) {
      let calculateTotalOfCart = basePrice;
-     calculateTotalOfCart = cart.reduce((acum, elem) => acum + elem.price * elem.quantity, 0)
-     return calculateTotalOfCart
+     calculateTotalOfCart = cart.reduce((acum, elem) => acum + elem.price * elem.quantity, 0);
+     return calculateTotalOfCart;
  }
 
 
@@ -63,7 +63,7 @@
 
  function createListInCart() {
      isTheCartEmpty(emptyCart);
-     totalPriceOfCart()
+     totalPriceOfCart();
      let cartListContainer = document.querySelector('.mainCart');
      let cartListTable = document.createElement('table');
      cartListTable.classList.add('table', 'table-hover');
@@ -87,8 +87,8 @@
          let blessingForContainer = productOnCart.blessing == 'true' ? true : false;
 
          let cartListTr = document.createElement('tr');
-         cartListTr.setAttribute('class', 'itemForBuy')
-         cartListTr.innerHTML = ''
+         cartListTr.setAttribute('class', 'itemForBuy');
+         cartListTr.innerHTML = '';
          cartListTr.innerHTML = `
                     <td class="imgCartInTable text-center align-middle w-25 ps-0"><img class="containerImgForCurse ${blessingForContainer ? 'blessing' : 'curse'}" src="${productOnCart.img}" src="${productOnCart.img}" alt="${productOnCart.name}"></td>
                     <td class="productCartInTable align-middle"><p class="nameOfThisProd">${productOnCart.name}</p><p>${productOnCart.conditionDesc}</p></td>
@@ -100,7 +100,7 @@
                     
    `;
          cartListTbody.append(cartListTr);
-     })
+     });
 
      cartListTable.append(cartListTbody);
 
@@ -109,7 +109,11 @@
 
      // ==========  TOTAL CART  ==========
 
-     cart.length > 0 && showTotal()
+     cart.length > 0 && showTotal();
+
+     // ==========  BUY BUTTON  ==========
+
+     getBuyButton();
 
  }
 
@@ -119,16 +123,16 @@
  function showTotal() {
      let mainCartContainer = document.querySelector('.containerCart');
 
-     let totalCart = document.createElement('div')
-     totalCart.setAttribute('class', 'generatedTotalContainer')
-     totalCart.innerHTML = ''
+     let totalCart = document.createElement('div');
+     totalCart.setAttribute('class', 'generatedTotalContainer');
+     totalCart.innerHTML = '';
      totalCart.innerHTML = `
                     <div class="total">
                         <div class="space"></div>
                         <h2 class="p-1">Total</h2>
                         <h2 id="cart-total" class="p-1">$${totalPriceOfCart(0)}</h2>
                     </div>
-                    <div class="total"><button class="button buyButton w-50">COMPRAR</button></div>`
+                    <div class="total"><button class="button buyButton w-50">COMPRAR</button></div>`;
 
      mainCartContainer.append(totalCart);
  }
@@ -137,8 +141,8 @@
  // ==========  CHANGE TOTAL WITH DELETE  ==========
 
  function changeTotalWithDelete() {
-     let numerototal = document.querySelector('#cart-total')
-     numerototal.innerHTML = `$${totalPriceOfCart(0)}`
+     let numerototal = document.querySelector('#cart-total');
+     numerototal.innerHTML = `$${totalPriceOfCart(0)}`;
  }
 
 
@@ -150,25 +154,25 @@
 
          button.addEventListener('click', (e) => {
              let buttonForDelete = e.target;
-             let selectedItem = buttonForDelete.closest('.itemForBuy')
+             let selectedItem = buttonForDelete.closest('.itemForBuy');
              let nameOfTheItem = selectedItem.querySelector('.nameOfThisProd').textContent;
              for (let i = 0; i < cart.length; i++) {
                  if (cart[i].name.trim() === nameOfTheItem.trim()) {
                      cart.splice(i, 1);
-                     selectedItem.remove()
-                     saveObjectsToCart()
+                     selectedItem.remove();
+                     saveObjectsToCart();
                  }
              }
 
-             let containerTable = document.querySelector('.table')
-             let containerTotal = document.querySelector('.generatedTotalContainer')
-             totalPriceOfCart()
-             changeTotalWithDelete()
+             let containerTable = document.querySelector('.table');
+             let containerTotal = document.querySelector('.generatedTotalContainer');
+             totalPriceOfCart();
+             changeTotalWithDelete();
 
              if (cart.length == 0) {
-                 containerTable.remove()
-                 containerTotal.remove()
-                 emptyCart.classList.remove('hide')
+                 containerTable.remove();
+                 containerTotal.remove();
+                 emptyCart.classList.remove('hide');
              }
          });
      });
@@ -178,23 +182,23 @@
  // ==========  CHANGE QUANTITY  ==========
 
  function changeQuantity() {
-     let objQuantityOnCartTab = document.querySelectorAll('.quantityCartInTableInput')
+     let objQuantityOnCartTab = document.querySelectorAll('.quantityCartInTableInput');
      objQuantityOnCartTab.forEach(input => {
          input.addEventListener('change', (e) => {
-             let targetInput = e.target
-             let selectedObjWithInput = targetInput.closest(".itemForBuy")
+             let targetInput = e.target;
+             let selectedObjWithInput = targetInput.closest(".itemForBuy");
              let nameOfObjInput = selectedObjWithInput.querySelector('.nameOfThisProd').textContent;
              cart.forEach(obj => {
                  if (obj.name.trim() === nameOfObjInput.trim()) {
                      targetInput.value < 1 ? targetInput.value = 1 : targetInput.value;
                      obj.quantity = targetInput.value;
-                     totalPriceOfCart()
-                     changeTotalWithDelete()
+                     totalPriceOfCart();
+                     changeTotalWithDelete();
                      saveObjectsToCart();
                  }
-             })
-         })
-     })
+             });
+         });
+     });
  }
 
 
@@ -208,14 +212,14 @@
         <input type="email" class="inputModal mt-3" placeholder="ejemplo@mail.com" required>
         <button type="submit" class="button mt-3 text-center" id="doneButton">FINALIZAR</button>
         <p class="text-center p-2 infoText">Haga click fuera de la ventana para cancelar</p>
-    </form>`)
+    </form>`);
 
-     let done = document.querySelector('#doneButton').addEventListener('click', checkValid)
+     let done = document.querySelector('#doneButton').addEventListener('click', checkValid);
 
      function checkValid() {
          let inputForValidation = document.querySelector('.inputModal');
          if (inputForValidation.validity.valid) {
-             cart = []
+             cart = [];
              saveObjectsToCart();
              window.location.reload();
          }
@@ -234,7 +238,7 @@
          conditionDesc: objCondDescParam,
          price: objPriceParam,
          quantity: 1,
-     }
+     };
 
      addThisElementToCart(objectCart);
 
@@ -248,5 +252,13 @@
          durations: {
              success: 3000
          }
-     })
+     });
+ }
+
+
+ // ==========  BUY BUTTON  ==========
+
+ function getBuyButton() {
+     let buyButton = document.querySelector('.buyButton');
+     buyButton.addEventListener('click', confirmationModal);
  }

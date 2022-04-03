@@ -2,7 +2,7 @@
 
 // ==========  GET CART FROM STORAGE  ==========
 
-cartFromStorage()
+cartFromStorage();
 
 
 // ==========  IF THE CART IS EMPTY  ==========
@@ -15,15 +15,9 @@ cart.length > 0 && createListInCart();
 
 // ==========  DELETE ITEM ON CART  ==========
 
-deleteItemOnCart()
+deleteItemOnCart();
 
 
 // ==========  CHANGE QUANTITY  ==========
 
-changeQuantity()
-
-
-// ==========  BUY BUTTON  ==========
-
-let buyButton = document.querySelector('.buyButton')
-buyButton.addEventListener('click', confirmationModal)
+changeQuantity();
