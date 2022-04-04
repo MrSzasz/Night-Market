@@ -8,7 +8,7 @@
  cartFromStorage();
 
 
- // ==========  GET DATA FROM JSON  ==========
+ // ==========  GET DATA FROM JSON WITH ASYNC  ==========
 
  let url = "../data/productList.json";
 
