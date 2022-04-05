@@ -1,4 +1,7 @@
  /* */
+ 
+
+ // ==========  VIDEO JS INIT  ==========
 
  videojs.options.autoplay = false;
  videojs.options.volume = 0;
@@ -341,6 +344,5 @@
          console.log('Se produjo un error: ', err);
      }
  };
-
 
  createShopAsync();

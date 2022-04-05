@@ -1,5 +1,9 @@
  /* */
 
+
+ // =============================================  ON LOAD  ============================================= //
+
+
  window.onload = () => {
 
      // ==========  GET LINK  ==========
@@ -10,7 +14,7 @@
      // ==========  ONLOAD ANIMATION  ==========
 
      if (page == 'index.html') {
-         let screen = $(window).width()
+         let screen = $(window).width();
          let preloaderContainer = document.querySelector('.preloader');
 
          anime({
@@ -19,47 +23,52 @@
              easing: 'easeOutSine',
              delay: 666,
              duration: 6000,
-         })
+         });
          anime({
              targets: '.preloaderLeft',
              translateX: -(screen + 100),
              easing: 'easeOutSine',
              delay: 666,
              duration: 6000,
-         })
+         });
+
+         // ==========  ANIMATION FOR INDEX  ==========
 
          let loadingSvg = document.querySelector('.preloaderSvg');
          setTimeout(() => {
-             loadingSvg.classList.toggle('fade')
+             loadingSvg.classList.toggle('fade');
          }, 400);
 
          let panelRight = document.querySelector('.preloaderRight');
          setTimeout(() => {
-             panelRight.classList.toggle('borderLeft')
+             panelRight.classList.toggle('borderLeft');
          }, 666);
 
          let panelLeft = document.querySelector('.preloaderLeft');
          setTimeout(() => {
-             panelLeft.classList.toggle('borderRight')
+             panelLeft.classList.toggle('borderRight');
          }, 666);
 
          setTimeout(() => {
-             preloaderContainer.classList.add('hide')
-         }, 3000)
+             preloaderContainer.classList.add('hide');
+         }, 3000);
          up({
              src: './scripts/libraries/upButton/chevron-up-solid.svg',
          });
      } else {
-         let topFromOtherPage = localStorage.getItem('top')
-         let leftFromOtherPage = localStorage.getItem('left')
-         fadeInTransition(topFromOtherPage, leftFromOtherPage)
-         let preloadForAnim = document.querySelector('.blackBeforeLoading')
+
+         // ==========  ANIMATION FOR OTHER PAGES  ==========
+
+         let topFromOtherPage = localStorage.getItem('top');
+         let leftFromOtherPage = localStorage.getItem('left');
+         fadeInTransition(topFromOtherPage, leftFromOtherPage);
+         let preloadForAnim = document.querySelector('.blackBeforeLoading');
          setTimeout(() => {
-             preloadForAnim.classList.add('hide')
+             preloadForAnim.classList.add('hide');
          }, 50);
 
          function fadeInTransition(lastTop = '50%', lastLeft = '50%') {
-             let screenWidth = ($(window).width() * 2)
+             let screenWidth = ($(window).width() * 2);
              let e = document.createElement('div');
              e.setAttribute('class', 'animOut'), document.body.appendChild(e), e.style.top = lastTop, e.style.left = lastLeft;
              $(".animOut").css({
@@ -74,37 +83,43 @@
                  duration: 1500,
              });
              setTimeout(() => {
-                 e.classList.add('hide')
+                 e.classList.add('hide');
              }, 1500);
          }
+
+         // ==========  UP BUTTON  ==========
+
          up({
              src: '../scripts/libraries/upButton/chevron-up-solid.svg',
              whenShow: 300
-         })
+         });
      }
 
- }
+ };
 
- let notifier = new AWN()
 
- 
+ // ==========  AWESOME NOTIFICATIONS INIT  ==========
+
+ let notifier = new AWN();
+
+
  // ==========  LINK TO OTHER PAGES  ==========
 
- goToPageWithAnimation()
+ goToPageWithAnimation();
 
 
  // ==========  LOADING ANIMATION FADE OUT  ==========
 
  let fadeOutTransition = () => {
-     let screenWidth = ($(window).width() * 2)
+     let screenWidth = ($(window).width() * 2);
      let e = document.createElement('div');
      e.setAttribute('class', 'animOut'), document.body.appendChild(e), e.style.top = event.pageY + 'px', e.style.left = event.pageX + 'px';
-     localStorage.setItem('top', e.style.top)
-     localStorage.setItem('left', e.style.left)
+     localStorage.setItem('top', e.style.top);
+     localStorage.setItem('left', e.style.left);
      $(".animOut").css({
          "width": screenWidth,
          "height": screenWidth
-     })
+     });
      anime({
          targets: '.animOut',
          width: '0px',
@@ -112,9 +127,12 @@
          easing: 'easeOutCubic',
          duration: 1500,
      });
- }
+ };
 
- let linksForAnimation = document.querySelectorAll('.detectPageRedirect')
+
+ // ==========  ANIMATION BETWEEN PAGES  ==========
+
+ let linksForAnimation = document.querySelectorAll('.detectPageRedirect');
  linksForAnimation.forEach(button => {
-     button.addEventListener('click', fadeOutTransition)
- })
+     button.addEventListener('click', fadeOutTransition);
+ });
