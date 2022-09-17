@@ -28,7 +28,7 @@
          objectsFromTheList.forEach(obj => {
 
              let createCard = document.createElement('div');
-             createCard.classList.add('card', 'text-center', 'd-flex');
+             createCard.classList.add('card', 'text-center');
              createCard.setAttribute('data-inCart', false);
 
              obj.blessing ? createCard.classList.add('blessing') : createCard.classList.add('curse');
@@ -36,9 +36,9 @@
              createCard.innerHTML = `
                      <img src="${obj.img}" data-img-url-2="${obj.img2}" data-img-url-3="${obj.img3}" class="card-img-top cardObjImg" alt="${obj.name}">
                      <div class="card-body">
-                         <h2 class="card-title text-center cardObjName flex-fill" data-curse="${obj.curse}" data-curse-anim="${obj.animCurse}" data-blessing="${obj.blessing}" data-condition-desc="${obj.conditionDesc}" data-condition-text="${obj.description}">${obj.name}</h2>
-                         <p class="card-text text-center cardObjPrice align-items-center flex-fill">$${obj.price}.</p>
-                         <a class="btn button cardObjButton btn-primary flex-fill" data-type="${obj.type}">AGREGAR AL CARRITO</a>
+                         <h2 class="card-title text-center cardObjName" data-curse="${obj.curse}" data-curse-anim="${obj.animCurse}" data-blessing="${obj.blessing}" data-condition-desc="${obj.conditionDesc}" data-condition-text="${obj.description}">${obj.name}</h2>
+                         <p class="card-text text-center cardObjPrice">$${obj.price}.</p>
+                         <a class="btn button cardObjButton" data-type="${obj.type}">AGREGAR AL CARRITO</a>
                      </div>
  `;
 
@@ -124,40 +124,7 @@
 
                      if (modalObjForCurseAnim == 'true') {
                          switch (modalObjForBuyName.trim()) {
-
-                             case 'Anillo Estelar':
-
-                                 let starsOnStorage = sessionStorage.getItem(modalObjForBuyName);
-                                 if (starsOnStorage == 'true') {
-                                     buyObject(modalObjForBuyImg, modalObjForBuyName, modalObjForBuyCurse, modalObjForBuyBlessing, modalObjForBuyCondDesc, modalObjForBuyPrice);
-
-                                 } else {
-
-                                     let curseAnim = document.querySelector('.curseAnim');
-                                     curseAnim.classList.toggle('hide');
-                                     $(".curseAnim").css({
-                                         'background-image': 'url(../resources/shop/curses/space1.gif)',
-                                         'background-position': 'center',
-                                         'background-size': 'cover',
-                                         'background-repeat': 'no-repeat',
-                                     });
-                                     anime({
-                                         targets: '.curseAnim',
-                                         backgroundSize: ['100%', '110%'],
-                                         easing: 'linear',
-                                         duration: 5000
-                                     });
-                                     setTimeout(() => {
-                                         curseAnim.classList.toggle('hide');
-                                         buyObject(modalObjForBuyImg, modalObjForBuyName, modalObjForBuyCurse, modalObjForBuyBlessing, modalObjForBuyCondDesc, modalObjForBuyPrice);
-                                         $(".curseAnim").css({
-                                             'background-image': 'none',
-                                         });
-                                         sessionStorage.setItem(modalObjForBuyName, true);
-                                     }, 5000);
-                                 }
-                                 break;
-
+                            
                              case 'Anillo de la demencia':
 
                                  let madOnStorage = sessionStorage.getItem(modalObjForBuyName);
