@@ -104,7 +104,7 @@
      let cartListThead = document.createElement('thead');
      cartListThead.innerHTML = `
                         <tr>
-                            <th scope="col" class="text-center headProd" colspan="2">PRODUCTO</th>
+                            <th scope="col" class="text-center headProd">PRODUCTO</th>
                             <th scope="col" class="headPrice text-center">PRECIO</th>
                             <th scope="col" class="headQuantity text-center">CANTIDAD</th>
                             <th scope="col" class="headCondition text-center">ELIMINAR</th>
@@ -123,8 +123,12 @@
          cartListTr.setAttribute('class', 'itemForBuy');
          cartListTr.innerHTML = '';
          cartListTr.innerHTML = `
-                   <td class="imgCartInTable text-center align-middle w-25 ps-0"><img class="containerImgForCurse ${blessingForContainer ? 'blessing' : 'curse'}" src="${productOnCart.img}" src="${productOnCart.img}" alt="${productOnCart.name}"></td>
-                   <td class="productCartInTable align-middle"><p class="nameOfThisProd">${productOnCart.name}</p><p>${productOnCart.conditionDesc}</p></td>
+                <td class="containerProductAndImage">
+                    <img class="ImgForCurse ${blessingForContainer ? 'blessing' : 'curse'}" src="${productOnCart.img}" src="${productOnCart.img}" alt="${productOnCart.name}"></tdclass=>
+                    <div class="textProduct">
+                        <p class="nameOfThisProd">${productOnCart.name}</p><p>${productOnCart.conditionDesc}</p>
+                    </div></td>
+                </td>
                    <td class="priceCartInTable text-center align-middle">$${productOnCart.price}</td>
                    <td class="quantityCartInTable text-center align-middle w-auto">
                        <input type="number" min="1" value="${productOnCart.quantity}" class="w-25 quantityCartInTableInput" id="quantityCartInTable">
@@ -256,8 +260,8 @@
  function confirmationModal() {
      new AWN().modal(`
     <form class="containerBuy text-center">
-        <h1 class="text-center h4 h1Modal p-4">= Gracias por confiar en nosotros =</h1>
-        <p class="h5 text-center">Ingrese su mail a continuación y se le contactara a la brevedad</p>
+        <h1 class="text-center">= Gracias por confiar en nosotros =</h1>
+        <p class="text-center">Ingrese su mail a continuación y se le contactara a la brevedad</p>
         <input type="email" class="inputModal mt-3" placeholder="ejemplo@mail.com" required>
         <button type="submit" class="button mt-3 text-center" id="doneButton">FINALIZAR</button>
         <p class="text-center p-2 infoText">Haga click fuera de la ventana para cancelar</p>

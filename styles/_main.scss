@@ -1,5 +1,8 @@
 @import '../styles/_variables.scss';
 
+
+// =================================================  INDEX  ================================================== //
+
 .mainContainer {
     grid-column: 2/3;
     background-color: $background;
@@ -65,4 +68,38 @@
 }
 
 
-@media only screen and (max-width: 500px) {}
+// =================================================  MEDIA QUERIES  ================================================== //
+
+@media only screen and (max-width: 500px) {
+    .mainContainer {
+        .parallax {
+            min-height: 300px;
+            margin-block: .5em;
+
+            h1 {
+                text-align: center;
+                width: 80%;
+                font-size: 23px;
+            }
+        }
+
+        .containerTextAndImg {
+            flex-direction: column;
+
+            .imgRitual {
+                width: 80%;
+                height: auto;
+            }
+
+            .imgSeekers {
+                width: 100%;
+                height: auto;
+            }
+        }
+
+        p {
+            padding: 0;
+            padding-block: .5em;
+        }
+    }
+}

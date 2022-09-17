@@ -33,6 +33,7 @@
     transition: ease all .25s;
     font-family: logoFont;
     background-color: $background;
+    color: $white;
 
     &:hover {
         background-color: $black;

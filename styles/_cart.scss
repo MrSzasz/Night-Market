@@ -1,6 +1,8 @@
  @import '../styles/_variables.scss';
 
 
+ // =================================================  CART  ================================================== //
+
  .containerCart {
      grid-column: 2/3;
      background-color: $background;
@@ -42,17 +44,22 @@
              color: $white;
 
              tr {
-                 .headProd {
-                     width: 60%;
+                 th {
+                     height: fit-content;
+                     width: fit-content;
                  }
 
-                 .headPrice,
-                 .headCondition {
-                     width: 10%;
-                 }
+                 .containerProductAndImage {
+                     display: flex;
+                     gap: .5em;
 
-                 .headQuantity {
-                     width: 20%;
+                     .textProduct {
+                         text-align: center;
+                         display: flex;
+                         flex-direction: column;
+                         justify-content: center;
+                         align-items: center;
+                     }
                  }
 
                  &:hover {
@@ -65,6 +72,8 @@
              }
 
              tbody {
+                 min-height: fit-content;
+
                  td {
                      .quantityCartInTableInput {
                          background-color: $background;
@@ -122,11 +131,152 @@
          align-items: center;
          justify-content: center;
          gap: 1em;
-
-         button {
-             color: $white !important;
-         }
      }
  }
 
- @media only screen and (max-width: 500px) {}
+ // =================================================  MODAL  ================================================== //
+
+ .containerBuy {
+     h1 {
+         font-family: logoFont;
+         text-align: center;
+     }
+
+     p {
+         font-size: 20px;
+         margin: 0;
+     }
+
+     .inputModal {
+         width: 100%;
+         border: 2px solid $black;
+         border-radius: 10px;
+         text-align: center;
+         height: fit-content;
+         transition: ease all .25s;
+         background-color: $background;
+         color: $white;
+         font-size: 20px;
+         padding: .5em;
+
+         &:focus-visible {
+             outline: 2px solid $purple;
+         }
+     }
+
+     button {
+         width: 100%;
+     }
+
+     .infoText {
+         color: $gray;
+         font-size: 13px;
+     }
+ }
+
+
+ // =================================================  MEDIA QUERIES  ================================================== //
+
+ @media only screen and (max-width: 500px) {
+     .containerCart {
+         .mainCart {
+             row-gap: 10px;
+
+             .noItemsCart {
+                 gap: .5em;
+                 text-align: center;
+
+                 .openPouch {
+                     img {
+                         height: 55px;
+                     }
+                 }
+             }
+
+             table {
+                 tr {
+                     th {
+                         padding-block: .5em;
+                         padding-inline: .3em;
+                         font-size: 12px;
+                     }
+
+                     .containerProductAndImage {
+                         display: flex;
+                         flex-direction: column;
+                         gap: .5em;
+
+                         img {
+                             width: 80%;
+                             height: auto;
+                             margin-inline: auto;
+                         }
+
+                         .textProduct {
+                             gap: .5em;
+
+                             p {
+                                 margin: 0;
+                             }
+                         }
+                     }
+
+                     .quantityCartInTable {
+                         input {
+                             width: 100% !important;
+                         }
+                     }
+                 }
+
+                 tbody {
+                     td {
+                         font-size: 14px;
+
+                         .productCartInTable {
+                             width: fit-content;
+                         }
+                     }
+                 }
+             }
+         }
+
+         .total {
+             width: 100%;
+             justify-content: space-around;
+             padding: 0;
+         }
+     }
+
+
+     // =================================================  MODAL  ================================================== //
+
+     .containerBuy {
+         h1 {
+             font-size: 18px;
+             width: fit-content;
+             padding: 0;
+         }
+
+         p {
+             font-size: 16px;
+             margin: 0;
+         }
+
+         .inputModal {
+             width: 100%;
+             border: 2px solid $black;
+             border-radius: 10px;
+             text-align: center;
+             height: fit-content;
+             transition: ease all .25s;
+             background-color: $background;
+             color: $white;
+             font-size: 20px;
+             padding: .5em;
+
+             &:focus-visible {
+                 outline: 2px solid $purple;
+             }
+         }
+     }
+ }

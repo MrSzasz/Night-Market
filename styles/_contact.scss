@@ -1,5 +1,8 @@
  @import '../styles/variables';
 
+
+ // =================================================  CONTACT  ================================================== //
+
  .backgroundContact {
      background-image: url(../resources/contact/forest.jpg);
      background-position: center;
@@ -96,6 +99,7 @@
      }
  }
 
+
  // ==========  AUTO COMPLETE CSS  ==========
 
  input:-webkit-autofill,
@@ -114,4 +118,38 @@
  }
 
 
- @media only screen and (max-width: 500px) {}
+ // =================================================  MEDIA QUERIES  ================================================== //
+
+ @media only screen and (max-width: 500px) {
+     .backgroundContact {
+         background-image: none;
+         background-color: $background;
+         padding-block: 0em;
+
+         .form {
+             height: min-content;
+             width: 100%;
+             border-radius: 10px;
+             opacity: 1;
+
+             h1 {
+                 text-align: center;
+                 font-size: 20px;
+             }
+
+             form {
+                 padding: .5em;
+                 gap: .5em;
+             }
+
+             .logoForm {
+                 padding: .5em;
+                 padding-top: 0;
+
+                 img {
+                     height: 40px;
+                 }
+             }
+         }
+     }
+ }
