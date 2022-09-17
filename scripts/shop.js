@@ -108,9 +108,8 @@
                  // ==========  BUY IN MODAL ==========
 
                  let buttonForBuyInModal = document.querySelector('#buttonForBuyInModal');
-                 console.log(buttonForBuyInModal)
                  buttonForBuyInModal.addEventListener('click', (e) => {
-                     let modalContainer = buttonForBuyInModal.closest('.infoOfObject');
+                     let modalContainer = buttonForBuyInModal.closest('.infoOfObjectContainer');
 
                      let modalObjForBuyImg = modalContainer.querySelector('.objModalImg').src;
                      let modalObjForBuyCurse = modalContainer.querySelector('.objModalImg').getAttribute('data-curse');
