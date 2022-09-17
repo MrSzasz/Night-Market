@@ -91,7 +91,8 @@
 
                  let objPrice = Number(clickedImgContainer.querySelector('.cardObjPrice').textContent.replace('$', ''));
 
-                 new AWN().modal(`<div class="infoOfObject">
+                 new AWN().modal(`<div class="infoOfObjectContainer">
+                 <div class="infoOfObject">
          <div class="containerImg d-flex align-items-center flex-column"><img class="text-center objModalImg" data-curse="${objCurse}" data-blessing="${objBlessing}" data-condition-desc="${objCondDesc}" data-curse-anim="${objAnimCurse}" data-img-url-2="${objImg2}" data-img-url-3="${objImg3}" src="${objImg}" alt="${objName}"><p class="text-center p-2 infoText">Haga click en la imagen para agrandar</p></div>
          <div class="containerText">
              <h1 class="text-center objModalName h3 mt-3">${objName}</h1>
@@ -99,6 +100,7 @@
                  <p class="text-justify objModalDesc p-3">${objCondText}</p>
                  <p class="objModalPrice px-3 text-start">$${objPrice}</p>
              </div>
+         </div>
          </div>
          <div class="containerButton text-center m-3"><button class="button buttonForBuyInModal text-center">Agregar al carrito</button><p class="text-center p-2 infoText">Haga click fuera de la ventana para cerrar</p></div>
      </div>`);

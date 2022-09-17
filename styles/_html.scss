@@ -1,0 +1,197 @@
+ @import '../styles/variables';
+
+
+ // =================================================  HTML  ================================================== //
+
+ html {
+     scroll-behavior: smooth;
+ }
+
+ ::selection {
+     background-color: $white;
+     color: $background;
+ }
+
+ a {
+     text-decoration: none;
+     color: $white;
+     transition: ease all .25s;
+
+     &:hover {
+         color: $purple !important;
+     }
+ }
+
+ h2 {
+     background-color: $black;
+     text-align: center;
+     margin: .5em 0;
+     padding: .5em;
+ }
+
+ .blackBeforeLoading {
+     background-color: $background;
+     position: fixed;
+     height: 100vh;
+     width: 100vw;
+     z-index: 10000;
+     overflow: hidden;
+ }
+
+ .preloader {
+     position: fixed;
+     height: 100vh;
+     width: 100vw;
+     z-index: 10000;
+
+     .preloaderTab {
+         background-color: $background;
+         position: absolute;
+         height: 100vh;
+         width: 50vw;
+     }
+
+     .preloaderLeft {
+         left: 0%;
+     }
+
+     .preloaderRight {
+         right: 0%;
+     }
+
+     .preloaderSvg {
+         opacity: 1;
+     }
+
+     .fade {
+         opacity: 0;
+     }
+ }
+
+ .borderLeft {
+     border-left: 2px solid $white;
+ }
+
+ .borderRight {
+     border-right: 2px solid $white;
+ }
+
+ body {
+     background-color: $background;
+     color: $white;
+     display: grid;
+     grid-template-rows: min-content min-content min-content;
+     row-gap: 20px;
+     font-family: 'EB Garamond',
+         serif;
+     font-size: 20px;
+     min-height: 100vh;
+
+     main {
+         grid-row: 2/3;
+         display: grid;
+         grid-template-columns: 10% auto 10%;
+         height: min-content;
+     }
+ }
+
+ .disabled {
+     background-color: $background;
+ }
+
+ //  @media only screen and (max-width: 500px) {
+ //      h2 {
+ //          margin: 10px 0 10px 0;
+ //          text-align: center;
+ //          padding: 20px;
+ //          background-color: $black;
+ //      }
+
+ //      .blackBeforeLoading {
+ //          position: fixed;
+ //          background-color: $background;
+ //          height: 100vh;
+ //          width: 100vw;
+ //          z-index: 10000;
+ //          overflow: hidden;
+ //      }
+
+ //      .preloader {
+ //          position: fixed;
+ //          height: 100vh;
+ //          width: 100%;
+ //          z-index: 10000;
+
+ //          .preloaderLeft {
+ //              position: absolute;
+ //              height: 100%;
+ //              width: 50%;
+ //              left: 0%;
+ //              background-color: $background;
+ //          }
+
+ //          .preloaderRight {
+ //              position: absolute;
+ //              height: 100%;
+ //              width: 50%;
+ //              right: 0%;
+ //              background-color: $background;
+ //          }
+
+ //          .preloaderSvg {
+ //              opacity: 1;
+ //          }
+
+ //          .fade {
+ //              opacity: 0;
+ //          }
+ //      }
+
+ //      .borderLeft {
+ //          border-left: 2px solid $white;
+ //      }
+
+ //      .borderRight {
+ //          border-right: 2px solid $white;
+ //      }
+
+ //      body {
+ //          background-color: $background;
+ //          color: $white;
+ //          display: grid;
+ //          grid-template-rows: min-content min-content min-content;
+ //          row-gap: 20px;
+ //          font-family: 'EB Garamond',
+ //              serif;
+ //          font-size: 20px;
+
+ //          main {
+ //              grid-row: 2/3;
+ //              display: grid;
+ //              grid-template-columns: 10% auto 10%;
+ //              height: min-content;
+ //          }
+ //      }
+
+ //      .button {
+ //          padding: 13px;
+ //          border: 2px solid $black;
+ //          border-radius: 10px;
+ //          text-align: center;
+ //          width: 70%;
+ //          transition: ease all .25s;
+ //          font-family: logoFont;
+ //          background-color: $background;
+ //          color: $white;
+
+ //          &:hover {
+ //              background-color: $black;
+ //              color: $white;
+ //              border: 2px solid $purple;
+ //          }
+ //      }
+
+ //      .disabled {
+ //          background-color: $background;
+ //      }
+ //  }

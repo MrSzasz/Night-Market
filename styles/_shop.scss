@@ -1,0 +1,89 @@
+ @import '../styles/variables';
+
+
+ .mainContainer {
+     .alert {
+         z-index: 10;
+     }
+
+     .contentShop {
+         height: min-content;
+         display: grid;
+         grid-column: 2/3;
+
+
+         .filterShop {
+             grid-row: 1/2;
+             background-color: $black;
+             //  height: 100%;
+         }
+
+         .displayShop {
+             height: min-content;
+             background-color: $black;
+             grid-row: 2/3;
+             display: flex;
+             flex-wrap: wrap;
+             justify-content: space-around;
+             row-gap: 10px;
+             padding: 10px;
+
+             .card {
+                 background-color: $black;
+                 width: 23%;
+                 height: 510px;
+
+                 .cardObjName {
+                     font-family: logoFont;
+                     padding: 0%;
+                     font-size: 18px;
+                     height: 66px;
+                 }
+
+                 .cardObjPrice {
+                     font-size: 25px;
+                     margin: 0%;
+                 }
+
+                 .cardObjButton {
+                     position: absolute;
+                     bottom: 3%;
+                     left: 50%;
+                     transform: translateX(-50%);
+                     z-index: 100;
+                 }
+
+                 .cardObjImg {
+                     cursor: pointer;
+                     transition: ease all .25s;
+
+                     &:hover {
+                         border: 2px solid $white;
+                         filter: brightness(1.15) blur(2px);
+                     }
+                 }
+             }
+
+             .card-text {
+                 padding: 10px;
+             }
+         }
+     }
+ }
+
+ .blessing {
+     border: 2px solid $blessing;
+ }
+
+ .curse {
+     border: 2px solid $curse;
+ }
+
+ .hide {
+     display: none;
+ }
+
+ 
+ @media only screen and (max-width: 500px) {
+   
+}

@@ -1,0 +1,132 @@
+ @import '../styles/_variables.scss';
+
+
+ .containerCart {
+     grid-column: 2/3;
+     background-color: $background;
+     height: max-content;
+
+     .mainCart {
+         height: min-content;
+         display: flex;
+         flex-direction: column;
+         background-color: $black;
+         row-gap: 15px;
+
+         .hide {
+             position: absolute;
+             top: -100vh;
+             z-index: -10;
+         }
+
+         .noItemsCart {
+             width: 100%;
+             height: 90vh;
+             display: flex;
+             flex-direction: column;
+             justify-content: center;
+             align-items: center;
+             gap: 1em;
+
+             .openPouch {
+                 img {
+                     height: 100px;
+                     width: auto;
+                 }
+             }
+         }
+
+         table {
+             margin: 0;
+             background-color: $black;
+             color: $white;
+
+             tr {
+                 .headProd {
+                     width: 60%;
+                 }
+
+                 .headPrice,
+                 .headCondition {
+                     width: 10%;
+                 }
+
+                 .headQuantity {
+                     width: 20%;
+                 }
+
+                 &:hover {
+                     background-color: $background;
+
+                     td {
+                         color: $white;
+                     }
+                 }
+             }
+
+             tbody {
+                 td {
+                     .quantityCartInTableInput {
+                         background-color: $background;
+                         text-align: center;
+                         color: $white;
+                         border: 2px solid $white;
+                         border-radius: 6px;
+                     }
+
+                     .imgCartInTable {
+                         width: 10%;
+                         height: 100px;
+                     }
+
+                     .productCartInTable {
+                         width: 90%;
+                     }
+
+                     input::-webkit-outer-spin-button,
+                     input::-webkit-inner-spin-button {
+                         -webkit-appearance: none;
+                         margin: 0;
+                     }
+                 }
+             }
+
+             .table-active {
+                 color: $white;
+             }
+
+             img {
+                 height: 130px;
+                 width: 130px;
+             }
+         }
+     }
+
+     .total {
+         width: 100%;
+         padding-right: 2em;
+         height: min-content;
+         background-color: $black;
+         display: flex;
+         align-items: center;
+         justify-content: end;
+         gap: 1em;
+     }
+
+     .totalButtonContainer {
+         width: 100%;
+         padding-block: .5em;
+         height: min-content;
+         background-color: $black;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         gap: 1em;
+
+         button {
+             color: $white !important;
+         }
+     }
+ }
+
+ @media only screen and (max-width: 500px) {}

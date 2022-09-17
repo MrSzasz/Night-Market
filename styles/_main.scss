@@ -1,0 +1,68 @@
+@import '../styles/_variables.scss';
+
+.mainContainer {
+    grid-column: 2/3;
+    background-color: $background;
+    height: min-content;
+
+    .parallax {
+        background-position: center;
+        background-size: cover;
+        background-attachment: fixed;
+        width: 100%;
+        min-height: 400px;
+        filter: grayscale(100%);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        h1 {
+            margin: 0;
+            font-family: logoFont;
+            color: $black;
+            text-shadow: 0px 0px 4px $white;
+            font-size: 36.66px;
+        }
+    }
+
+    .parallax1 {
+        background-image: url(../resources/index/parallax/parallax1.jpg);
+    }
+
+    .parallax2 {
+        background-image: url(../resources/index/parallax/parallax2.jpg);
+    }
+
+    .parallax3 {
+        background-image: url(../resources/index/parallax/parallax3.jpg);
+    }
+
+    .containerTextAndImg {
+        display: flex;
+        align-items: center;
+        line-height: 1.5em;
+
+        .textTandI {
+            width: fit-content;
+            margin: 0;
+        }
+
+        .imgRitual {
+            width: 35%;
+            height: auto;
+        }
+
+        .imgSeekers {
+            width: 70%;
+            height: auto;
+        }
+    }
+
+    p {
+        padding: 1.5em;
+        text-align: justify;
+    }
+}
+
+
+@media only screen and (max-width: 500px) {}

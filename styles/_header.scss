@@ -1,0 +1,76 @@
+ @import '../styles/_variables.scss';
+
+ header {
+     background-color: $background;
+     height: min-content;
+     width: 100%;
+     grid-row: 1/2;
+
+     .containerLogo {
+         height: min-content;
+         width: fit-content;
+         padding: 1em;
+         margin-inline: auto;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+
+         .logo {
+             img {
+                 height: 80px;
+                 width: auto;
+             }
+         }
+
+         .logoText {
+             font-family: logoFont;
+             font-size: 40px;
+         }
+     }
+
+     nav {
+         background-color: $black;
+         height: max-content;
+         width: 80%;
+         font-family: logoFont;
+         display: flex;
+         align-items: center;
+         margin-inline: auto;
+
+         ul {
+             width: 100%;
+             padding-block: .5em;
+             list-style: none;
+             display: flex;
+             justify-content: space-around;
+             margin: 0;
+
+             li {
+                 a {
+                     color: $white;
+                     font-size: 18px;
+                     transition: ease all .25s;
+
+                     &:hover {
+                         color: $purple;
+                     }
+
+                 }
+
+                 .img {
+                     height: 30px;
+                     width: 30px;
+                     transition: ease all .25s;
+                     background-image: url(../resources/nav/pouch.svg);
+
+                     &:hover {
+                         background-image: url(../resources/nav/pouchHover.svg);
+                     }
+                 }
+             }
+         }
+     }
+ }
+
+
+ @media only screen and (max-width: 500px) {}

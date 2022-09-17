@@ -1,0 +1,117 @@
+ @import '../styles/variables';
+
+ .backgroundContact {
+     background-image: url(../resources/contact/forest.jpg);
+     background-position: center;
+     background-size: cover;
+     background-repeat: no-repeat;
+     padding-block: 1em;
+
+     .form {
+         height: min-content;
+         width: fit-content;
+         background-color: $black;
+         border-radius: 10px;
+         width: 70%;
+         margin-inline: auto;
+         display: flex;
+         flex-direction: column;
+         justify-content: center;
+         align-items: center;
+         opacity: .95;
+
+         h1 {
+             font-size: 36.66px;
+         }
+
+         form {
+             height: fit-content;
+             display: flex;
+             flex-direction: column;
+             justify-content: center;
+             align-items: center;
+             gap: .5em;
+
+             input,
+             select {
+                 background-color: $background;
+                 color: $white;
+                 text-align: center;
+                 border: 2px solid $black;
+                 border-radius: 10px;
+                 width: 100%;
+                 padding: .5em 2.5em;
+                 transition: ease all .25s;
+
+                 &:focus-visible {
+                     outline: 2px solid $purple;
+                 }
+
+                 option {
+                     background-color: $background;
+                     color: $white;
+                 }
+             }
+
+             textarea {
+                 border: 2px solid $black;
+                 border-radius: 10px;
+                 text-align: center;
+                 width: 100%;
+                 background-color: $background;
+                 color: $white;
+                 transition: ease all .25s;
+                 text-align: start;
+
+                 &::placeholder {
+                     text-align: center;
+                 }
+
+                 &:focus-visible {
+                     outline: 2px solid $purple;
+                 }
+             }
+
+             span {
+                 font-style: oblique;
+                 color: $white;
+             }
+
+             .button {
+                 @extend .button;
+             }
+         }
+
+         .logoForm {
+             height: min-content;
+             width: min-content;
+             padding: 1em;
+
+             img {
+                 opacity: .5;
+                 height: 59px;
+                 width: auto;
+             }
+         }
+     }
+ }
+
+ // ==========  AUTO COMPLETE CSS  ==========
+
+ input:-webkit-autofill,
+ input:-webkit-autofill:hover,
+ input:-webkit-autofill:focus,
+ textarea:-webkit-autofill,
+ textarea:-webkit-autofill:hover,
+ textarea:-webkit-autofill:focus,
+ select:-webkit-autofill,
+ select:-webkit-autofill:hover,
+ select:-webkit-autofill:focus {
+     border: $purple;
+     -webkit-text-fill-color: $white;
+     -webkit-box-shadow: 0 0 0px 1000px $background inset;
+     transition: background-color 5000s ease-in-out 0s;
+ }
+
+
+ @media only screen and (max-width: 500px) {}

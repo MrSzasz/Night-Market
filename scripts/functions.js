@@ -170,11 +170,10 @@
      totalCart.innerHTML = '';
      totalCart.innerHTML = `
                        <div class="total">
-                           <div class="space"></div>
                            <h2 class="p-1">Total</h2>
                            <h2 id="cart-total" class="p-1">$${totalPriceOfCart(0)}</h2>
                        </div>
-                       <div class="total"><button class="button buyButton w-50">COMPRAR</button></div>`;
+                       <div class="totalButtonContainer"><button class="button buyButton w-50">COMPRAR</button></div>`;
 
      mainCartContainer.append(totalCart);
  }

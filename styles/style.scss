@@ -1,893 +1,3102 @@
- /* */
-
-
- // =============================================  VARIABLES  ============================================= //
-
- $background: #121212;
- $white: #fbfbfd;
- $black: #1E1E1E;
- $purple: #6600cc;
- $blessing: #68BCD0;
- $curse: #880000;
- $gray: #858585;
-
-
- // =============================================  FONTS  ============================================= //
-
- @font-face {
-     font-family: logoFont;
-     src: url(../resources/fonts/logo.otf);
- }
-
- @font-face {
-     font-family: dragonBorn;
-     src: url(../resources/fonts/dragonAlphabet.ttf);
- }
-
- @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&display=swap');
-
-
- // =============================================  GENERAL CONTENT  ============================================= //
-
- ::selection {
-     background-color: $white;
-     color: $background;
- }
-
-
- // =============================================  DOCUMENT  ============================================= //
-
- html {
-     scroll-behavior: smooth;
-
-     a {
-         text-decoration: none;
-         color: $white;
-
-         &:hover {
-             color: $white;
-         }
-
-     }
-
-     h2 {
-         margin: 10px 0 10px 0;
-         text-align: center;
-         padding: 20px;
-         background-color: $black;
-     }
-
-     body {
-         .toTop {
-             position: fixed;
-             right: 3%;
-             bottom: 25px;
-             height: 50px;
-             width: 50px;
-             border-radius: 50%;
-             background-color: $background;
-             border: 2px solid $white;
-             cursor: pointer;
-             transition: ease all .25s;
-
-             &:hover {
-                 background-color: $black;
-                 border: 2px solid $purple;
-             }
-
-             &:active {
-                 background-color: $white;
-                 color: $background;
-             }
-
-             .upArrow {
-                 line-height: 0;
-                 font-size: 45px;
-             }
-         }
-
-         .blackBeforeLoading {
-             position: fixed;
-             background-color: $background;
-             height: 100vh;
-             width: 100vw;
-             z-index: 10000;
-             overflow: hidden;
-         }
-
-         .preloader {
-             position: fixed;
-             height: 100vh;
-             width: 100%;
-             z-index: 10000;
-
-             .preloaderLeft {
-                 position: absolute;
-                 height: 100%;
-                 width: 50%;
-                 left: 0%;
-                 background-color: $background;
-             }
-
-             .preloaderRight {
-                 position: absolute;
-                 height: 100%;
-                 width: 50%;
-                 right: 0%;
-                 background-color: $background;
-             }
-
-             .preloaderSvg {
-                 opacity: 1;
-             }
-
-             .fade {
-                 opacity: 0;
-             }
-         }
-
-         .borderLeft {
-             border-left: 2px solid $white;
-         }
-
-         .borderRight {
-             border-right: 2px solid $white;
-         }
-
-         background-color: $background;
-         color: $white;
-         display: grid;
-         grid-template-rows: min-content min-content min-content;
-         row-gap: 20px;
-         font-family: 'EB Garamond',
-         serif;
-         font-size: 20px;
-
-         .blessing {
-             border: 2px solid $blessing;
-         }
-
-         .curse {
-             border: 2px solid $curse;
-         }
-
-         .hide {
-             display: none;
-         }
-
-         .button {
-             padding: 13px;
-             border: 2px solid $black;
-             border-radius: 10px;
-             text-align: center;
-             width: 70%;
-             transition: ease all .25s;
-             font-family: logoFont;
-             background-color: $background;
-             color: $white;
-
-             &:hover {
-                 background-color: $black;
-                 color: $white;
-                 border: 2px solid $purple;
-             }
-         }
-
-         .disabled {
-             background-color: $background;
-         }
-
-         header {
-             background-color: $background;
-             height: min-content;
-             width: 100%;
-             grid-row: 1/2;
-
-             .containerLogo {
-                 padding: 15px;
-                 height: min-content;
-                 width: 40%;
-                 margin: auto;
-                 display: flex;
-                 align-items: center;
-                 justify-content: center;
-
-                 .logo {
-                     img {
-                         height: 100px;
-                         width: auto;
-                     }
-                 }
-
-                 .logoText {
-                     font-family: logoFont;
-                     font-size: 40px;
-                 }
-
-             }
-
-             nav {
-                 background-color: $black;
-                 height: 50%;
-                 width: 80%;
-                 font-family: logoFont;
-                 display: flex;
-                 align-items: center;
-                 margin: auto;
-
-                 ul {
-                     padding: 10px 0 10px 0;
-                     width: 100%;
-                     list-style: none;
-                     display: flex;
-                     justify-content: space-around;
-                     margin: 0;
-
-                     li {
-
-                         flex-direction: row;
-
-                         a {
-                             text-decoration: none;
-                             color: $white;
-                             font-size: 18px;
-                             transition: ease all .25s;
-
-                             &:hover {
-                                 color: $purple;
-                             }
-
-                         }
-
-                         .img {
-                             height: 30px;
-                             width: 30px;
-                             transition: ease all .25s;
-                             background-image: url(../resources/nav/pouch.svg);
-
-                             &:hover {
-                                 background-image: url(../resources/nav/pouchHover.svg);
-                             }
-                         }
-                     }
-                 }
-             }
-         }
-
-         main {
-             grid-row: 2/3;
-             display: grid;
-             grid-template-columns: 10% auto 10%;
-             height: min-content;
-
-
-
-             .mainContainer {
-                 grid-column: 2/3;
-                 background-color: $background;
-                 height: 100%;
-
-                 .parallax1 {
-                     background-position: center;
-                     background-size: cover;
-                     background-attachment: fixed;
-                     width: 100%;
-                     height: 400px;
-                     background-image: url(../resources/index/parallax/parallax1.jpg);
-                     filter: grayscale(100%);
-
-                     h1 {
-                         height: 100%;
-                         margin: 0;
-                         display: flex;
-                         align-items: center;
-                         justify-content: center;
-                         font-family: logoFont;
-                         color: $black;
-                         text-shadow: 0px 0px 4px $white;
-                         font-size: 36.66px;
-                     }
-                 }
-
-                 .parallax2 {
-                     background-position: center;
-                     background-size: cover;
-                     background-attachment: fixed;
-                     width: 100%;
-                     height: 400px;
-                     background-image: url(../resources/index/parallax/parallax2.jpg);
-                     filter: grayscale(100%)
-                 }
-
-                 .containerTextAndImg {
-                     display: flex;
-                     padding: 5px 0 5px 0;
-                     align-items: center;
-                     justify-content: center;
-                     line-height: 35px;
-
-                     .textTandI {
-                         width: auto;
-                         margin: 0;
-                     }
-
-                     .imgRitual {
-                         height: auto;
-                         width: 35%;
-                     }
-
-                     .imgSeekers {
-                         height: 70%;
-                         width: auto;
-                     }
-                 }
-
-                 .parallax3 {
-                     background-position: center;
-                     background-size: cover;
-                     background-attachment: fixed;
-                     width: 100%;
-                     height: 400px;
-                     background-image: url(../resources/index/parallax/parallax3.jpg);
-                     filter: grayscale(100%)
-                 }
-
-                 p {
-                     padding: 35.666px;
-                     text-align: justify;
-                 }
-             }
-         }
-     }
- }
-
-
- // =================================================  SHOP  ================================================== //
-
- .mainContainer {
-     .alert {
-         z-index: 10;
-     }
-
-     .contentShop {
-         height: min-content;
-         display: grid;
-         grid-column: 2/3;
-
-
-         .filterShop {
-             grid-row: 1/2;
-             background-color: $black;
-             //  height: 100%;
-         }
-
-         .displayShop {
-             height: min-content;
-             background-color: $black;
-             grid-row: 2/3;
-             display: flex;
-             flex-wrap: wrap;
-             justify-content: space-around;
-             row-gap: 10px;
-             padding: 10px;
-
-             .card {
-                 background-color: $black;
-                 width: 23%;
-                 height: 510px;
-
-                 .cardObjName {
-                     font-family: logoFont;
-                     padding: 0%;
-                     font-size: 18px;
-                     height: 66px;
-                 }
-
-                 .cardObjPrice {
-                     font-size: 25px;
-                     margin: 0%;
-                 }
-
-                 .cardObjButton {
-                     position: absolute;
-                     bottom: 3%;
-                     left: 50%;
-                     transform: translateX(-50%);
-                     z-index: 100;
-                 }
-
-                 .cardObjImg {
-                     cursor: pointer;
-                     transition: ease all .25s;
-
-                     &:hover {
-                         border: 2px solid $white;
-                         filter: brightness(1.15) blur(2px);
-                     }
-                 }
-             }
-
-             .card-text {
-                 padding: 10px;
-             }
-         }
-     }
- }
-
-
- // =================================================  CONTACT  ================================================== //
-
- .backgroundContact {
-     padding: 30px 0 30px 0;
-     background-image: url(../resources/contact/forest.jpg);
-     background-position: center;
-     background-size: cover;
-     background-repeat: no-repeat;
-
-     .form {
-         background-color: $black;
-         border-radius: 10px;
-         height: min-content;
-         width: 60%;
-         margin: auto;
-         display: flex;
-         align-items: center;
-         justify-content: center;
-         flex-direction: column;
-         opacity: .98;
-
-         h1 {
-             font-size: 36.66px;
-         }
-
-         form {
-             display: flex;
-             align-items: center;
-             justify-content: center;
-             flex-direction: column;
-             height: auto;
-             row-gap: 10px;
-             padding: 10px;
-
-             input,
-             select {
-                 border: 2px solid $black;
-                 border-radius: 10px;
-                 text-align: center;
-                 width: 150%;
-                 height: 45px;
-                 transition: ease all .25s;
-                 background-color: $background;
-                 color: $white;
-
-
-                 &:focus-visible {
-                     outline: 2px solid $purple;
-                 }
-
-                 option {
-                     background-color: $background;
-                     color: $white;
-                 }
-             }
-
-             textarea {
-                 border: 2px solid $black;
-                 border-radius: 10px;
-                 text-align: center;
-                 width: 150%;
-                 background-color: $background;
-                 color: $white;
-                 transition: ease all .25s;
-                 text-align: start;
-
-                 &::placeholder {
-                     text-align: center;
-                 }
-
-                 &:focus-visible {
-                     outline: 2px solid $purple;
-                 }
-             }
-
-             span {
-                 font-style: oblique;
-                 color: $white;
-             }
-
-             .button {
-                 padding: 13px;
-                 border: 2px solid $black;
-                 border-radius: 10px;
-                 text-align: center;
-                 width: 70%;
-                 transition: ease all .25s;
-                 font-family: logoFont;
-                 background-color: $background;
-                 color: $white;
-
-                 &:hover {
-                     background-color: $black;
-                     color: $white;
-                     border: 2px solid $purple;
-                 }
-             }
-
-             #button {
-                 padding: 15px 25px 15px 25px;
-                 height: min-content;
-                 width: min-content;
-             }
-         }
-
-         .logoForm {
-             height: min-content;
-             width: min-content;
-             bottom: 0px;
-             padding-bottom: 10px;
-
-             img {
-                 height: 66.6px;
-                 width: auto;
-             }
-         }
-     }
- }
-
- // ==========  AUTO COMPLETE CSS  ==========
-
- input:-webkit-autofill,
- input:-webkit-autofill:hover,
- input:-webkit-autofill:focus,
- textarea:-webkit-autofill,
- textarea:-webkit-autofill:hover,
- textarea:-webkit-autofill:focus,
- select:-webkit-autofill,
- select:-webkit-autofill:hover,
- select:-webkit-autofill:focus {
-     border: $purple;
-     -webkit-text-fill-color: $white;
-     -webkit-box-shadow: 0 0 0px 1000px $background inset;
-     transition: background-color 5000s ease-in-out 0s;
- }
-
-
- // =================================================  CART  ================================================== //
-
- .containerCart {
-     grid-column: 2/3;
-     background-color: $background;
-     height: 100%;
-
-     .mainCart {
-         height: min-content;
-         display: flex;
-         flex-direction: column;
-         align-items: center;
-         justify-content: center;
-         background-color: $black;
-         margin: 10px 0 10px 0;
-         row-gap: 15px;
-
-         table {
-             margin: 0;
-             background-color: $black;
-             color: $white;
-
-             tr {
-                 .headProd {
-                     width: 60%;
-                 }
-
-                 .headPrice,
-                 .headCondition {
-                     width: 10%;
-                 }
-
-                 .headQuantity {
-                     width: 20%;
-                 }
-
-                 &:hover {
-                     background-color: $background;
-
-                     td {
-                         color: $white;
-                     }
-                 }
-             }
-
-             tbody {
-                 td {
-                     .quantityCartInTableInput {
-                         text-align: center;
-                         color: $white;
-                         background-color: $background;
-                         border: 2px solid $white;
-                         border-radius: 6px;
-                     }
-
-                     .imgCartInTable {
-                         width: 10%;
-                         height: 100px;
-                     }
-
-                     .productCartInTable {
-                         width: 90%;
-                     }
-
-                     input::-webkit-outer-spin-button,
-                     input::-webkit-inner-spin-button {
-                         -webkit-appearance: none;
-                         margin: 0;
-                     }
-                 }
-             }
-
-             .table-active {
-                 color: $white;
-             }
-
-
-
-             img {
-                 height: 130px;
-                 width: 130px;
-             }
-         }
-
-         .hide {
-             position: absolute;
-             top: -100vh;
-             z-index: -10;
-         }
-
-         .noItemsCart {
-             display: flex;
-             flex-direction: column;
-             justify-content: center;
-             align-items: center;
-             gap: 20px;
-             width: 100%;
-             height: 90vh;
-
-             .openPouch {
-
-                 img {
-                     height: 100px;
-                     width: auto;
-                 }
-             }
-         }
-     }
-
-     .total {
-         width: 100%;
-         height: min-content;
-         padding: 10px;
-         background-color: $black;
-         display: flex;
-         align-items: center;
-         justify-content: space-around;
-
-         .space {
-             width: 60%;
-         }
-     }
- }
-
-
- // =================================================  FOOTER  ================================================== //
-
-
- footer {
-     align-items: center;
-     justify-content: center;
-     grid-row: 3/4;
-     height: min-content;
-     width: 100%;
-     background-color: $black;
-
-     p {
-         margin: 0%;
-         padding: 50px;
-     }
- }
-
-
- // =================================================  GENERATED  ================================================== //
-
- .inputModal {
-     border: 2px solid $black;
-     border-radius: 10px;
-     text-align: center;
-     width: 100%;
-     height: 36.66px;
-     transition: ease all .25s;
-     background-color: $background;
-     color: $white;
-     font-size: 20px;
-
-     &:focus-visible {
-         outline: 2px solid $purple;
-     }
- }
-
- .h1Modal {
-     font-family: logoFont;
- }
-
-
- .infoOfObject {
-     display: grid;
-     grid-template-columns: 30% 70%;
-     grid-template-rows: 80% 20%;
-     gap: 2%;
-
-     .containerImg {
-         grid-row: 1/2;
-         grid-column: 1/2;
-         height: 300px;
-         width: 300px;
-         margin: auto;
-
-         img {
-             height: 100%;
-             width: 100%;
-         }
-     }
-
-     .containerText {
-         grid-column: 2/3;
-         grid-row: 1/2;
-
-         .textAndInfo {
-             position: relative;
-             justify-content: center;
-             top: 50%;
-             transform: translateY(-50%);
-             gap: 20px;
-         }
-
-         .objModalName {
-             font-family: logoFont;
-
-         }
-
-         .objModalType {
-             font-size: 16px;
-         }
-
-         .objModalDesc {
-             font-size: 22px;
-             line-height: 37px;
-         }
-
-         .objModalPrice {
-             font-size: 32px;
-         }
-     }
-
-     .containerButton {
-         grid-column: 1/3;
-         grid-row: 2/3;
-
-         .button {
-             width: 60%;
-         }
-     }
- }
-
- .infoText {
-     color: $gray;
- }
-
- .objModalImg {
-     cursor: pointer;
-     transition: ease all .25s;
-     height: 100%;
-
-     &:hover {
-         border: 2px solid $purple;
-     }
- }
-
- .carousel {
-     overflow: hidden;
-
-     .imgCarousel {
-         height: 80vh;
-         width: auto;
-     }
- }
-
- .carousel-inner {
-     max-width: fit-content;
- }
-
- #carouselSlidesOnly {
-     height: 100%;
-     width: 100%;
-     overflow: visible;
- }
-
- .animOut {
-     position: fixed;
-     transform: translate(-50%, -50%);
-     border-radius: 50%;
-     overflow: hidden;
-     box-shadow: 0 0 0 99999px $background;
-     border: 2px solid $white;
-     z-index: 10001;
- }
-
- .animIn {
-     position: fixed;
-     transform: translate(-50%, -50%);
-     border-radius: 50%;
-     overflow: hidden;
-     box-shadow: 0 0 0 99999px $background;
-     border: 2px solid $white;
-     z-index: 10001;
- }
-
- .curseAnim {
-     position: fixed;
-     height: 100vh;
-     width: 100vw;
-     overflow: hidden;
-     z-index: 10000000000000;
-
-     .eyeAnim {
-         background-color: black;
-
-         .dragonText {
-             position: fixed;
-             top: 50%;
-             left: 50%;
-             transform: translate(-50%, -50%);
-             font-family: dragonBorn;
-             font-size: 66.6px;
-             color: #234021;
-         }
-     }
-
-     #angelsAnim {
-         left: 50%;
-         top: 50%;
-         transform: translate(-50%, -50%);
-         width: 100%;
-         height: 100%;
-     }
-
-     .textAngel {
-         position: fixed;
-         bottom: 10%;
-         left: 50%;
-         transform: translateX(-50%);
-     }
-
-     .eye {
-         overflow: hidden;
-         position: absolute;
-         width: 300px;
-         height: 120px;
-         background-color: white;
-         border-radius: 50%;
-         border: 2px solid #234021;
-         left: 50%;
-         top: 50%;
-         transform: translate(-50%, -50%);
-
-         .pupil {
-             position: relative;
-             width: 40px;
-             height: 100px;
-             background-color: #234021;
-             left: 50%;
-             top: 50%;
-             transform: translate(-50%, -50%);
-             border-radius: 50%;
-         }
-     }
- }
+//  /* */
+
+
+//  // =============================================  VARIABLES  ============================================= //
+
+//  $background: #121212;
+//  $white: #fbfbfd;
+//  $black: #1E1E1E;
+//  $purple: #6600cc;
+//  $blessing: #68BCD0;
+//  $curse: #880000;
+//  $gray: #858585;
+
+
+//  // =============================================  FONTS  ============================================= //
+
+//  @font-face {
+//      font-family: logoFont;
+//      src: url(../resources/fonts/logo.otf);
+//  }
+
+//  @font-face {
+//      font-family: dragonBorn;
+//      src: url(../resources/fonts/dragonAlphabet.ttf);
+//  }
+
+//  @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&display=swap');
+
+
+//  // =============================================  GENERAL CONTENT  ============================================= //
+
+//  ::selection {
+//      background-color: $white;
+//      color: $background;
+//  }
+
+
+//  // =============================================  DOCUMENT  ============================================= //
+
+//  html {
+//      scroll-behavior: smooth;
+
+//      a {
+//          text-decoration: none;
+//          color: $white;
+
+//          &:hover {
+//              color: $white;
+//          }
+
+//      }
+
+//      h2 {
+//          margin: 10px 0;
+//          text-align: center;
+//          padding: 20px;
+//          background-color: $black;
+//      }
+
+//      body {
+//          background-color: $background;
+//          color: $white;
+//          display: grid;
+//          grid-template-rows: min-content min-content min-content;
+//          row-gap: 20px;
+//          font-family: 'EB Garamond',
+//              serif;
+//          font-size: 20px;
+
+//          .blackBeforeLoading {
+//              position: fixed;
+//              background-color: $background;
+//              height: 100vh;
+//              width: 100vw;
+//              z-index: 10000;
+//              overflow: hidden;
+//          }
+
+//          .preloader {
+//              position: fixed;
+//              height: 100vh;
+//              width: 100%;
+//              z-index: 10000;
+
+//              .preloaderLeft {
+//                  position: absolute;
+//                  height: 100%;
+//                  width: 50%;
+//                  left: 0%;
+//                  background-color: $background;
+//              }
+
+//              .preloaderRight {
+//                  position: absolute;
+//                  height: 100%;
+//                  width: 50%;
+//                  right: 0%;
+//                  background-color: $background;
+//              }
+
+//              .preloaderSvg {
+//                  opacity: 1;
+//              }
+
+//              .fade {
+//                  opacity: 0;
+//              }
+//          }
+
+//          .borderLeft {
+//              border-left: 2px solid $white;
+//          }
+
+//          .borderRight {
+//              border-right: 2px solid $white;
+//          }
+
+//          .blessing {
+//              border: 2px solid $blessing;
+//          }
+
+//          .curse {
+//              border: 2px solid $curse;
+//          }
+
+//          .hide {
+//              display: none;
+//          }
+
+//          .button {
+//              padding: 13px;
+//              border: 2px solid $black;
+//              border-radius: 10px;
+//              text-align: center;
+//              width: 70%;
+//              transition: ease all .25s;
+//              font-family: logoFont;
+//              background-color: $background;
+//              color: $white;
+
+//              &:hover {
+//                  background-color: $black;
+//                  color: $white;
+//                  border: 2px solid $purple;
+//              }
+//          }
+
+//          .disabled {
+//              background-color: $background;
+//          }
+
+//          // ==============================================  MEDIA QUERIES  =============================================== //
+
+//          @media only screen and (max-width: 500px) {
+//              h2 {
+//                  padding: 10px;
+//              }
+
+//              body {
+//                  background-color: $background;
+//                  color: $white;
+//                  display: grid;
+
+//                  .blackBeforeLoading {
+//                      position: fixed;
+//                      background-color: $background;
+//                      height: 100vh;
+//                      width: 100vw;
+//                      z-index: 10000;
+//                      overflow: hidden;
+//                  }
+
+//                  .preloader {
+//                      position: fixed;
+//                      height: 100vh;
+//                      width: 100%;
+//                      z-index: 10000;
+
+//                      .preloaderLeft {
+//                          position: absolute;
+//                          height: 100%;
+//                          width: 50%;
+//                          left: 0%;
+//                          background-color: $background;
+//                      }
+
+//                      .preloaderRight {
+//                          position: absolute;
+//                          height: 100%;
+//                          width: 50%;
+//                          right: 0%;
+//                          background-color: $background;
+//                      }
+
+//                      .preloaderSvg {
+//                          opacity: 1;
+//                      }
+
+//                      .fade {
+//                          opacity: 0;
+//                      }
+//                  }
+
+//                  .borderLeft {
+//                      border-left: 2px solid $white;
+//                  }
+
+//                  .borderRight {
+//                      border-right: 2px solid $white;
+//                  }
+
+//                  .button {
+//                      padding: 10px;
+//                      width: 100%;
+//                  }
+//              }
+//          }
+
+//          header {
+//              background-color: $background;
+//              height: min-content;
+//              width: 100%;
+//              grid-row: 1/2;
+
+//              .containerLogo {
+//                  padding: 15px;
+//                  height: min-content;
+//                  width: 40%;
+//                  margin: auto;
+//                  display: flex;
+//                  align-items: center;
+//                  justify-content: center;
+
+//                  .logo {
+//                      img {
+//                          height: 100px;
+//                          width: auto;
+//                      }
+//                  }
+
+//                  .logoText {
+//                      font-family: logoFont;
+//                      font-size: 40px;
+//                  }
+
+//              }
+
+//              nav {
+//                  background-color: $black;
+//                  height: 50%;
+//                  width: 80%;
+//                  font-family: logoFont;
+//                  display: flex;
+//                  align-items: center;
+//                  margin: auto;
+
+//                  ul {
+//                      padding: 10px 0;
+//                      width: 100%;
+//                      list-style: none;
+//                      display: flex;
+//                      justify-content: space-around;
+//                      margin: 0;
+
+//                      li {
+
+//                          flex-direction: row;
+
+//                          a {
+//                              text-decoration: none;
+//                              color: $white;
+//                              font-size: 18px;
+//                              transition: ease all .25s;
+
+//                              &:hover {
+//                                  color: $purple;
+//                              }
+
+//                          }
+
+//                          .img {
+//                              height: 30px;
+//                              width: 30px;
+//                              transition: ease all .25s;
+//                              background-image: url(../resources/nav/pouch.svg);
+
+//                              &:hover {
+//                                  background-image: url(../resources/nav/pouchHover.svg);
+//                              }
+//                          }
+//                      }
+//                  }
+//              }
+//          }
+
+//          // ==============================================  MEDIA QUERIES  =============================================== //
+
+//          @media only screen and (max-width: 500px) {
+//              header {
+//                  .containerLogo {
+//                      padding: 10px;
+//                      width: 100%;
+
+//                      .logo {
+//                          img {
+//                              height: 45px;
+//                              width: auto;
+//                          }
+//                      }
+
+//                      .logoText {
+//                          font-family: logoFont;
+//                          font-size: 20px;
+//                      }
+
+//                  }
+
+//                  nav {
+//                      width: 100%;
+
+//                      ul {
+//                          padding: 5px;
+
+//                          li {
+//                              a {
+//                                  font-size: 15px;
+//                              }
+
+//                              .img {
+//                                  height: 25px;
+//                                  width: 25px;
+//                              }
+//                          }
+//                      }
+//                  }
+//              }
+//          }
+
+//          main {
+//              grid-row: 2/3;
+//              display: grid;
+//              grid-template-columns: 10% auto 10%;
+//              min-height: 100vh;
+//              height: min-content;
+//              width: min-content;
+
+//              .mainContainer {
+//                  grid-column: 2/3;
+//                  background-color: $background;
+//                  height: 100%;
+
+//                  .parallax1 {
+//                      background-position: center;
+//                      background-size: cover;
+//                      background-attachment: fixed;
+//                      width: 100%;
+//                      height: 400px;
+//                      background-image: url(../resources/index/parallax/parallax1.jpg);
+//                      filter: grayscale(100%);
+
+//                      h1 {
+//                          height: 100%;
+//                          margin: 0;
+//                          display: flex;
+//                          align-items: center;
+//                          justify-content: center;
+//                          font-family: logoFont;
+//                          color: $black;
+//                          text-shadow: 0px 0px 4px $white;
+//                          font-size: 36.66px;
+//                      }
+//                  }
+
+//                  .parallax2 {
+//                      background-position: center;
+//                      background-size: cover;
+//                      background-attachment: fixed;
+//                      width: 100%;
+//                      height: 400px;
+//                      background-image: url(../resources/index/parallax/parallax2.jpg);
+//                      filter: grayscale(100%)
+//                  }
+
+//                  .containerTextAndImg {
+//                      display: flex;
+//                      padding: 5px 0;
+//                      align-items: center;
+//                      justify-content: center;
+//                      line-height: 35px;
+
+//                      .textTandI {
+//                          width: auto;
+//                          margin: 0;
+//                      }
+
+//                      .imgRitual {
+//                          height: auto;
+//                          width: 35%;
+//                      }
+
+//                      .imgSeekers {
+//                          height: 70%;
+//                          width: auto;
+//                      }
+//                  }
+
+//                  .parallax3 {
+//                      background-position: center;
+//                      background-size: cover;
+//                      background-attachment: fixed;
+//                      width: 100%;
+//                      height: 400px;
+//                      background-image: url(../resources/index/parallax/parallax3.jpg);
+//                      filter: grayscale(100%)
+//                  }
+
+//                  p {
+//                      padding: 35.666px;
+//                      text-align: justify;
+//                  }
+//              }
+//          }
+//      }
+//  }
+
+//  // ==============================================  MEDIA QUERIES  =============================================== //
+
+//  @media only screen and (max-width: 500px) {
+//      main {
+//          max-width: 300px;
+//          grid-template-columns: min-content;
+//          height: min-content;
+
+//          .mainContainer {
+//              width: 100%;
+//              // max-width: 300px;
+//              grid-column: 1/3 !important;
+//              background-color: $background;
+//              height: 100%;
+
+//              .parallax1 {
+//                  width: 100%;
+
+//                  h1 {
+//                      font-size: 20px !important;
+//                  }
+//              }
+
+//              .containerTextAndImg {
+//                  display: flex;
+//                  flex-direction: column;
+//                  padding: 0;
+
+//                  .imgRitual {
+//                      height: auto;
+//                      width: 100%;
+//                  }
+
+//                  .imgSeekers {
+//                      height: 100%;
+//                      width: auto;
+//                  }
+//              }
+
+//              p {
+//                  padding: 0px;
+//              }
+//          }
+//      }
+//  }
+
+
+//  // =================================================  SHOP  ================================================== //
+
+//  .mainContainer {
+//      .alert {
+//          z-index: 10;
+//      }
+
+//      .contentShop {
+//          height: min-content;
+//          display: grid;
+//          grid-column: 2/3;
+
+
+//          .filterShop {
+//              grid-row: 1/2;
+//              background-color: $black;
+//              //  height: 100%;
+//          }
+
+//          .displayShop {
+//              height: min-content;
+//              background-color: $black;
+//              grid-row: 2/3;
+//              display: flex;
+//              flex-wrap: wrap;
+//              justify-content: space-around;
+//              row-gap: 10px;
+//              padding: 10px;
+
+//              .card {
+//                  background-color: $black;
+//                  width: 23%;
+//                  height: 510px;
+
+//                  .cardObjName {
+//                      font-family: logoFont;
+//                      padding: 0%;
+//                      font-size: 18px;
+//                      height: 66px;
+//                  }
+
+//                  .cardObjPrice {
+//                      font-size: 25px;
+//                      margin: 0%;
+//                  }
+
+//                  .cardObjButton {
+//                      position: absolute;
+//                      bottom: 3%;
+//                      left: 50%;
+//                      transform: translateX(-50%);
+//                      z-index: 100;
+//                  }
+
+//                  .cardObjImg {
+//                      cursor: pointer;
+//                      transition: ease all .25s;
+
+//                      &:hover {
+//                          border: 2px solid $white;
+//                          filter: brightness(1.15) blur(2px);
+//                      }
+//                  }
+//              }
+
+//              .card-text {
+//                  padding: 10px;
+//              }
+//          }
+//      }
+//  }
+
+
+//  // ==============================================  MEDIA QUERIES  =============================================== //
+
+//  @media only screen and (max-width: 500px) {
+//      .mainContainer {
+//          .contentShop {
+//              .displayShop {
+//                  flex-direction: column;
+
+//                  .card {
+//                      background-color: $black;
+//                      width: 100%;
+//                  }
+//              }
+//          }
+//      }
+//  }
+
+//  // =================================================  CONTACT  ================================================== //
+
+//  .backgroundContact {
+//      padding: 30px 0 30px 0;
+//      background-image: url(../resources/contact/forest.jpg);
+//      background-position: center;
+//      background-size: cover;
+//      background-repeat: no-repeat;
+
+//      .form {
+//          background-color: $black;
+//          border-radius: 10px;
+//          height: min-content;
+//          width: 60%;
+//          margin: auto;
+//          display: flex;
+//          align-items: center;
+//          justify-content: center;
+//          flex-direction: column;
+//          opacity: .98;
+
+//          h1 {
+//              font-size: 36.66px;
+//          }
+
+//          form {
+//              display: flex;
+//              align-items: center;
+//              justify-content: center;
+//              flex-direction: column;
+//              height: auto;
+//              width: max-content;
+//              row-gap: 10px;
+//              padding: 10px;
+
+//              input,
+//              select {
+//                  border: 2px solid $black;
+//                  border-radius: 10px;
+//                  text-align: center;
+//                  width: 150%;
+//                  height: 45px;
+//                  transition: ease all .25s;
+//                  background-color: $background;
+//                  color: $white;
+
+
+//                  &:focus-visible {
+//                      outline: 2px solid $purple;
+//                  }
+
+//                  option {
+//                      background-color: $background;
+//                      color: $white;
+//                  }
+//              }
+
+//              textarea {
+//                  border: 2px solid $black;
+//                  border-radius: 10px;
+//                  text-align: center;
+//                  width: 150%;
+//                  background-color: $background;
+//                  color: $white;
+//                  transition: ease all .25s;
+//                  text-align: start;
+
+//                  &::placeholder {
+//                      text-align: center;
+//                  }
+
+//                  &:focus-visible {
+//                      outline: 2px solid $purple;
+//                  }
+//              }
+
+//              span {
+//                  font-style: oblique;
+//                  color: $white;
+//              }
+
+//              .button {
+//                  padding: 13px;
+//                  border: 2px solid $black;
+//                  border-radius: 10px;
+//                  text-align: center;
+//                  width: 70%;
+//                  transition: ease all .25s;
+//                  font-family: logoFont;
+//                  background-color: $background;
+//                  color: $white;
+
+//                  &:hover {
+//                      background-color: $black;
+//                      color: $white;
+//                      border: 2px solid $purple;
+//                  }
+//              }
+
+//              #button {
+//                  padding: 15px 25px 15px 25px;
+//                  height: min-content;
+//                  width: min-content;
+//              }
+//          }
+
+//          .logoForm {
+//              height: min-content;
+//              width: min-content;
+//              bottom: 0px;
+//              padding-bottom: 10px;
+
+//              img {
+//                  height: 66.6px;
+//                  width: auto;
+//              }
+//          }
+//      }
+//  }
+
+//  // ==========  AUTO COMPLETE CSS  ==========
+
+//  input:-webkit-autofill,
+//  input:-webkit-autofill:hover,
+//  input:-webkit-autofill:focus,
+//  textarea:-webkit-autofill,
+//  textarea:-webkit-autofill:hover,
+//  textarea:-webkit-autofill:focus,
+//  select:-webkit-autofill,
+//  select:-webkit-autofill:hover,
+//  select:-webkit-autofill:focus {
+//      border: $purple;
+//      -webkit-text-fill-color: $white;
+//      -webkit-box-shadow: 0 0 0px 1000px $background inset;
+//      transition: background-color 5000s ease-in-out 0s;
+//  }
+
+
+//  // ==============================================  MEDIA QUERIES  =============================================== //
+
+//  @media only screen and (max-width: 500px) {
+//      .backgroundContact {
+//          padding: 0;
+//          margin: 0;
+//          border-radius: 20px;
+
+//          .form {
+//              width: 100%;
+//              margin: 0;
+//              opacity: 1;
+//              text-align: center;
+
+//              h1 {
+//                  font-size: 20px;
+//              }
+
+//              form {
+//                  height: min-content;
+//                  gap: 10px;
+//                  padding: 0px;
+
+//                  input,
+//                  select {
+//                      width: 100%;
+//                      height: min-content;
+//                      padding: .5em;
+//                  }
+
+//                  textarea {
+//                      width: 100%;
+//                  }
+
+//                  span {
+//                      font-style: oblique;
+//                      color: $white;
+//                  }
+
+//              }
+
+//              .logoForm {
+//                  height: min-content;
+//                  width: min-content;
+//                  bottom: 0px;
+//                  padding: 10px;
+
+//                  img {
+//                      height: 50px;
+//                      width: auto;
+//                      opacity: .5;
+//                  }
+//              }
+//          }
+//      }
+//  }
+
+
+//  // =================================================  CART  ================================================== //
+
+//  .containerCart {
+//      grid-column: 2/3;
+//      background-color: $background;
+//      height: 100%;
+
+//      .mainCart {
+//          height: min-content;
+//          display: flex;
+//          flex-direction: column;
+//          align-items: center;
+//          justify-content: center;
+//          background-color: $black;
+//          margin: 10px 0;
+//          row-gap: 15px;
+
+//          table {
+//              margin: 0;
+//              background-color: $black;
+//              color: $white;
+
+//              tr {
+//                  .headProd {
+//                      width: 60%;
+//                  }
+
+//                  .headPrice,
+//                  .headCondition {
+//                      width: 10%;
+//                  }
+
+//                  .headQuantity {
+//                      width: 20%;
+//                  }
+
+//                  &:hover {
+//                      background-color: $background;
+
+//                      td {
+//                          color: $white;
+//                      }
+//                  }
+//              }
+
+//              tbody {
+//                  td {
+//                      .quantityCartInTableInput {
+//                          text-align: center;
+//                          color: $white;
+//                          background-color: $background;
+//                          border: 2px solid $white;
+//                          border-radius: 6px;
+//                      }
+
+//                      .imgCartInTable {
+//                          width: 10%;
+//                          height: 100px;
+//                      }
+
+//                      .productCartInTable {
+//                          width: 90%;
+//                      }
+
+//                      input::-webkit-outer-spin-button,
+//                      input::-webkit-inner-spin-button {
+//                          -webkit-appearance: none;
+//                          margin: 0;
+//                      }
+//                  }
+//              }
+
+//              .table-active {
+//                  color: $white;
+//              }
+
+
+
+//              img {
+//                  height: 130px;
+//                  width: 130px;
+//              }
+//          }
+
+//          .hide {
+//              position: absolute;
+//              top: -100vh;
+//              z-index: -10;
+//          }
+
+//          .noItemsCart {
+//              display: flex;
+//              flex-direction: column;
+//              justify-content: center;
+//              align-items: center;
+//              gap: 20px;
+//              width: 100%;
+//              height: 90vh;
+
+//              .openPouch {
+
+//                  img {
+//                      height: 100px;
+//                      width: auto;
+//                  }
+//              }
+//          }
+//      }
+
+//      .total {
+//          width: 100%;
+//          height: min-content;
+//          padding: 10px;
+//          background-color: $black;
+//          display: flex;
+//          align-items: center;
+//          justify-content: space-around;
+
+//          .space {
+//              width: 60%;
+//          }
+//      }
+//  }
+
+
+//  // ==============================================  MEDIA QUERIES  =============================================== //
+
+//  @media only screen and (max-width: 500px) {
+//      .containerCart {
+
+//          .mainCart {
+//              height: min-content;
+//              display: flex;
+//              flex-direction: column;
+//              align-items: center;
+//              justify-content: center;
+//              background-color: $black;
+//              margin: 10px 0;
+//              row-gap: 15px;
+
+//              table {
+//                  margin: 0;
+//                  background-color: $black;
+//                  color: $white;
+
+//                  tr {
+//                      .headProd {
+//                          width: 60%;
+//                      }
+
+//                      .headPrice,
+//                      .headCondition {
+//                          width: 10%;
+//                      }
+
+//                      .headQuantity {
+//                          width: 20%;
+//                      }
+
+//                      &:hover {
+//                          background-color: $background;
+
+//                          td {
+//                              color: $white;
+//                          }
+//                      }
+//                  }
+
+//                  tbody {
+//                      td {
+//                          .quantityCartInTableInput {
+//                              text-align: center;
+//                              color: $white;
+//                              background-color: $background;
+//                              border: 2px solid $white;
+//                              border-radius: 6px;
+//                          }
+
+//                          .imgCartInTable {
+//                              width: 10%;
+//                              height: 100px;
+//                          }
+
+//                          .productCartInTable {
+//                              width: 90%;
+//                          }
+
+//                          input::-webkit-outer-spin-button,
+//                          input::-webkit-inner-spin-button {
+//                              -webkit-appearance: none;
+//                              margin: 0;
+//                          }
+//                      }
+//                  }
+
+//                  .table-active {
+//                      color: $white;
+//                  }
+
+
+
+//                  img {
+//                      height: 130px;
+//                      width: 130px;
+//                  }
+//              }
+
+//              .hide {
+//                  position: absolute;
+//                  top: -100vh;
+//                  z-index: -10;
+//              }
+
+//              .noItemsCart {
+//                  gap: 10px;
+//                  text-align: center;
+//              }
+//          }
+
+//          .total {
+//              width: 100%;
+//              height: min-content;
+//              padding: 10px;
+//              background-color: $black;
+//              display: flex;
+//              align-items: center;
+//              justify-content: space-around;
+
+//              .space {
+//                  width: 60%;
+//              }
+//          }
+//      }
+//  }
+
+//  // =================================================  FOOTER  ================================================== //
+
+
+//  footer {
+//      align-items: center;
+//      justify-content: center;
+//      grid-row: 3/4;
+//      height: min-content;
+//      width: 100%;
+//      background-color: $black;
+
+//      p {
+//          margin: 0%;
+//          padding: 10%;
+//      }
+//  }
+
+
+//  // =================================================  GENERATED  ================================================== //
+
+//  .inputModal {
+//      border: 2px solid $black;
+//      border-radius: 10px;
+//      text-align: center;
+//      width: 100%;
+//      height: 36.66px;
+//      transition: ease all .25s;
+//      background-color: $background;
+//      color: $white;
+//      font-size: 20px;
+
+//      &:focus-visible {
+//          outline: 2px solid $purple;
+//      }
+//  }
+
+//  .h1Modal {
+//      font-family: logoFont;
+//  }
+
+
+//  .infoOfObject {
+//      display: grid;
+//      grid-template-columns: 30% 70%;
+//      grid-template-rows: 80% 20%;
+//      gap: 2%;
+
+//      .containerImg {
+//          grid-row: 1/2;
+//          grid-column: 1/2;
+//          height: 300px;
+//          width: 300px;
+//          margin: auto;
+
+//          img {
+//              height: 100%;
+//              width: 100%;
+//          }
+//      }
+
+//      .containerText {
+//          grid-column: 2/3;
+//          grid-row: 1/2;
+
+//          .textAndInfo {
+//              position: relative;
+//              justify-content: center;
+//              top: 50%;
+//              transform: translateY(-50%);
+//              gap: 20px;
+//          }
+
+//          .objModalName {
+//              font-family: logoFont;
+
+//          }
+
+//          .objModalType {
+//              font-size: 16px;
+//          }
+
+//          .objModalDesc {
+//              font-size: 22px;
+//              line-height: 37px;
+//          }
+
+//          .objModalPrice {
+//              font-size: 32px;
+//          }
+//      }
+
+//      .containerButton {
+//          grid-column: 1/3;
+//          grid-row: 2/3;
+
+//          .button {
+//              width: 60%;
+//          }
+//      }
+//  }
+
+//  .infoText {
+//      color: $gray;
+//  }
+
+//  .objModalImg {
+//      cursor: pointer;
+//      transition: ease all .25s;
+//      height: 100%;
+
+//      &:hover {
+//          border: 2px solid $purple;
+//      }
+//  }
+
+//  .carousel {
+//      overflow: hidden;
+
+//      .imgCarousel {
+//          height: 80vh;
+//          width: auto;
+//      }
+//  }
+
+//  .carousel-inner {
+//      max-width: fit-content;
+//  }
+
+//  #carouselSlidesOnly {
+//      height: 100%;
+//      width: 100%;
+//      overflow: visible;
+//  }
+
+//  .animOut {
+//      position: fixed;
+//      transform: translate(-50%, -50%);
+//      border-radius: 50%;
+//      overflow: hidden;
+//      box-shadow: 0 0 0 99999px $background;
+//      border: 2px solid $white;
+//      z-index: 10001;
+//  }
+
+//  .animIn {
+//      position: fixed;
+//      transform: translate(-50%, -50%);
+//      border-radius: 50%;
+//      overflow: hidden;
+//      box-shadow: 0 0 0 99999px $background;
+//      border: 2px solid $white;
+//      z-index: 10001;
+//  }
+
+//  .curseAnim {
+//      position: fixed;
+//      height: 100vh;
+//      width: 100vw;
+//      overflow: hidden;
+//      z-index: 10000000000000;
+
+//      .eyeAnim {
+//          background-color: black;
+
+//          .dragonText {
+//              position: fixed;
+//              top: 50%;
+//              left: 50%;
+//              transform: translate(-50%, -50%);
+//              font-family: dragonBorn;
+//              font-size: 66.6px;
+//              color: #234021;
+//          }
+//      }
+
+//      #angelsAnim {
+//          left: 50%;
+//          top: 50%;
+//          transform: translate(-50%, -50%);
+//          width: 100%;
+//          height: 100%;
+//      }
+
+//      .textAngel {
+//          position: fixed;
+//          bottom: 10%;
+//          left: 50%;
+//          transform: translateX(-50%);
+//      }
+
+//      .eye {
+//          overflow: hidden;
+//          position: absolute;
+//          width: 300px;
+//          height: 120px;
+//          background-color: white;
+//          border-radius: 50%;
+//          border: 2px solid #234021;
+//          left: 50%;
+//          top: 50%;
+//          transform: translate(-50%, -50%);
+
+//          .pupil {
+//              position: relative;
+//              width: 40px;
+//              height: 100px;
+//              background-color: #234021;
+//              left: 50%;
+//              top: 50%;
+//              transform: translate(-50%, -50%);
+//              border-radius: 50%;
+//          }
+//      }
+//  }
+
+//  //   // ==============================================  MEDIA QUERIES  =============================================== //
+
+//  //   @media only screen and (max-width: 500px) {
+
+//  // }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// /* */
+
+
+// // =============================================  VARIABLES  ============================================= //
+
+// $background: #121212;
+// $white: #fbfbfd;
+// $black: #1E1E1E;
+// $purple: #6600cc;
+// $blessing: #68BCD0;
+// $curse: #880000;
+// $gray: #858585;
+
+
+// // =============================================  FONTS  ============================================= //
+
+// @font-face {
+//     font-family: logoFont;
+//     src: url(../resources/fonts/logo.otf);
+// }
+
+// @font-face {
+//     font-family: dragonBorn;
+//     src: url(../resources/fonts/dragonAlphabet.ttf);
+// }
+
+// @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&display=swap');
+
+
+// // =============================================  GENERAL CONTENT  ============================================= //
+
+// ::selection {
+//     background-color: $white;
+//     color: $background;
+// }
+
+
+// // =============================================  DOCUMENT  ============================================= //
+
+// html {
+//     scroll-behavior: smooth;
+
+//     a {
+//         text-decoration: none;
+//         color: $white;
+
+//         &:hover {
+//             color: $white;
+//         }
+
+//     }
+
+//     h2 {
+//         margin: 10px 0 10px 0;
+//         text-align: center;
+//         padding: 20px;
+//         background-color: $black;
+//     }
+
+//     body {
+//         .toTop {
+//             position: fixed;
+//             right: 3%;
+//             bottom: 25px;
+//             height: 50px;
+//             width: 50px;
+//             border-radius: 50%;
+//             background-color: $background;
+//             border: 2px solid $white;
+//             cursor: pointer;
+//             transition: ease all .25s;
+
+//             &:hover {
+//                 background-color: $black;
+//                 border: 2px solid $purple;
+//             }
+
+//             &:active {
+//                 background-color: $white;
+//                 color: $background;
+//             }
+
+//             .upArrow {
+//                 line-height: 0;
+//                 font-size: 45px;
+//             }
+//         }
+
+//         .blackBeforeLoading {
+//             position: fixed;
+//             background-color: $background;
+//             height: 100vh;
+//             width: 100vw;
+//             z-index: 10000;
+//             overflow: hidden;
+//         }
+
+//         .preloader {
+//             position: fixed;
+//             height: 100vh;
+//             width: 100%;
+//             z-index: 10000;
+
+//             .preloaderLeft {
+//                 position: absolute;
+//                 height: 100%;
+//                 width: 50%;
+//                 left: 0%;
+//                 background-color: $background;
+//             }
+
+//             .preloaderRight {
+//                 position: absolute;
+//                 height: 100%;
+//                 width: 50%;
+//                 right: 0%;
+//                 background-color: $background;
+//             }
+
+//             .preloaderSvg {
+//                 opacity: 1;
+//             }
+
+//             .fade {
+//                 opacity: 0;
+//             }
+//         }
+
+//         .borderLeft {
+//             border-left: 2px solid $white;
+//         }
+
+//         .borderRight {
+//             border-right: 2px solid $white;
+//         }
+
+//         background-color: $background;
+//         color: $white;
+//         display: grid;
+//         grid-template-rows: min-content min-content min-content;
+//         row-gap: 20px;
+//         font-family: 'EB Garamond',
+//         serif;
+//         font-size: 20px;
+
+//         .blessing {
+//             border: 2px solid $blessing;
+//         }
+
+//         .curse {
+//             border: 2px solid $curse;
+//         }
+
+//         .hide {
+//             display: none;
+//         }
+
+//         .button {
+//             padding: 13px;
+//             border: 2px solid $black;
+//             border-radius: 10px;
+//             text-align: center;
+//             width: 70%;
+//             transition: ease all .25s;
+//             font-family: logoFont;
+//             background-color: $background;
+//             color: $white;
+
+//             &:hover {
+//                 background-color: $black;
+//                 color: $white;
+//                 border: 2px solid $purple;
+//             }
+//         }
+
+//         .disabled {
+//             background-color: $background;
+//         }
+
+//         header {
+//             background-color: $background;
+//             height: min-content;
+//             width: 100%;
+//             grid-row: 1/2;
+
+//             .containerLogo {
+//                 padding: 15px;
+//                 height: min-content;
+//                 width: 40%;
+//                 margin: auto;
+//                 display: flex;
+//                 align-items: center;
+//                 justify-content: center;
+
+//                 .logo {
+//                     img {
+//                         height: 100px;
+//                         width: auto;
+//                     }
+//                 }
+
+//                 .logoText {
+//                     font-family: logoFont;
+//                     font-size: 40px;
+//                 }
+
+//             }
+
+//             nav {
+//                 background-color: $black;
+//                 height: 50%;
+//                 width: 80%;
+//                 font-family: logoFont;
+//                 display: flex;
+//                 align-items: center;
+//                 margin: auto;
+
+//                 ul {
+//                     padding: 10px 0 10px 0;
+//                     width: 100%;
+//                     list-style: none;
+//                     display: flex;
+//                     justify-content: space-around;
+//                     margin: 0;
+
+//                     li {
+
+//                         flex-direction: row;
+
+//                         a {
+//                             text-decoration: none;
+//                             color: $white;
+//                             font-size: 18px;
+//                             transition: ease all .25s;
+
+//                             &:hover {
+//                                 color: $purple;
+//                             }
+
+//                         }
+
+//                         .img {
+//                             height: 30px;
+//                             width: 30px;
+//                             transition: ease all .25s;
+//                             background-image: url(../resources/nav/pouch.svg);
+
+//                             &:hover {
+//                                 background-image: url(../resources/nav/pouchHover.svg);
+//                             }
+//                         }
+//                     }
+//                 }
+//             }
+//         }
+
+//         main {
+//             grid-row: 2/3;
+//             display: grid;
+//             grid-template-columns: 10% auto 10%;
+//             height: min-content;
+
+
+
+//             .mainContainer {
+//                 grid-column: 2/3;
+//                 background-color: $background;
+//                 height: 100%;
+
+//                 .parallax1 {
+//                     background-position: center;
+//                     background-size: cover;
+//                     background-attachment: fixed;
+//                     width: 100%;
+//                     height: 400px;
+//                     background-image: url(../resources/index/parallax/parallax1.jpg);
+//                     filter: grayscale(100%);
+
+//                     h1 {
+//                         height: 100%;
+//                         margin: 0;
+//                         display: flex;
+//                         align-items: center;
+//                         justify-content: center;
+//                         font-family: logoFont;
+//                         color: $black;
+//                         text-shadow: 0px 0px 4px $white;
+//                         font-size: 36.66px;
+//                     }
+//                 }
+
+//                 .parallax2 {
+//                     background-position: center;
+//                     background-size: cover;
+//                     background-attachment: fixed;
+//                     width: 100%;
+//                     height: 400px;
+//                     background-image: url(../resources/index/parallax/parallax2.jpg);
+//                     filter: grayscale(100%)
+//                 }
+
+//                 .containerTextAndImg {
+//                     display: flex;
+//                     padding: 5px 0 5px 0;
+//                     align-items: center;
+//                     justify-content: center;
+//                     line-height: 35px;
+
+//                     .textTandI {
+//                         width: auto;
+//                         margin: 0;
+//                     }
+
+//                     .imgRitual {
+//                         height: auto;
+//                         width: 35%;
+//                     }
+
+//                     .imgSeekers {
+//                         height: 70%;
+//                         width: auto;
+//                     }
+//                 }
+
+//                 .parallax3 {
+//                     background-position: center;
+//                     background-size: cover;
+//                     background-attachment: fixed;
+//                     width: 100%;
+//                     height: 400px;
+//                     background-image: url(../resources/index/parallax/parallax3.jpg);
+//                     filter: grayscale(100%)
+//                 }
+
+//                 p {
+//                     padding: 35.666px;
+//                     text-align: justify;
+//                 }
+//             }
+//         }
+//     }
+// }
+
+
+// // =================================================  SHOP  ================================================== //
+
+// .mainContainer {
+//     .alert {
+//         z-index: 10;
+//     }
+
+//     .contentShop {
+//         height: min-content;
+//         display: grid;
+//         grid-column: 2/3;
+
+
+//         .filterShop {
+//             grid-row: 1/2;
+//             background-color: $black;
+//             //  height: 100%;
+//         }
+
+//         .displayShop {
+//             height: min-content;
+//             background-color: $black;
+//             grid-row: 2/3;
+//             display: flex;
+//             flex-wrap: wrap;
+//             justify-content: space-around;
+//             row-gap: 10px;
+//             padding: 10px;
+
+//             .card {
+//                 background-color: $black;
+//                 width: 23%;
+//                 height: 510px;
+
+//                 .cardObjName {
+//                     font-family: logoFont;
+//                     padding: 0%;
+//                     font-size: 18px;
+//                     height: 66px;
+//                 }
+
+//                 .cardObjPrice {
+//                     font-size: 25px;
+//                     margin: 0%;
+//                 }
+
+//                 .cardObjButton {
+//                     position: absolute;
+//                     bottom: 3%;
+//                     left: 50%;
+//                     transform: translateX(-50%);
+//                     z-index: 100;
+//                 }
+
+//                 .cardObjImg {
+//                     cursor: pointer;
+//                     transition: ease all .25s;
+
+//                     &:hover {
+//                         border: 2px solid $white;
+//                         filter: brightness(1.15) blur(2px);
+//                     }
+//                 }
+//             }
+
+//             .card-text {
+//                 padding: 10px;
+//             }
+//         }
+//     }
+// }
+
+
+// // =================================================  CONTACT  ================================================== //
+
+// .backgroundContact {
+//     padding: 30px 0 30px 0;
+//     background-image: url(../resources/contact/forest.jpg);
+//     background-position: center;
+//     background-size: cover;
+//     background-repeat: no-repeat;
+
+//     .form {
+//         background-color: $black;
+//         border-radius: 10px;
+//         height: min-content;
+//         width: 60%;
+//         margin: auto;
+//         display: flex;
+//         align-items: center;
+//         justify-content: center;
+//         flex-direction: column;
+//         opacity: .98;
+
+//         h1 {
+//             font-size: 36.66px;
+//         }
+
+//         form {
+//             display: flex;
+//             align-items: center;
+//             justify-content: center;
+//             flex-direction: column;
+//             height: auto;
+//             row-gap: 10px;
+//             padding: 10px;
+
+//             input,
+//             select {
+//                 border: 2px solid $black;
+//                 border-radius: 10px;
+//                 text-align: center;
+//                 width: 150%;
+//                 height: 45px;
+//                 transition: ease all .25s;
+//                 background-color: $background;
+//                 color: $white;
+
+
+//                 &:focus-visible {
+//                     outline: 2px solid $purple;
+//                 }
+
+//                 option {
+//                     background-color: $background;
+//                     color: $white;
+//                 }
+//             }
+
+//             textarea {
+//                 border: 2px solid $black;
+//                 border-radius: 10px;
+//                 text-align: center;
+//                 width: 150%;
+//                 background-color: $background;
+//                 color: $white;
+//                 transition: ease all .25s;
+//                 text-align: start;
+
+//                 &::placeholder {
+//                     text-align: center;
+//                 }
+
+//                 &:focus-visible {
+//                     outline: 2px solid $purple;
+//                 }
+//             }
+
+//             span {
+//                 font-style: oblique;
+//                 color: $white;
+//             }
+
+//             .button {
+//                 padding: 13px;
+//                 border: 2px solid $black;
+//                 border-radius: 10px;
+//                 text-align: center;
+//                 width: 70%;
+//                 transition: ease all .25s;
+//                 font-family: logoFont;
+//                 background-color: $background;
+//                 color: $white;
+
+//                 &:hover {
+//                     background-color: $black;
+//                     color: $white;
+//                     border: 2px solid $purple;
+//                 }
+//             }
+
+//             #button {
+//                 padding: 15px 25px 15px 25px;
+//                 height: min-content;
+//                 width: min-content;
+//             }
+//         }
+
+//         .logoForm {
+//             height: min-content;
+//             width: min-content;
+//             bottom: 0px;
+//             padding-bottom: 10px;
+
+//             img {
+//                 height: 66.6px;
+//                 width: auto;
+//             }
+//         }
+//     }
+// }
+
+// // ==========  AUTO COMPLETE CSS  ==========
+
+// input:-webkit-autofill,
+// input:-webkit-autofill:hover,
+// input:-webkit-autofill:focus,
+// textarea:-webkit-autofill,
+// textarea:-webkit-autofill:hover,
+// textarea:-webkit-autofill:focus,
+// select:-webkit-autofill,
+// select:-webkit-autofill:hover,
+// select:-webkit-autofill:focus {
+//     border: $purple;
+//     -webkit-text-fill-color: $white;
+//     -webkit-box-shadow: 0 0 0px 1000px $background inset;
+//     transition: background-color 5000s ease-in-out 0s;
+// }
+
+
+// // =================================================  CART  ================================================== //
+
+// .containerCart {
+//     grid-column: 2/3;
+//     background-color: $background;
+//     height: 100%;
+
+//     .mainCart {
+//         height: min-content;
+//         display: flex;
+//         flex-direction: column;
+//         align-items: center;
+//         justify-content: center;
+//         background-color: $black;
+//         margin: 10px 0 10px 0;
+//         row-gap: 15px;
+
+//         table {
+//             margin: 0;
+//             background-color: $black;
+//             color: $white;
+
+//             tr {
+//                 .headProd {
+//                     width: 60%;
+//                 }
+
+//                 .headPrice,
+//                 .headCondition {
+//                     width: 10%;
+//                 }
+
+//                 .headQuantity {
+//                     width: 20%;
+//                 }
+
+//                 &:hover {
+//                     background-color: $background;
+
+//                     td {
+//                         color: $white;
+//                     }
+//                 }
+//             }
+
+//             tbody {
+//                 td {
+//                     .quantityCartInTableInput {
+//                         text-align: center;
+//                         color: $white;
+//                         background-color: $background;
+//                         border: 2px solid $white;
+//                         border-radius: 6px;
+//                     }
+
+//                     .imgCartInTable {
+//                         width: 10%;
+//                         height: 100px;
+//                     }
+
+//                     .productCartInTable {
+//                         width: 90%;
+//                     }
+
+//                     input::-webkit-outer-spin-button,
+//                     input::-webkit-inner-spin-button {
+//                         -webkit-appearance: none;
+//                         margin: 0;
+//                     }
+//                 }
+//             }
+
+//             .table-active {
+//                 color: $white;
+//             }
+
+
+
+//             img {
+//                 height: 130px;
+//                 width: 130px;
+//             }
+//         }
+
+//         .hide {
+//             position: absolute;
+//             top: -100vh;
+//             z-index: -10;
+//         }
+
+//         .noItemsCart {
+//             display: flex;
+//             flex-direction: column;
+//             justify-content: center;
+//             align-items: center;
+//             gap: 20px;
+//             width: 100%;
+//             height: 90vh;
+
+//             .openPouch {
+
+//                 img {
+//                     height: 100px;
+//                     width: auto;
+//                 }
+//             }
+//         }
+//     }
+
+//     .total {
+//         width: 100%;
+//         height: min-content;
+//         padding: 10px;
+//         background-color: $black;
+//         display: flex;
+//         align-items: center;
+//         justify-content: space-around;
+
+//         .space {
+//             width: 60%;
+//         }
+//     }
+// }
+
+
+// // =================================================  FOOTER  ================================================== //
+
+
+// footer {
+//     align-items: center;
+//     justify-content: center;
+//     grid-row: 3/4;
+//     height: min-content;
+//     width: 100%;
+//     background-color: $black;
+
+//     p {
+//         margin: 0%;
+//         padding: 50px;
+//     }
+// }
+
+
+// // =================================================  GENERATED  ================================================== //
+
+// .inputModal {
+//     border: 2px solid $black;
+//     border-radius: 10px;
+//     text-align: center;
+//     width: 100%;
+//     height: 36.66px;
+//     transition: ease all .25s;
+//     background-color: $background;
+//     color: $white;
+//     font-size: 20px;
+
+//     &:focus-visible {
+//         outline: 2px solid $purple;
+//     }
+// }
+
+// .h1Modal {
+//     font-family: logoFont;
+// }
+
+
+// .infoOfObject {
+//     display: grid;
+//     grid-template-columns: 30% 70%;
+//     grid-template-rows: 80% 20%;
+//     gap: 2%;
+
+//     .containerImg {
+//         grid-row: 1/2;
+//         grid-column: 1/2;
+//         height: 300px;
+//         width: 300px;
+//         margin: auto;
+
+//         img {
+//             height: 100%;
+//             width: 100%;
+//         }
+//     }
+
+//     .containerText {
+//         grid-column: 2/3;
+//         grid-row: 1/2;
+
+//         .textAndInfo {
+//             position: relative;
+//             justify-content: center;
+//             top: 50%;
+//             transform: translateY(-50%);
+//             gap: 20px;
+//         }
+
+//         .objModalName {
+//             font-family: logoFont;
+
+//         }
+
+//         .objModalType {
+//             font-size: 16px;
+//         }
+
+//         .objModalDesc {
+//             font-size: 22px;
+//             line-height: 37px;
+//         }
+
+//         .objModalPrice {
+//             font-size: 32px;
+//         }
+//     }
+
+//     .containerButton {
+//         grid-column: 1/3;
+//         grid-row: 2/3;
+
+//         .button {
+//             width: 60%;
+//         }
+//     }
+// }
+
+// .infoText {
+//     color: $gray;
+// }
+
+// .objModalImg {
+//     cursor: pointer;
+//     transition: ease all .25s;
+//     height: 100%;
+
+//     &:hover {
+//         border: 2px solid $purple;
+//     }
+// }
+
+// .carousel {
+//     overflow: hidden;
+
+//     .imgCarousel {
+//         height: 80vh;
+//         width: auto;
+//     }
+// }
+
+// .carousel-inner {
+//     max-width: fit-content;
+// }
+
+// #carouselSlidesOnly {
+//     height: 100%;
+//     width: 100%;
+//     overflow: visible;
+// }
+
+// .animOut {
+//     position: fixed;
+//     transform: translate(-50%, -50%);
+//     border-radius: 50%;
+//     overflow: hidden;
+//     box-shadow: 0 0 0 99999px $background;
+//     border: 2px solid $white;
+//     z-index: 10001;
+// }
+
+// .animIn {
+//     position: fixed;
+//     transform: translate(-50%, -50%);
+//     border-radius: 50%;
+//     overflow: hidden;
+//     box-shadow: 0 0 0 99999px $background;
+//     border: 2px solid $white;
+//     z-index: 10001;
+// }
+
+// .curseAnim {
+//     position: fixed;
+//     height: 100vh;
+//     width: 100vw;
+//     overflow: hidden;
+//     z-index: 10000000000000;
+
+//     .eyeAnim {
+//         background-color: black;
+
+//         .dragonText {
+//             position: fixed;
+//             top: 50%;
+//             left: 50%;
+//             transform: translate(-50%, -50%);
+//             font-family: dragonBorn;
+//             font-size: 66.6px;
+//             color: #234021;
+//         }
+//     }
+
+//     #angelsAnim {
+//         left: 50%;
+//         top: 50%;
+//         transform: translate(-50%, -50%);
+//         width: 100%;
+//         height: 100%;
+//     }
+
+//     .textAngel {
+//         position: fixed;
+//         bottom: 10%;
+//         left: 50%;
+//         transform: translateX(-50%);
+//     }
+
+//     .eye {
+//         overflow: hidden;
+//         position: absolute;
+//         width: 300px;
+//         height: 120px;
+//         background-color: white;
+//         border-radius: 50%;
+//         border: 2px solid #234021;
+//         left: 50%;
+//         top: 50%;
+//         transform: translate(-50%, -50%);
+
+//         .pupil {
+//             position: relative;
+//             width: 40px;
+//             height: 100px;
+//             background-color: #234021;
+//             left: 50%;
+//             top: 50%;
+//             transform: translate(-50%, -50%);
+//             border-radius: 50%;
+//         }
+//     }
+// }
+
+// // ==============================================  MEDIA QUERIES  =============================================== //
+
+// @media only screen and (max-width: 500px) {
+//     // =============================================  VARIABLES  ============================================= //
+
+//     $background: #121212;
+//     $white: #fbfbfd;
+//     $black: #1E1E1E;
+//     $purple: #6600cc;
+//     $blessing: #68BCD0;
+//     $curse: #880000;
+//     $gray: #858585;
+
+
+//     // =============================================  FONTS  ============================================= //
+
+//     @font-face {
+//         font-family: logoFont;
+//         src: url(../resources/fonts/logo.otf);
+//     }
+
+//     @font-face {
+//         font-family: dragonBorn;
+//         src: url(../resources/fonts/dragonAlphabet.ttf);
+//     }
+
+//     @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&display=swap');
+
+
+//     // =============================================  GENERAL CONTENT  ============================================= //
+
+//     ::selection {
+//         background-color: $white;
+//         color: $background;
+//     }
+
+
+//     // =============================================  DOCUMENT  ============================================= //
+
+//     html {
+//         scroll-behavior: smooth;
+
+//         a {
+//             text-decoration: none;
+//             color: $white;
+
+//             &:hover {
+//                 color: $white;
+//             }
+
+//         }
+
+//         h2 {
+//             margin: 10px 0 10px 0;
+//             text-align: center;
+//             padding: 20px;
+//             background-color: $black;
+//         }
+
+//         body {
+//             .toTop {
+//                 position: fixed;
+//                 right: 3%;
+//                 bottom: 25px;
+//                 height: 50px;
+//                 width: 50px;
+//                 border-radius: 50%;
+//                 background-color: $background;
+//                 border: 2px solid $white;
+//                 cursor: pointer;
+//                 transition: ease all .25s;
+
+//                 &:hover {
+//                     background-color: $black;
+//                     border: 2px solid $purple;
+//                 }
+
+//                 &:active {
+//                     background-color: $white;
+//                     color: $background;
+//                 }
+
+//                 .upArrow {
+//                     line-height: 0;
+//                     font-size: 45px;
+//                 }
+//             }
+
+//             .blackBeforeLoading {
+//                 position: fixed;
+//                 background-color: $background;
+//                 height: 100vh;
+//                 width: 100vw;
+//                 z-index: 10000;
+//                 overflow: hidden;
+//             }
+
+//             .preloader {
+//                 position: fixed;
+//                 height: 100vh;
+//                 width: 100%;
+//                 z-index: 10000;
+
+//                 .preloaderLeft {
+//                     position: absolute;
+//                     height: 100%;
+//                     width: 50%;
+//                     left: 0%;
+//                     background-color: $background;
+//                 }
+
+//                 .preloaderRight {
+//                     position: absolute;
+//                     height: 100%;
+//                     width: 50%;
+//                     right: 0%;
+//                     background-color: $background;
+//                 }
+
+//                 .preloaderSvg {
+//                     opacity: 1;
+//                 }
+
+//                 .fade {
+//                     opacity: 0;
+//                 }
+//             }
+
+//             .borderLeft {
+//                 border-left: 2px solid $white;
+//             }
+
+//             .borderRight {
+//                 border-right: 2px solid $white;
+//             }
+
+//             background-color: $background;
+//             color: $white;
+//             display: grid;
+//             grid-template-rows: min-content min-content min-content;
+//             row-gap: 20px;
+//             font-family: 'EB Garamond',
+//             serif;
+//             font-size: 20px;
+
+//             .blessing {
+//                 border: 2px solid $blessing;
+//             }
+
+//             .curse {
+//                 border: 2px solid $curse;
+//             }
+
+//             .hide {
+//                 display: none;
+//             }
+
+//             .button {
+//                 padding: 13px;
+//                 border: 2px solid $black;
+//                 border-radius: 10px;
+//                 text-align: center;
+//                 width: 70%;
+//                 transition: ease all .25s;
+//                 font-family: logoFont;
+//                 background-color: $background;
+//                 color: $white;
+
+//                 &:hover {
+//                     background-color: $black;
+//                     color: $white;
+//                     border: 2px solid $purple;
+//                 }
+//             }
+
+//             .disabled {
+//                 background-color: $background;
+//             }
+
+//             header {
+//                 background-color: $background;
+//                 height: min-content;
+//                 width: 100%;
+//                 grid-row: 1/2;
+
+//                 .containerLogo {
+//                     padding: 15px;
+//                     height: min-content;
+//                     width: 40%;
+//                     margin: auto;
+//                     display: flex;
+//                     align-items: center;
+//                     justify-content: center;
+
+//                     .logo {
+//                         img {
+//                             height: 100px;
+//                             width: auto;
+//                         }
+//                     }
+
+//                     .logoText {
+//                         font-family: logoFont;
+//                         font-size: 40px;
+//                     }
+
+//                 }
+
+//                 nav {
+//                     background-color: $black;
+//                     height: 50%;
+//                     width: 80%;
+//                     font-family: logoFont;
+//                     display: flex;
+//                     align-items: center;
+//                     margin: auto;
+
+//                     ul {
+//                         padding: 10px 0 10px 0;
+//                         width: 100%;
+//                         list-style: none;
+//                         display: flex;
+//                         justify-content: space-around;
+//                         margin: 0;
+
+//                         li {
+
+//                             flex-direction: row;
+
+//                             a {
+//                                 text-decoration: none;
+//                                 color: $white;
+//                                 font-size: 18px;
+//                                 transition: ease all .25s;
+
+//                                 &:hover {
+//                                     color: $purple;
+//                                 }
+
+//                             }
+
+//                             .img {
+//                                 height: 30px;
+//                                 width: 30px;
+//                                 transition: ease all .25s;
+//                                 background-image: url(../resources/nav/pouch.svg);
+
+//                                 &:hover {
+//                                     background-image: url(../resources/nav/pouchHover.svg);
+//                                 }
+//                             }
+//                         }
+//                     }
+//                 }
+//             }
+
+//             main {
+//                 grid-row: 2/3;
+//                 display: grid;
+//                 grid-template-columns: 10% auto 10%;
+//                 height: min-content;
+
+
+
+//                 .mainContainer {
+//                     grid-column: 2/3;
+//                     background-color: $background;
+//                     height: 100%;
+
+//                     .parallax1 {
+//                         background-position: center;
+//                         background-size: cover;
+//                         background-attachment: fixed;
+//                         width: 100%;
+//                         height: 400px;
+//                         background-image: url(../resources/index/parallax/parallax1.jpg);
+//                         filter: grayscale(100%);
+
+//                         h1 {
+//                             height: 100%;
+//                             margin: 0;
+//                             display: flex;
+//                             align-items: center;
+//                             justify-content: center;
+//                             font-family: logoFont;
+//                             color: $black;
+//                             text-shadow: 0px 0px 4px $white;
+//                             font-size: 36.66px;
+//                         }
+//                     }
+
+//                     .parallax2 {
+//                         background-position: center;
+//                         background-size: cover;
+//                         background-attachment: fixed;
+//                         width: 100%;
+//                         height: 400px;
+//                         background-image: url(../resources/index/parallax/parallax2.jpg);
+//                         filter: grayscale(100%)
+//                     }
+
+//                     .containerTextAndImg {
+//                         display: flex;
+//                         padding: 5px 0 5px 0;
+//                         align-items: center;
+//                         justify-content: center;
+//                         line-height: 35px;
+
+//                         .textTandI {
+//                             width: auto;
+//                             margin: 0;
+//                         }
+
+//                         .imgRitual {
+//                             height: auto;
+//                             width: 35%;
+//                         }
+
+//                         .imgSeekers {
+//                             height: 70%;
+//                             width: auto;
+//                         }
+//                     }
+
+//                     .parallax3 {
+//                         background-position: center;
+//                         background-size: cover;
+//                         background-attachment: fixed;
+//                         width: 100%;
+//                         height: 400px;
+//                         background-image: url(../resources/index/parallax/parallax3.jpg);
+//                         filter: grayscale(100%)
+//                     }
+
+//                     p {
+//                         padding: 35.666px;
+//                         text-align: justify;
+//                     }
+//                 }
+//             }
+//         }
+//     }
+
+
+//     // =================================================  SHOP  ================================================== //
+
+//     .mainContainer {
+//         .alert {
+//             z-index: 10;
+//         }
+
+//         .contentShop {
+//             height: min-content;
+//             display: grid;
+//             grid-column: 2/3;
+
+
+//             .filterShop {
+//                 grid-row: 1/2;
+//                 background-color: $black;
+//                 //  height: 100%;
+//             }
+
+//             .displayShop {
+//                 height: min-content;
+//                 background-color: $black;
+//                 grid-row: 2/3;
+//                 display: flex;
+//                 flex-wrap: wrap;
+//                 justify-content: space-around;
+//                 row-gap: 10px;
+//                 padding: 10px;
+
+//                 .card {
+//                     background-color: $black;
+//                     width: 23%;
+//                     height: 510px;
+
+//                     .cardObjName {
+//                         font-family: logoFont;
+//                         padding: 0%;
+//                         font-size: 18px;
+//                         height: 66px;
+//                     }
+
+//                     .cardObjPrice {
+//                         font-size: 25px;
+//                         margin: 0%;
+//                     }
+
+//                     .cardObjButton {
+//                         position: absolute;
+//                         bottom: 3%;
+//                         left: 50%;
+//                         transform: translateX(-50%);
+//                         z-index: 100;
+//                     }
+
+//                     .cardObjImg {
+//                         cursor: pointer;
+//                         transition: ease all .25s;
+
+//                         &:hover {
+//                             border: 2px solid $white;
+//                             filter: brightness(1.15) blur(2px);
+//                         }
+//                     }
+//                 }
+
+//                 .card-text {
+//                     padding: 10px;
+//                 }
+//             }
+//         }
+//     }
+
+
+//     // =================================================  CONTACT  ================================================== //
+
+//     .backgroundContact {
+//         padding: 30px 0 30px 0;
+//         background-image: url(../resources/contact/forest.jpg);
+//         background-position: center;
+//         background-size: cover;
+//         background-repeat: no-repeat;
+
+//         .form {
+//             background-color: $black;
+//             border-radius: 10px;
+//             height: min-content;
+//             width: 60%;
+//             margin: auto;
+//             display: flex;
+//             align-items: center;
+//             justify-content: center;
+//             flex-direction: column;
+//             opacity: .98;
+
+//             h1 {
+//                 font-size: 36.66px;
+//             }
+
+//             form {
+//                 display: flex;
+//                 align-items: center;
+//                 justify-content: center;
+//                 flex-direction: column;
+//                 height: auto;
+//                 row-gap: 10px;
+//                 padding: 10px;
+
+//                 input,
+//                 select {
+//                     border: 2px solid $black;
+//                     border-radius: 10px;
+//                     text-align: center;
+//                     width: 150%;
+//                     height: 45px;
+//                     transition: ease all .25s;
+//                     background-color: $background;
+//                     color: $white;
+
+
+//                     &:focus-visible {
+//                         outline: 2px solid $purple;
+//                     }
+
+//                     option {
+//                         background-color: $background;
+//                         color: $white;
+//                     }
+//                 }
+
+//                 textarea {
+//                     border: 2px solid $black;
+//                     border-radius: 10px;
+//                     text-align: center;
+//                     width: 150%;
+//                     background-color: $background;
+//                     color: $white;
+//                     transition: ease all .25s;
+//                     text-align: start;
+
+//                     &::placeholder {
+//                         text-align: center;
+//                     }
+
+//                     &:focus-visible {
+//                         outline: 2px solid $purple;
+//                     }
+//                 }
+
+//                 span {
+//                     font-style: oblique;
+//                     color: $white;
+//                 }
+
+//                 .button {
+//                     padding: 13px;
+//                     border: 2px solid $black;
+//                     border-radius: 10px;
+//                     text-align: center;
+//                     width: 70%;
+//                     transition: ease all .25s;
+//                     font-family: logoFont;
+//                     background-color: $background;
+//                     color: $white;
+
+//                     &:hover {
+//                         background-color: $black;
+//                         color: $white;
+//                         border: 2px solid $purple;
+//                     }
+//                 }
+
+//                 #button {
+//                     padding: 15px 25px 15px 25px;
+//                     height: min-content;
+//                     width: min-content;
+//                 }
+//             }
+
+//             .logoForm {
+//                 height: min-content;
+//                 width: min-content;
+//                 bottom: 0px;
+//                 padding-bottom: 10px;
+
+//                 img {
+//                     height: 66.6px;
+//                     width: auto;
+//                 }
+//             }
+//         }
+//     }
+
+//     // ==========  AUTO COMPLETE CSS  ==========
+
+//     input:-webkit-autofill,
+//     input:-webkit-autofill:hover,
+//     input:-webkit-autofill:focus,
+//     textarea:-webkit-autofill,
+//     textarea:-webkit-autofill:hover,
+//     textarea:-webkit-autofill:focus,
+//     select:-webkit-autofill,
+//     select:-webkit-autofill:hover,
+//     select:-webkit-autofill:focus {
+//         border: $purple;
+//         -webkit-text-fill-color: $white;
+//         -webkit-box-shadow: 0 0 0px 1000px $background inset;
+//         transition: background-color 5000s ease-in-out 0s;
+//     }
+
+
+//     // =================================================  CART  ================================================== //
+
+//     .containerCart {
+//         grid-column: 2/3;
+//         background-color: $background;
+//         height: 100%;
+
+//         .mainCart {
+//             height: min-content;
+//             display: flex;
+//             flex-direction: column;
+//             align-items: center;
+//             justify-content: center;
+//             background-color: $black;
+//             margin: 10px 0 10px 0;
+//             row-gap: 15px;
+
+//             table {
+//                 margin: 0;
+//                 background-color: $black;
+//                 color: $white;
+
+//                 tr {
+//                     .headProd {
+//                         width: 60%;
+//                     }
+
+//                     .headPrice,
+//                     .headCondition {
+//                         width: 10%;
+//                     }
+
+//                     .headQuantity {
+//                         width: 20%;
+//                     }
+
+//                     &:hover {
+//                         background-color: $background;
+
+//                         td {
+//                             color: $white;
+//                         }
+//                     }
+//                 }
+
+//                 tbody {
+//                     td {
+//                         .quantityCartInTableInput {
+//                             text-align: center;
+//                             color: $white;
+//                             background-color: $background;
+//                             border: 2px solid $white;
+//                             border-radius: 6px;
+//                         }
+
+//                         .imgCartInTable {
+//                             width: 10%;
+//                             height: 100px;
+//                         }
+
+//                         .productCartInTable {
+//                             width: 90%;
+//                         }
+
+//                         input::-webkit-outer-spin-button,
+//                         input::-webkit-inner-spin-button {
+//                             -webkit-appearance: none;
+//                             margin: 0;
+//                         }
+//                     }
+//                 }
+
+//                 .table-active {
+//                     color: $white;
+//                 }
+
+
+
+//                 img {
+//                     height: 130px;
+//                     width: 130px;
+//                 }
+//             }
+
+//             .hide {
+//                 position: absolute;
+//                 top: -100vh;
+//                 z-index: -10;
+//             }
+
+//             .noItemsCart {
+//                 display: flex;
+//                 flex-direction: column;
+//                 justify-content: center;
+//                 align-items: center;
+//                 gap: 20px;
+//                 width: 100%;
+//                 height: 90vh;
+
+//                 .openPouch {
+
+//                     img {
+//                         height: 100px;
+//                         width: auto;
+//                     }
+//                 }
+//             }
+//         }
+
+//         .total {
+//             width: 100%;
+//             height: min-content;
+//             padding: 10px;
+//             background-color: $black;
+//             display: flex;
+//             align-items: center;
+//             justify-content: space-around;
+
+//             .space {
+//                 width: 60%;
+//             }
+//         }
+//     }
+
+
+//     // =================================================  FOOTER  ================================================== //
+
+
+//     footer {
+//         align-items: center;
+//         justify-content: center;
+//         grid-row: 3/4;
+//         height: min-content;
+//         width: 100%;
+//         background-color: $black;
+
+//         p {
+//             margin: 0%;
+//             padding: 50px;
+//         }
+//     }
+
+
+//     // =================================================  GENERATED  ================================================== //
+
+//     .inputModal {
+//         border: 2px solid $black;
+//         border-radius: 10px;
+//         text-align: center;
+//         width: 100%;
+//         height: 36.66px;
+//         transition: ease all .25s;
+//         background-color: $background;
+//         color: $white;
+//         font-size: 20px;
+
+//         &:focus-visible {
+//             outline: 2px solid $purple;
+//         }
+//     }
+
+//     .h1Modal {
+//         font-family: logoFont;
+//     }
+
+
+//     .infoOfObject {
+//         display: grid;
+//         grid-template-columns: 30% 70%;
+//         grid-template-rows: 80% 20%;
+//         gap: 2%;
+
+//         .containerImg {
+//             grid-row: 1/2;
+//             grid-column: 1/2;
+//             height: 300px;
+//             width: 300px;
+//             margin: auto;
+
+//             img {
+//                 height: 100%;
+//                 width: 100%;
+//             }
+//         }
+
+//         .containerText {
+//             grid-column: 2/3;
+//             grid-row: 1/2;
+
+//             .textAndInfo {
+//                 position: relative;
+//                 justify-content: center;
+//                 top: 50%;
+//                 transform: translateY(-50%);
+//                 gap: 20px;
+//             }
+
+//             .objModalName {
+//                 font-family: logoFont;
+
+//             }
+
+//             .objModalType {
+//                 font-size: 16px;
+//             }
+
+//             .objModalDesc {
+//                 font-size: 22px;
+//                 line-height: 37px;
+//             }
+
+//             .objModalPrice {
+//                 font-size: 32px;
+//             }
+//         }
+
+//         .containerButton {
+//             grid-column: 1/3;
+//             grid-row: 2/3;
+
+//             .button {
+//                 width: 60%;
+//             }
+//         }
+//     }
+
+//     .infoText {
+//         color: $gray;
+//     }
+
+//     .objModalImg {
+//         cursor: pointer;
+//         transition: ease all .25s;
+//         height: 100%;
+
+//         &:hover {
+//             border: 2px solid $purple;
+//         }
+//     }
+
+//     .carousel {
+//         overflow: hidden;
+
+//         .imgCarousel {
+//             height: 80vh;
+//             width: auto;
+//         }
+//     }
+
+//     .carousel-inner {
+//         max-width: fit-content;
+//     }
+
+//     #carouselSlidesOnly {
+//         height: 100%;
+//         width: 100%;
+//         overflow: visible;
+//     }
+
+//     .animOut {
+//         position: fixed;
+//         transform: translate(-50%, -50%);
+//         border-radius: 50%;
+//         overflow: hidden;
+//         box-shadow: 0 0 0 99999px $background;
+//         border: 2px solid $white;
+//         z-index: 10001;
+//     }
+
+//     .animIn {
+//         position: fixed;
+//         transform: translate(-50%, -50%);
+//         border-radius: 50%;
+//         overflow: hidden;
+//         box-shadow: 0 0 0 99999px $background;
+//         border: 2px solid $white;
+//         z-index: 10001;
+//     }
+
+//     .curseAnim {
+//         position: fixed;
+//         height: 100vh;
+//         width: 100vw;
+//         overflow: hidden;
+//         z-index: 10000000000000;
+
+//         .eyeAnim {
+//             background-color: black;
+
+//             .dragonText {
+//                 position: fixed;
+//                 top: 50%;
+//                 left: 50%;
+//                 transform: translate(-50%, -50%);
+//                 font-family: dragonBorn;
+//                 font-size: 66.6px;
+//                 color: #234021;
+//             }
+//         }
+
+//         #angelsAnim {
+//             left: 50%;
+//             top: 50%;
+//             transform: translate(-50%, -50%);
+//             width: 100%;
+//             height: 100%;
+//         }
+
+//         .textAngel {
+//             position: fixed;
+//             bottom: 10%;
+//             left: 50%;
+//             transform: translateX(-50%);
+//         }
+
+//         .eye {
+//             overflow: hidden;
+//             position: absolute;
+//             width: 300px;
+//             height: 120px;
+//             background-color: white;
+//             border-radius: 50%;
+//             border: 2px solid #234021;
+//             left: 50%;
+//             top: 50%;
+//             transform: translate(-50%, -50%);
+
+//             .pupil {
+//                 position: relative;
+//                 width: 40px;
+//                 height: 100px;
+//                 background-color: #234021;
+//                 left: 50%;
+//                 top: 50%;
+//                 transform: translate(-50%, -50%);
+//                 border-radius: 50%;
+//             }
+//         }
+//     }
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* */
+
+@use '../styles/html';
+@use '../styles/header';
+@use '../styles/main';
+@use '../styles/shop';
+@use '../styles/modal';
+@use '../styles/contact';
+@use '../styles/cart';
+@use '../styles/footer';
+@import '../styles/variables';
